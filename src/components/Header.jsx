@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = () => {
+const HeaderX = () => {
   return (
     <header className="header">
       <img
@@ -11,4 +11,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderX;
