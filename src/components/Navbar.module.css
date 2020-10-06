@@ -1,0 +1,16 @@
+.nav{
+  grid-area: n;
+  border: 1px solid hsl(120, 100%, 50%);
+  background-color: #0096C7;
+
+}
+.item {
+color: white;
+}
+.item :visited {
+  color: white;
+  }
+
+a{
+  text-decoration:none
+}
