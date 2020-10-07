@@ -1,16 +1,19 @@
 .nav{
   grid-area: n;
-  border: 1px solid hsl(120, 100%, 50%);
-  background-color: #0096C7;
-
+  border-right: 1px solid #D6D9DC;
+  height: 1400px;
 }
 .item {
-color: white;
+color: #0B4F6C;
+padding-bottom: 6px;
+font-family: 'Segoe UI', sans-serif;
 }
 .item :visited {
-  color: white;
+  color: #0B4F6C;
   }
-
+  .itemWrapper{
+    margin: 10px 0 0 15px;
+  }
 a{
   text-decoration:none
 }
