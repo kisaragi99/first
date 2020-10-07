@@ -1,8 +1,6 @@
  .content{
   grid-area: c;
   height: 1400px;
+  margin-top: 10px;
 }
 
-.item{
-  color: lime;
-}

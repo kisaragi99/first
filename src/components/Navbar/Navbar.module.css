@@ -2,6 +2,7 @@
   grid-area: n;
   border-right: 1px solid #D6D9DC;
   height: 1400px;
+  margin-top: 10px;
 }
 .item {
 color: #0B4F6C;
