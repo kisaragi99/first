@@ -1,16 +1,18 @@
-.item{
-  color: lime;
-  border-radius: 12px;
-  width: 36%;
-  background-color: rgb(245, 245, 245);
-  margin-bottom: 9px;
-  margin-left: 10px ;
+.item {
+    color: lime;
+    border-radius: 12px;
+    width: 36%;
+    background-color: rgb(245, 245, 245);
+    margin-bottom: 9px;
+    margin-left: 10px;
 }
-.item img{
-width: 90px;
-height: 60px;
-border-radius: 9px;
+
+.item img {
+    width: 90px;
+    height: 60px;
+    border-radius: 9px;
 }
-.item :hover{
-  background-color: rgb(224, 224, 224);
+
+.item :hover {
+    background-color: rgb(224, 224, 224);
 }

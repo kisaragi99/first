@@ -1,13 +1,17 @@
-.app-wrapper{
-  display: grid;
-  width: 100%;
+.app-wrapper {
+    display: grid;
+    width: 100%;
 
-  grid-template-areas: 
-  "h h"
-  "n c"
-  ;
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 12fr;
-  /* grid-gap: 10px; */
+    grid-template-areas: "h h" "n c";
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 12fr;
+    /* grid-gap: 10px; */
 }
 
+app-wrapper-content {
+
+    grid-area: c;
+    height: 1400px;
+    margin-top: 10px;
+
+}
