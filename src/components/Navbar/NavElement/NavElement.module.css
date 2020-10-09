@@ -1,20 +1,17 @@
 
 .item {
     color: #0B4F6C;
-    padding-bottom: 9px;
     font-family: 'Segoe UI', sans-serif;
     border-radius: 3px;
+    padding: 5px 0 5px 5px;
+
 
 }
-
-.item:visited {
-    color: #0B4F6C;
-}
-
 .item:hover {
     background: #EEEEEE
 }
 
-a {
-    text-decoration: none
+.link{
+    text-decoration: none;
+    color:#0B4F6C;
 }

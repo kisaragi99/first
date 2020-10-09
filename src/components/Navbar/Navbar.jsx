@@ -8,19 +8,19 @@ const Navbar = () => {
         <nav className={s.nav}>
             <div className={s.itemWrapper}>
                 <div className={s.item}>
-                    <NavElement title="Home page"/>
+                    <NavElement title="Profile" adres = "/profile"/>
                 </div>
                 <div className={s.item}>
-                    <NavElement title="News"/>
+                    <NavElement title="News" adres = "/news"/>
                 </div>
                 <div className={s.item}>
-                    <NavElement title="Messages"/>
+                    <NavElement title="Messages" adres = "/dialogs"/>
                 </div>
                 <div className={s.item}>
-                    <NavElement title="Settings"/>
+                    <NavElement title="Settings" adres = "/settings"/>
                 </div>
                 <div className={s.item}>
-                    <NavElement title="Information"/>
+                    <NavElement title="Information" adres = "/information"/>
                 </div>
             </div>
         </nav>

@@ -1,11 +1,10 @@
-.nav{
-  grid-area: n;
-  border-right: 1px solid #D6D9DC;
-  height: 1400px;
-  margin-top: 10px;
+.nav {
+    grid-area: n;
+    border-right: 1px solid #D6D9DC;
+    height: 1400px;
 }
 
-.itemWrapper{
+.itemWrapper {
     margin: 10px 10px 0 15px;
 }
 
