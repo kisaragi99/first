@@ -6,11 +6,14 @@
 .dialogs {
     border: 1px solid lime;
     font-family: "Yu Gothic UI", sans-serif;
+    max-width: 324px;
+
 }
 
 .dialog {
     margin: 15px 0 15px 15px;
     border: 1px solid cornflowerblue;
+    word-wrap: break-word;
 }
 
 .messages {
@@ -21,4 +24,6 @@
 .message {
     margin: 15px 0 15px 15px;
     border: 1px solid cornflowerblue;
+    max-width: 1286px;
+    word-wrap: break-word;
 }
