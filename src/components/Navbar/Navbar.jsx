@@ -7,24 +7,34 @@ const Navbar = () => {
     return (
         <nav className={s.nav}>
             <div className={s.itemWrapper}>
-                <div className={s.item}>
-                    <NavElement title="Profile" adres = "/profile"/>
-                </div>
-                <div className={s.item}>
-                    <NavElement title="News" adres = "/news"/>
-                </div>
-                <div className={s.item}>
-                    <NavElement title="Messages" adres = "/dialogs"/>
-                </div>
-                <div className={s.item}>
-                    <NavElement title="Settings" adres = "/settings"/>
-                </div>
-                <div className={s.item}>
-                    <NavElement title="Information" adres = "/information"/>
-                </div>
+                    <NavElement title="Profile" addres = "/profile"/>
+                    <NavElement title="News" addres = "/news"/>
+                    <NavElement title="Messages" addres = "/dialogs"/>
+                    <NavElement title="Settings" addres = "/settings"/>
+                    <NavElement title="Information" addres = "/information"/>
             </div>
         </nav>
     );
 };
 
 export default Navbar;
+
+/*<nav className={s.nav}>
+    <div className={s.itemWrapper}>
+        <div>
+            <NavElement title="Profile" addres = "/profile"/>
+        </div>
+        <div>
+            <NavElement title="News" addres = "/news"/>
+        </div>
+        <div>
+            <NavElement title="Messages" addres = "/dialogs"/>
+        </div>
+        <div>
+            <NavElement title="Settings" addres = "/settings"/>
+        </div>
+        <div>
+            <NavElement title="Information" addres = "/information"/>
+        </div>
+    </div>
+</nav>*/

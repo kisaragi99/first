@@ -1,0 +1,24 @@
+.main {
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+}
+
+.dialogs {
+    border: 1px solid lime;
+    font-family: "Yu Gothic UI", sans-serif;
+}
+
+.dialog {
+    margin: 15px 0 15px 15px;
+    border: 1px solid cornflowerblue;
+}
+
+.messages {
+    border: 1px solid red;
+    font-family: "Yu Gothic UI", sans-serif;
+}
+
+.message {
+    margin: 15px 0 15px 15px;
+    border: 1px solid cornflowerblue;
+}
