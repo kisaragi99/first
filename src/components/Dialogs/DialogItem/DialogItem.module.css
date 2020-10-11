@@ -1,0 +1,5 @@
+.dialog {
+    margin: 15px 0 15px 15px;
+    border: 1px solid cornflowerblue;
+    word-wrap: break-word;
+}

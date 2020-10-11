@@ -1,0 +1,6 @@
+.message {
+    margin: 15px 0 15px 15px;
+    border: 1px solid cornflowerblue;
+    max-width: 1286px;
+    word-wrap: break-word;
+}
