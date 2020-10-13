@@ -18,23 +18,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-/*<nav className={s.nav}>
-    <div className={s.itemWrapper}>
-        <div>
-            <NavElement title="Profile" addres = "/profile"/>
-        </div>
-        <div>
-            <NavElement title="News" addres = "/news"/>
-        </div>
-        <div>
-            <NavElement title="Messages" addres = "/dialogs"/>
-        </div>
-        <div>
-            <NavElement title="Settings" addres = "/settings"/>
-        </div>
-        <div>
-            <NavElement title="Information" addres = "/information"/>
-        </div>
-    </div>
-</nav>*/
