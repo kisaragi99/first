@@ -4,7 +4,8 @@
 }
 
 .dialogs {
-    border: 1px solid lime;
+    border-right: 1px solid #D6D9DC;
+    border-bottom: 1px solid #D6D9DC;
     font-family: "Yu Gothic UI", sans-serif;
     max-width: 324px;
 
@@ -17,7 +18,6 @@
 }
 
 .messages {
-    border: 1px solid red;
     font-family: "Yu Gothic UI", sans-serif;
 }
 

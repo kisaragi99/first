@@ -9,13 +9,15 @@ const MyPosts = (props) => {
     return (
         <div>
             <h3 className={s.greet}>Hi, my name is {props.name}, and these are my posts.</h3>
-            <div className={s.text1}>
-                <textarea></textarea>
-            </div>
-            <div>
-                <button className={s.button1}>
-                    Post
-                </button>
+            <div className={s.makePost}>
+                <div className={s.text1}>
+                    <textarea></textarea>
+                </div>
+                <div>
+                    <button className={s.button1}>
+                        Post
+                    </button>
+                </div>
             </div>
             <div>
                 {postsElements}

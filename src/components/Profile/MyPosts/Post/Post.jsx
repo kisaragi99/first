@@ -4,14 +4,16 @@ import s from "./Post.module.css";
 const Post = (props) => {
   return (
     <div className={s.item}>
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Flag_of_Japan_%281870%E2%80%931999%29.svg/220px-Flag_of_Japan_%281870%E2%80%931999%29.svg.png"
+      <div className={s.avatarAndMessage}>
+        <img
+        src="https://i1.sndcdn.com/artworks-000221273017-izy0jx-t500x500.jpg"
         alt="logo"
       ></img>
-      {props.message}
-      <div>
+      <div className={s.message}>{props.message}</div>
+      </div>
+      <div className={s.postLikes}>
         <span>Like!</span>
-        <h5>Like count: {props.likesCount}</h5>
+        <div>Like count: {props.likesCount}</div>
       </div>
     </div>
   );
