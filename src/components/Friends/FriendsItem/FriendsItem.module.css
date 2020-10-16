@@ -1,0 +1,19 @@
+.friendsBox {
+    display: flex;
+    background: #EEEEEE;
+    border-radius: 9px;
+    margin: 10px 10px;
+
+}
+
+.friendsAvatar {
+    width: 72px;
+    border-radius: 50px;
+    margin: 5px 0 5px 5px;
+}
+
+.friendsName {
+    margin-left: 10px;
+    margin-top: 5px;
+
+}

@@ -8,7 +8,7 @@ const Dialogs = (props) => {
 
 
     let dialogsElement = props.state.dialogs
-        .map((dialog => <DialogItem name={dialog.name} id={dialog.id}/>)
+        .map((dialog => <DialogItem name={dialog.name} id={dialog.id} avatar = {dialog.avatar}/>)
         )
     let messagesElement = props.state.messages
         .map((message => <MessageItem message={message.message}/>)

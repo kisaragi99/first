@@ -8,10 +8,10 @@ const Navbar = () => {
         <nav className={s.nav}>
             <div className={s.itemWrapper}>
                     <NavElement title="Profile" addres = "/profile"/>
+                    <NavElement title="Friends" addres = "/friends"/>
                     <NavElement title="News" addres = "/news"/>
                     <NavElement title="Messages" addres = "/dialogs"/>
                     <NavElement title="Settings" addres = "/settings"/>
-                    <NavElement title="Information" addres = "/information"/>
             </div>
         </nav>
     );

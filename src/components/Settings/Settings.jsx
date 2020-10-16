@@ -4,7 +4,7 @@ import s from "./Settings.module.css"
 const Settings = (props) => {
     return (
         <div>
-            Settings
+            Settings or maybe not
         </div>)
 }
 export default Settings;
