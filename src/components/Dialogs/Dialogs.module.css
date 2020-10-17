@@ -1,6 +1,7 @@
 .main {
     display: grid;
     grid-template-columns: 2fr 8fr;
+
 }
 
 .dialogs {
@@ -19,6 +20,7 @@
 
 .messages {
     font-family: "Yu Gothic UI", sans-serif;
+
 }
 
 .message {
@@ -26,4 +28,9 @@
     border: 1px solid cornflowerblue;
     max-width: 1286px;
     word-wrap: break-word;
+}
+
+.messageSendArea{
+    display: flex;
+    margin: 5px 0 0 5px;
 }
