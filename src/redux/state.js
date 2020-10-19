@@ -9,6 +9,7 @@ let state = {
             {id: 5, message: "Opposite", likesCount: 6},
             {id: 6, message: "Lorem", likesCount: 12}
         ],
+        newPostText: "",
 
     },
 
@@ -41,14 +42,20 @@ let state = {
     }
 
 }
-export let addPost = inputtedText =>{
+export let addPost = () =>{
     let newPost = {
         id: 7,
-        message: inputtedText,
+        message: state.profilePage.newPostText,
         likesCount: 9
     }
     state.profilePage.postsData.push(newPost);
-    rerenderEntireTree(state,addPost);
+    state.profilePage.newPostText = '';
+    rerenderEntireTree(state,addPost,updateNewPostText);
+}
+export let updateNewPostText = newText =>{
+
+    state.profilePage.newPostText = newText;
+    rerenderEntireTree(state,addPost,updateNewPostText);
 }
 
 
