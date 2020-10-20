@@ -1,9 +1,24 @@
-import state, {addPost, updateNewPostText} from './redux/state'
+import state, {addPost, subscribe, updateNewPostText} from './redux/state'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {rerenderEntireTree} from './render'
+import {BrowserRouter} from "react-router-dom";
 
 
-rerenderEntireTree(state,addPost,updateNewPostText);
+let rerenderEntireTree = (state) => {
+    ReactDOM.render(
+        <React.StrictMode>
+            <BrowserRouter>
+                <App state={state} addPost={addPost} updateNewPostText={updateNewPostText}/>
+            </BrowserRouter>
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
+}
+rerenderEntireTree(state);
 
+subscribe(rerenderEntireTree);
 
 serviceWorker.unregister();
