@@ -1,4 +1,4 @@
-let rerenderEntireTree = ()=>{
+let rerenderEntireTree = () => {
 
 }
 
@@ -22,6 +22,7 @@ let state = {
             {id: 1, message: "Hi!"},
             {id: 2, message: "Lets play some Dota!"},
             {id: 3, message: "Are you here?"}],
+        newMessageTempText: '',
         dialogs: [
             {
                 id: 1,
@@ -69,12 +70,23 @@ export const addPost = () => {
     state.profilePage.newPostText = '';
     rerenderEntireTree(state);
 }
+export const updateNewMessageText = newMessageText => {
+    state.dialogsPage.newMessageTempText = newMessageText;
+    rerenderEntireTree(state);
+}
+export const addMessage = () => {
+    let newMessage = {id: 1, message: state.dialogsPage.newMessageTempText}
+    state.dialogsPage.messages.push(newMessage);
+    rerenderEntireTree(state);
+}
+
 
 export const updateNewPostText = newText => {
 
     state.profilePage.newPostText = newText;
     rerenderEntireTree(state);
 }
+
 export const subscribe = (observer) => {
     rerenderEntireTree = observer;
 }
