@@ -6,12 +6,11 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 const Profile = (props) => {
 
     return (
-        <div>
+        <div className={s.wrapper}>
             <ProfileInfo/>
             <MyPosts name="Ochir" postsData={props.profilePage.postsData}
-                     addPost={props.addPost}
+                     dispatch={props.dispatch}
                      newPostText={props.profilePage.newPostText}
-                     updateNewPostText={props.updateNewPostText}
             />
         </div>
     )

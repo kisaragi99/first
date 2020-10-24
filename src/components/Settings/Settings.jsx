@@ -3,7 +3,7 @@ import s from "./Settings.module.css"
 
 const Settings = (props) => {
     return (
-        <div>
+        <div className={s.wrapper}>
             Settings or maybe not
         </div>)
 }

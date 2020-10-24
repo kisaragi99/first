@@ -8,7 +8,7 @@ const Friends = (props) => {
     let friendss = props.state.friends.map((friend => <FriendsItem name={friend.name} avatar={friend.avatar}/>));
 
     return (
-        <div>
+        <div className={s.wrapper}>
             {friendss}
         </div>)
 }

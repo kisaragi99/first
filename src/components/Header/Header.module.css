@@ -2,7 +2,7 @@
   grid-area: h;
   border-bottom: 1px solid #D6D9DC;
   box-shadow: 0 0 5px 1px rgba(105, 105, 105, 0.5);
-  background-color: white;
+  background-color: dimgrey; /*Return to white after*/
   
 
   position: sticky;
