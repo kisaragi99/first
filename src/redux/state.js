@@ -18,7 +18,7 @@ let store = {
                 {id: 5, message: "Opposite", likesCount: 6},
                 {id: 6, message: "Lorem", likesCount: 12}
             ],
-            newPostText: "",
+            newPostText: "i`m here",
 
         },
         dialogsPage: {
@@ -31,7 +31,7 @@ let store = {
                 {id: 6, message: "Lets play some Dota!"},
                 {id: 7, message: "Lets play some Dota!"},
                 {id: 8, message: "Are you here?"}],
-            newMessageTempText: '',
+            newMessageTempText: "BeHerePlease",
             dialogs: [
                 {
                     id: 1,
@@ -90,9 +90,12 @@ let store = {
                 this._callSubscriber(this._state);
             } else {
                 if (action.type === ADD_MESSAGE) {
-                    let newMessage = {id: 1, message: this._state.dialogsPage.newMessageTempText}
+                    let text = this._state.dialogsPage.newMessageTempText;
+                    let newMessage = {id: 9, message: text};
                     this._state.dialogsPage.messages.push(newMessage);
+                    this._state.dialogsPage.newMessageTempText = '';
                     this._callSubscriber(this._state);
+                    debugger;
                 } else {
                     if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
                         this._state.dialogsPage.newMessageTempText = action.newMessageText;
@@ -104,11 +107,11 @@ let store = {
     }
 };
 
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
+export const addPostCreator = () => ({type: ADD_POST});
+export const updateNewPostTextCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
 
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
-export const onPostChangeActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: text});
+export const addMessageCreator = () => ({type: ADD_MESSAGE});
+export const updateNewMessageTextCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: text});
 
 export default store;
 window.store = store;
