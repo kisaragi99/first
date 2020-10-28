@@ -9,7 +9,6 @@ import Friends from "./components/Friends/Friends";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 
-
 const App = (props) => {
     return (
         <div className="app-wrapper">
