@@ -1,10 +1,6 @@
 import profileReducer from "./profileReducer";
 import dialogsReducer from "./dialogsReducer";
 
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
 
 let store = {
@@ -83,11 +79,6 @@ let store = {
     }
 };
 
-export const addPostCreator = () => ({type: ADD_POST});
-export const updateNewPostTextCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
-
-export const addMessageCreator = () => ({type: ADD_MESSAGE});
-export const updateNewMessageTextCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: text});
 
 export default store;
 window.store = store;
