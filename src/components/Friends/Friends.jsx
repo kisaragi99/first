@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./Friends.module.css"
-import Post from "../Profile/MyPosts/Post/Post";
 import FriendsItem from "./FriendsItem/FriendsItem";
 
 const Friends = (props) => {
