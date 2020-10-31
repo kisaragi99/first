@@ -3,7 +3,7 @@ import s from "./MessageItem.module.css"
 
 const MessageItem = (props) => {
     return (<div className={s.messagesBox}>
-            <img src='https://dic.nicovideo.jp/oekaki/733289.png'/>
+            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRKDM99rvtftg7ZHF5_cfcYMIddC35KSuaJ8Q&usqp=CAU'/>
             <div className={s.message}>
                 {props.message}
             </div>

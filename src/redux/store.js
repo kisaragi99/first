@@ -1,8 +1,6 @@
 import profileReducer from "./profileReducer";
 import dialogsReducer from "./dialogsReducer";
 
-
-
 let store = {
     _callSubscriber() {
         console.log("state changed")
@@ -69,6 +67,7 @@ let store = {
     }
 };
 
-
 export default store;
 window.store = store;
+
+
