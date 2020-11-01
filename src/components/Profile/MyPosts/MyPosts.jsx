@@ -11,10 +11,12 @@ const MyPosts = (props) => {
 
 
     let addPost = () => {
+        //props.addPost();
         props.dispatch(addPostCreator());
     }
     let onPostChange = (e) => {
         let text = e.target.value;
+        //props.updateNewPostText();
         props.dispatch(updateNewPostTextCreator(text));
     }
     return (
