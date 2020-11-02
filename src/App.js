@@ -10,13 +10,13 @@ import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 
 const App = (props) => {
+
     return (
         <div className="app-wrapper">
             <Header/>
             <Navbar/>
             <div className="app-wrapper-content">
-                <Route path="/profile" render={() => <Profile profilePage={props.state.profilePage}
-                                                              dispatch={props.dispatch}/>}/>
+                <Route path="/profile" render={() => <Profile store={props.store}/>}/>
                 <Route path="/dialogs" render={() => <Dialogs state={props.state.dialogsPage}
                                                               dispatch={props.dispatch}/>}/>
                 <Route path="/friends" render={() => <Friends state={props.state.friendsPage}/>}/>

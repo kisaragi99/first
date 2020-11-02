@@ -1,23 +1,20 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {addPostCreator, updateNewPostTextCreator} from "../../../redux/profileReducer";
 
 
+// Контейнер должен передать нам postsData, addPost(), updateNewPostText(), props.name, props.newPostText (Итого 5 шт.)
 
 const MyPosts = (props) => {
 
     let postsElements = props.postsData.map((post => <Post message={post.message} likesCount={post.likesCount}/>))
 
-
     let addPost = () => {
-        //props.addPost();
-        props.dispatch(addPostCreator());
+        props.addPost();
     }
     let onPostChange = (e) => {
         let text = e.target.value;
-        //props.updateNewPostText();
-        props.dispatch(updateNewPostTextCreator(text));
+        props.updateNewPostText(text);
     }
     return (
         <div>
