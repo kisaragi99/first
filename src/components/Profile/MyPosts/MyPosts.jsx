@@ -3,7 +3,7 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 
-// Контейнер должен передать нам postsData, addPost(), updateNewPostText(), props.name, props.newPostText (Итого 5 шт.)
+
 
 const MyPosts = (props) => {
 

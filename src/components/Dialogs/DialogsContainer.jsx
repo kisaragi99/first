@@ -1,6 +1,6 @@
 import React from "react";
 import Dialogs from "./Dialogs";
-import {addMessageCreator,updateNewMessageTextCreator} from "../../redux/dialogsReducer"
+import {addMessageCreator, updateNewMessageTextCreator} from "../../redux/dialogsReducer"
 
 const DialogsContainer = (props) => {
 
@@ -21,5 +21,3 @@ const DialogsContainer = (props) => {
 }
 
 export default DialogsContainer;
-
-// addMessageCreator, updateNewMessageTextCreator, state.messages, state.dialogs, newMessageTempText
