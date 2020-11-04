@@ -20,4 +20,5 @@ const DialogsContainer = (props) => {
                           newMessageTempText={state.dialogsPage.newMessageTempText}/></div>)
 }
 
+
 export default DialogsContainer;
