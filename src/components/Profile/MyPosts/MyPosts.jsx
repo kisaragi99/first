@@ -3,11 +3,10 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 
-
-
 const MyPosts = (props) => {
 
-    let postsElements = props.postsData.map((post => <Post message={post.message} likesCount={post.likesCount}/>))
+    let postsElements = props.profilePage.postsData.map((post => <Post message={post.message}
+                                                                       likesCount={post.likesCount}/>))
 
     let addPost = () => {
         props.addPost();
@@ -21,7 +20,7 @@ const MyPosts = (props) => {
             <h3 className={s.greet}>Hi, my name is {props.name}, and these are my posts.</h3>
             <div className={s.makePost}>
                 <div className={s.text1}>
-                    <textarea onChange={onPostChange} value={props.newPostText}/>
+                    <textarea onChange={onPostChange} value={props.profilePage.newPostText}/>
                 </div>
                 <div>
                     <button className={s.button1} onClick={addPost}>
