@@ -3,8 +3,8 @@ import s from "./Friends.module.css"
 import FriendsItem from "./FriendsItem/FriendsItem";
 
 const Friends = (props) => {
-
-    let friendss = props.state.friends.map((friend => <FriendsItem name={friend.name} avatar={friend.avatar}/>));
+debugger;
+    let friendss = props.friends.map((friend => <FriendsItem name={friend.name} avatar={friend.avatar}/>));
 
     return (
         <div className={s.wrapper}>
