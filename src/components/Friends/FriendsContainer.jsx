@@ -3,12 +3,11 @@ import Friends from "./Friends";
 import {connect} from "react-redux";
 
 let mapStateToProps = (state) => {
-    debugger
     return {
         friends: state.friendsPage.friends
     }
 }
-let mapDispatchToProps = (dispatch) =>{
+let mapDispatchToProps = (dispatch) => {
     return {}
 }
 

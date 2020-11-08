@@ -6,7 +6,8 @@ import Post from "./Post/Post";
 const MyPosts = (props) => {
 
     let postsElements = props.profilePage.postsData.map((post => <Post message={post.message}
-                                                                       likesCount={post.likesCount}/>))
+                                                                       likesCount={post.likesCount}
+                                                                       key ={post.id}/>))
 
     let addPost = () => {
         props.addPost();
