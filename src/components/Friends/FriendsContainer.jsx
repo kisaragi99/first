@@ -3,8 +3,6 @@ import Friends from "./Friends";
 import {connect} from "react-redux";
 import {followAC, setUsersAC, unfollowAC} from "../../redux/friendsReducer";
 
-
-
 let mapStateToProps = (state) => {
     return {
         friends: state.friendsPage.friends
@@ -23,8 +21,8 @@ let mapDispatchToProps = (dispatch) => {
         }
     }
 }
-
-
 const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends)
 
 export default FriendsContainer;
+
+

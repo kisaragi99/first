@@ -56,3 +56,5 @@ const Friends = (props) => {
         </div>)
 }
 export default Friends;
+
+

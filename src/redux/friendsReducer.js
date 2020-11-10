@@ -3,9 +3,7 @@ const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 
 let initialState = {
-    friends: [
-
-    ]
+    friends: []
 }
 
 const friendsReducer = (state = initialState, action) => {
