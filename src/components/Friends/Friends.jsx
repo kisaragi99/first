@@ -6,15 +6,13 @@ import avatar from "../../assets/images/avatar.png"
 
 const Friends = (props) => {
 
-
-    if (props.friends.length === 0) {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-            props.setFriends(response.data.items)
-        })
-
-
+    let getUsers = () => {
+        if (props.friends.length === 0) {
+            axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+                props.setFriends(response.data.items)
+            })
+        }
     }
-
 
     let friendss = props.friends.map((friend => <FriendsItem name={friend.name}
                                                              avatar={friend.photos.small != null ? friend.photos.small : avatar}
@@ -26,9 +24,14 @@ const Friends = (props) => {
                                                              unfollow={props.unfollow}/>));
 
     return (
-        <div className={s.wrapper}>
-            {friendss}
-        </div>)
+        <div>
+            <button onClick={getUsers}>Get Users</button>
+            <div className={s.wrapper}>
+                {friendss}
+            </div>
+        </div>
+
+    )
 }
 export default Friends;
 
