@@ -22,8 +22,8 @@ const FriendsItem = (props) => {
                     <div>{props.status}</div>
                 </div>
                 <div>
-                    <div>{props.location.country}</div>
-                    <div>{props.location.city}</div>
+                    <div>{"props.location.country"}</div>
+                    <div>{"props.location.city"}</div>
                 </div>
             </div>
         </div>

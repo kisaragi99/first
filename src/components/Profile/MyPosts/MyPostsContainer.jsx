@@ -17,7 +17,8 @@ let mapDispatchToProps = (dispatch) => {
         },
         updateNewPostText: (text) => {
             dispatch(updateNewPostTextCreator(text))
-        }
+        },
+        name: "Ochir"
     }
 }
 
