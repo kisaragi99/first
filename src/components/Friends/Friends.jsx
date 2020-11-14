@@ -38,8 +38,12 @@ class Friends extends React.Component {
                                     <img src={friend.photos.small != null ? friend.photos.small : avatar}
                                          className={s.friendsAvatar}/>
                                 </div>
-                                <div> {friend.followed ? <button onClick={() => {this.props.unfollow(friend.id)}}> Unfollow </button> :
-                                                         <button onClick={() => {this.props.follow(friend.id)}}>Follow</button>}
+                                <div> {friend.followed ? <button onClick={() => {
+                                        this.props.unfollow(friend.id)
+                                    }}> Unfollow </button> :
+                                    <button onClick={() => {
+                                        this.props.follow(friend.id)
+                                    }}>Follow</button>}
                                 </div>
                             </div>
 
@@ -49,8 +53,8 @@ class Friends extends React.Component {
                                     <div>{friend.status}</div>
                                 </div>
                                 <div>
-                                    <div>{"props.location.country"}</div>
-                                    <div>{"props.location.city"}</div>
+                                    <div>{"Some Country"}</div>
+                                    <div>{"Some city"}</div>
                                 </div>
                             </div>
                         </div>
@@ -65,5 +69,6 @@ class Friends extends React.Component {
         </div>)
     }
 }
+
 
 export default Friends;
