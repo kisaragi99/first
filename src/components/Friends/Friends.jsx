@@ -6,11 +6,12 @@ import avatar from "../../assets/images/avatar.png"
 class Friends extends React.Component {
 
     componentDidMount() {
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
-                this.props.setFriends(response.data.items)
-                this.props.setTotalFriendsCount(response.data.totalCount)
-            })
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+            this.props.setFriends(response.data.items)
+            this.props.setTotalFriendsCount(response.data.totalCount)
+        })
     }
+
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
@@ -28,11 +29,6 @@ class Friends extends React.Component {
         }
 
         return (<div>
-           <div> {pages.map( p => {
-                return <span className={this.props.currentPage === p && s.selectedPage}
-                             onClick={(e)=>{this.onPageChanged(p)}}>{p}</span>
-            })}
-           </div>
 
             {
                 this.props.friends.map((friend =>
@@ -63,6 +59,13 @@ class Friends extends React.Component {
                             </div>
                         </div>
                 ))}
+            <div> {pages.map(p => {
+                return <span className={this.props.currentPage === p && s.selectedPage}
+                             onClick={(e) => {
+                                 this.onPageChanged(p)
+                             }}>{`${p} `}</span>
+            })}
+            </div>
         </div>)
     }
 }
