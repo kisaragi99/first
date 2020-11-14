@@ -38,12 +38,8 @@ class Friends extends React.Component {
                                     <img src={friend.photos.small != null ? friend.photos.small : avatar}
                                          className={s.friendsAvatar}/>
                                 </div>
-                                <div> {friend.followed ? <button onClick={() => {
-                                        this.props.unfollow(friend.id)
-                                    }}> Unfollow </button> :
-                                    <button onClick={() => {
-                                        this.props.follow(friend.id)
-                                    }}>Follow</button>}
+                                <div> {friend.followed ? <button onClick={() => {this.props.unfollow(friend.id)}}> Unfollow </button> :
+                                                         <button onClick={() => {this.props.follow(friend.id)}}>Follow</button>}
                                 </div>
                             </div>
 
