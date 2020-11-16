@@ -1,12 +1,12 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    followAC,
-    setCurrentPageAC,
-    setTotalFriendsCountAC,
-    setUsersAC,
-    toggleIsLoadingAC,
-    unfollowAC
+    follow,
+    setCurrentPage,
+    setTotalFriendsCount,
+    setFriends,
+    toggleIsLoading,
+    unfollow
 } from "../../redux/friendsReducer";
 import * as axios from "axios";
 import FriendsPresentational from "./FriendsPresentational";
@@ -56,29 +56,8 @@ let mapStateToProps = (state) => {
         isLoading: state.friendsPage.isLoading
     }
 }
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (friendId) => {
-            dispatch(followAC(friendId))
-        },
-        unfollow: (friendId) => {
-            dispatch(unfollowAC(friendId))
-        },
-        setFriends: (friends) => {
-            dispatch(setUsersAC(friends))
-        },
-        setCurrentPage: (currentPage) => {
-            dispatch(setCurrentPageAC(currentPage))
-        },
-        setTotalFriendsCount: (totalCount) => {
-            dispatch(setTotalFriendsCountAC(totalCount))
-        },
-        toggleIsLoading: (isLoading) => {
-            dispatch(toggleIsLoadingAC(isLoading))
-        }
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(FriendsContainer)
+
+export default connect(mapStateToProps, {follow, unfollow, setFriends,setCurrentPage,setTotalFriendsCount,toggleIsLoading})(FriendsContainer)
 
 
 
