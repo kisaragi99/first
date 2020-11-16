@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./Navbar.module.css";
 import NavElement from "./NavElement/NavElement";
+import Loader from "../Loaders/Loader";
 
 
 const Navbar = () => {

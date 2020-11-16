@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./Friends.module.css";
 import avatar from "../../assets/images/avatar.png";
+import Loader from '../../components/Loaders/Loader'
 
 let FriendsPresentational = (props) => {
 
