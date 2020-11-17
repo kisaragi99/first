@@ -1,3 +1,28 @@
+.avatar{
+    height: 270px;
+    border-radius: 9px;
+    grid-area: ava;
+}
+
+.avatarWrapper{
+    margin: 5px;
+    display: grid;
+    grid-template-columns:270px 1fr;
+    grid-template-areas: "ava descr";
+}
 .description{
-    padding: 10px;
+    grid-area: descr;
+    font-family: "IBM Plex Sans";
+}
+
+.profileInfo{
+    margin: 0 0 5px 15px;
+    background-color: #EEEEEE;
+    width: auto;
+    border-radius: 2px;
+    display: flex;
+}
+.profileInfoTitle{
+    margin-right: 5px;
+    font-weight: bold;
 }

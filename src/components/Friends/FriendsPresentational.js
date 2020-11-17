@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Friends.module.css";
 import avatar from "../../assets/images/avatar.png";
 import Loader from '../../components/Loaders/Loader'
+import {NavLink} from "react-router-dom";
 
 let FriendsPresentational = (props) => {
 
@@ -18,8 +19,10 @@ let FriendsPresentational = (props) => {
                     <div className={s.friendsBox} key={friend.id}>
                         <div>
                             <div>
-                                <img src={friend.photos.small != null ? friend.photos.small : avatar}
-                                     className={s.friendsAvatar}/>
+                                <NavLink to={'/profile/' + friend.id}>
+                                    <img src={friend.photos.small != null ? friend.photos.small : avatar}
+                                         className={s.friendsAvatar}/>
+                                </NavLink>
                             </div>
                             <div> {friend.followed ? <button onClick={() => {
                                     props.unfollow(friend.id)

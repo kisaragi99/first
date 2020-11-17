@@ -1,15 +1,18 @@
 import React from "react";
-import MyPosts from "./MyPosts/MyPosts";
 import s from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import Loader from "../Loaders/Loader";
 
 
 const Profile = (props) => {
+    if(!props.profile){
+        return <Loader/>
+            }
 
     return (
         <div className={s.wrapper}>
-            <ProfileInfo/>
+            <ProfileInfo profile ={props.profile}/>
             <MyPostsContainer store = {props.store}
             />
         </div>
