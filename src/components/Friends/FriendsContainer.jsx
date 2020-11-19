@@ -7,7 +7,7 @@ import {
     setFriends,
     toggleIsLoading,
     unfollow
-} from "../../redux/friendsReducer";
+} from "../../redux/friends-reducer";
 import * as axios from "axios";
 import FriendsPresentational from "./FriendsPresentational";
 import Loader from "../Loaders/Loader";
