@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Friends.module.css";
 import avatar from "../../assets/images/avatar.png";
 import {NavLink} from "react-router-dom";
+import * as axios from "axios";
 
 let FriendsPresentational = (props) => {
 
@@ -23,8 +24,37 @@ let FriendsPresentational = (props) => {
                                          className={s.friendsAvatar}/>
                                 </NavLink>
                             </div>
-                            <div> {friend.followed ? <button onClick={() => { props.unfollow(friend.id)}}> Unfollow </button> :
-                                                     <button onClick={() => { props.follow(friend.id) }}>Follow</button>}
+                            <div> {friend.followed ?
+
+                                <button onClick={() => {
+                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${friend.id}`,{
+                                        withCredentials: true,
+                                        headers: {
+                                            "API-KEY": "c3b6b8c4-0dfb-4a27-8050-5e4ce867a46f"
+                                        }
+                                    }).then(response => {
+                                        if (response.data.resultCode === 0) {
+                                            props.unfollow(friend.id)
+                                        }
+                                    })
+                                }}> Unfollow </button> :
+
+
+                                <button onClick={() => {
+                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${friend.id}`, {}, {
+                                        withCredentials: true,
+                                        headers: {
+                                            "API-KEY": "c3b6b8c4-0dfb-4a27-8050-5e4ce867a46f"
+                                        }
+                                    }).then(response => {
+                                        if (response.data.resultCode === 0) {
+                                            props.follow(friend.id)
+                                        }
+                                    })
+                                }}>Follow</button>
+
+
+                            }
                             </div>
                         </div>
 
@@ -49,4 +79,4 @@ let FriendsPresentational = (props) => {
         </div>
     </div>
 }
-export default FriendsPresentational;
+export default FriendsPresentational

@@ -15,8 +15,10 @@ import Loader from "../Loaders/Loader";
 class FriendsContainer extends React.Component {
 
     componentDidMount() {
-            this.props.toggleIsLoading(true);
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+        this.props.toggleIsLoading(true);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
+            withCredentials: true,
+        }).then(response => {
             this.props.setFriends(response.data.items)
             this.props.setTotalFriendsCount(response.data.totalCount)
             this.props.toggleIsLoading(false);
@@ -26,7 +28,9 @@ class FriendsContainer extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.toggleIsLoading(true);
         this.props.setCurrentPage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
+            withCredentials: true,
+        }).then(response => {
             this.props.setFriends(response.data.items);
             this.props.toggleIsLoading(false);
 
@@ -57,7 +61,14 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {follow, unfollow, setFriends,setCurrentPage,setTotalFriendsCount,toggleIsLoading})(FriendsContainer)
+export default connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setFriends,
+    setCurrentPage,
+    setTotalFriendsCount,
+    toggleIsLoading
+})(FriendsContainer)
 
 
 
