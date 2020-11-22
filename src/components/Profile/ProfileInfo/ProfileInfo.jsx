@@ -1,12 +1,11 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
-import {Link} from "react-router-dom"; // надо сделать потом - если у человека не заполнено какое-то поле, то не надо его рендерить <a href={props.profile.contacts.facebook}
 
 const ProfileInfo = (props) => {
     return (
         <div>
             <div className={s.avatarWrapper}>
-                <img src={props.profile.photos.large} className={s.avatar}/>
+                <img src={props.profile.photos.large} className={s.avatar} alt='avatar'/>
                 <div className={s.description}>
                     <div className={s.profileInfo}><div className={s.profileInfoTitle}>Name:</div> {props.profile.fullName}</div>
                     <div className={s.profileInfo}><div className={s.profileInfoTitle}>About me:</div> {props.profile.aboutMe} </div>

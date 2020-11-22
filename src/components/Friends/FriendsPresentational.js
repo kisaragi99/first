@@ -21,7 +21,7 @@ let FriendsPresentational = (props) => {
                             <div>
                                 <NavLink to={'/profile/' + friend.id}>
                                     <img src={friend.photos.small != null ? friend.photos.small : avatar}
-                                         className={s.friendsAvatar}/>
+                                         className={s.friendsAvatar} alt='avatar'/>
                                 </NavLink>
                             </div>
                             <div> {friend.followed ?
@@ -60,11 +60,12 @@ let FriendsPresentational = (props) => {
                         </div>
                     </div>
             ))}
-        <div> {pages.map(p => {
+        <div> {pages.map((p,index) => {
             return <span className={props.currentPage === p && s.selectedPage}
                          onClick={(e) => {
                              props.onPageChanged(p)
-                         }}>{`${p} `}</span>
+                         }} key={index}>{`${p} `}</span>
+
         })}
         </div>
     </div>
