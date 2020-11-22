@@ -11,27 +11,29 @@ import {
 import * as axios from "axios";
 import FriendsPresentational from "./FriendsPresentational";
 import Loader from "../Loaders/Loader";
+import {getUsers} from "../../api/api";
 
 class FriendsContainer extends React.Component {
 
     componentDidMount() {
         this.props.toggleIsLoading(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
-            withCredentials: true,
-        }).then(response => {
-            this.props.setFriends(response.data.items)
-            this.props.setTotalFriendsCount(response.data.totalCount)
+
+        getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+
+            this.props.setFriends(data.items);
+            this.props.setTotalFriendsCount(data.totalCount);
             this.props.toggleIsLoading(false);
-        })
+        });
+
     }
 
     onPageChanged = (pageNumber) => {
         this.props.toggleIsLoading(true);
         this.props.setCurrentPage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
-            withCredentials: true,
-        }).then(response => {
-            this.props.setFriends(response.data.items);
+
+        getUsers(pageNumber, this.props.pageSize).then(data => {
+
+            this.props.setFriends(data.items);
             this.props.toggleIsLoading(false);
 
         })
