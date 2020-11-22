@@ -8,7 +8,6 @@ import {
     toggleIsLoading,
     unfollow
 } from "../../redux/friends-reducer";
-import * as axios from "axios";
 import FriendsPresentational from "./FriendsPresentational";
 import Loader from "../Loaders/Loader";
 import {getUsers} from "../../api/api";

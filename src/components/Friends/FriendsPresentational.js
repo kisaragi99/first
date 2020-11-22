@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Friends.module.css";
 import avatar from "../../assets/images/avatar.png";
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
+import {followUser, unfollowUser} from "../../api/api";
 
 let FriendsPresentational = (props) => {
 
@@ -27,13 +27,8 @@ let FriendsPresentational = (props) => {
                             <div> {friend.followed ?
 
                                 <button onClick={() => {
-                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${friend.id}`,{
-                                        withCredentials: true,
-                                        headers: {
-                                            "API-KEY": "c3b6b8c4-0dfb-4a27-8050-5e4ce867a46f"
-                                        }
-                                    }).then(response => {
-                                        if (response.data.resultCode === 0) {
+                                    unfollowUser(friend.id).then(data => {
+                                        if (data.resultCode === 0) {
                                             props.unfollow(friend.id)
                                         }
                                     })
@@ -41,13 +36,8 @@ let FriendsPresentational = (props) => {
 
 
                                 <button onClick={() => {
-                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${friend.id}`, {}, {
-                                        withCredentials: true,
-                                        headers: {
-                                            "API-KEY": "c3b6b8c4-0dfb-4a27-8050-5e4ce867a46f"
-                                        }
-                                    }).then(response => {
-                                        if (response.data.resultCode === 0) {
+                                    followUser(friend.id).then(data => {
+                                        if (data.resultCode === 0) {
                                             props.follow(friend.id)
                                         }
                                     })
