@@ -25,21 +25,24 @@ let FriendsPresentational = (props) => {
                                 </NavLink>
                             </div>
                             <div> {friend.followed ?
-
-                                <button onClick={() => {
+                                <button disabled={props.followingInProcess.some(id => id === friend.id )} onClick={() => {
+                                    props.toggleFollowingProcess(true, friend.id);
                                     unfollowUser(friend.id).then(data => {
                                         if (data.resultCode === 0) {
                                             props.unfollow(friend.id)
                                         }
+                                        props.toggleFollowingProcess(false,friend.id);
                                     })
                                 }}> Unfollow </button> :
 
 
-                                <button onClick={() => {
+                                <button disabled={props.followingInProcess.some(id => id === friend.id )} onClick={() => {
+                                    props.toggleFollowingProcess(true, friend.id);
                                     followUser(friend.id).then(data => {
                                         if (data.resultCode === 0) {
                                             props.follow(friend.id)
                                         }
+                                        props.toggleFollowingProcess(false, friend.id);
                                     })
                                 }}>Follow</button>
 
@@ -60,7 +63,7 @@ let FriendsPresentational = (props) => {
                         </div>
                     </div>
             ))}
-        <div> {pages.map((p,index) => {
+        <div> {pages.map((p, index) => {
             return <span className={props.currentPage === p && s.selectedPage}
                          onClick={(e) => {
                              props.onPageChanged(p)

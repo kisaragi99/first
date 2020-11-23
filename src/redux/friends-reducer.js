@@ -1,9 +1,10 @@
-const FOLLOW = "FOLLOW";
-const UNFOLLOW = "UNFOLLOW";
-const SET_FRIENDS = "SET_FRIENDS";
-const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
-const SET_TOTAL_FRIENDS_COUNT = "SET_TOTAL_FRIENDS_COUNT";
+const FOLLOW = 'FOLLOW';
+const UNFOLLOW = 'UNFOLLOW';
+const SET_FRIENDS = 'SET_FRIENDS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_FRIENDS_COUNT = 'SET_TOTAL_FRIENDS_COUNT';
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
+const TOGGLE_IS_FOLLOWING_PROCESS = 'TOGGLE_IS_FOLLOWING_PROCESS';
 
 let initialState = {
     friends: [],
@@ -11,6 +12,7 @@ let initialState = {
     totalFriendsCount: 0,
     currentPage: 1,
     isLoading: true,
+    followingInProcess: []
 }
 
 const friendsReducer = (state = initialState, action) => {
@@ -62,15 +64,25 @@ const friendsReducer = (state = initialState, action) => {
                 isLoading: action.isLoading
             }
         }
+        case TOGGLE_IS_FOLLOWING_PROCESS: {
+            return {
+                ...state,
+                followingInProcess: action.isLoading
+                    ? [...state.followingInProcess, action.friendId]
+                    : [state.followingInProcess.filter(id => id != action.friendId)]
+            }
+        }
         default:
             return state;
     }
 }
-export const follow = (friendId) => ({type: "FOLLOW", friendId})
-export const unfollow = (friendId) => ({type: "UNFOLLOW", friendId})
-export const setFriends = (friends) => ({type: "SET_FRIENDS", friends})
-export const setCurrentPage = (currentPage) => ({type: "SET_CURRENT_PAGE", currentPage})
-export const setTotalFriendsCount = (totalCount) => ({type: "SET_TOTAL_FRIENDS_COUNT", totalCount})
-export const toggleIsLoading = (isLoading) => ({type: 'TOGGLE_IS_LOADING' , isLoading})
+export const follow = (friendId) => ({type: FOLLOW, friendId})
+export const unfollow = (friendId) => ({type: UNFOLLOW, friendId})
+export const setFriends = (friends) => ({type: SET_FRIENDS, friends})
+export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
+export const setTotalFriendsCount = (totalCount) => ({type: SET_TOTAL_FRIENDS_COUNT, totalCount})
+export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading})
+export const toggleFollowingProcess = (isLoading,friendId) => ({type: TOGGLE_IS_FOLLOWING_PROCESS, isLoading, friendId})
+
 
 export default friendsReducer;
