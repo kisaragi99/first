@@ -28,7 +28,6 @@ const friendsReducer = (state = initialState, action) => {
                     return f
                 })
             }
-
         case UNFOLLOW :
             return {
                 ...state,
@@ -39,7 +38,6 @@ const friendsReducer = (state = initialState, action) => {
                     return f
                 })
             }
-
         case SET_FRIENDS: {
             return {
                 ...state,
