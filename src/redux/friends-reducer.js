@@ -67,7 +67,7 @@ const friendsReducer = (state = initialState, action) => {
                 ...state,
                 followingInProcess: action.isLoading
                     ? [...state.followingInProcess, action.friendId]
-                    : [state.followingInProcess.filter(id => id != action.friendId)]
+                    : [state.followingInProcess.filter(id => id !== action.friendId)]
             }
         }
         default:
@@ -81,6 +81,9 @@ export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, current
 export const setTotalFriendsCount = (totalCount) => ({type: SET_TOTAL_FRIENDS_COUNT, totalCount})
 export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading})
 export const toggleFollowingProcess = (isLoading,friendId) => ({type: TOGGLE_IS_FOLLOWING_PROCESS, isLoading, friendId})
+
+
+
 
 
 export default friendsReducer;
