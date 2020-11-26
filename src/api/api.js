@@ -15,7 +15,7 @@ export const authMe = () => {
     return instance.get('auth/me').then(response => response.data)
 } // This function is getting the information if the user is authorised or not (HeaderContainer)
 
-export const getUsers = (currentPage, pageSize) => {
+export const getUsersAPI = (currentPage, pageSize) => {
     return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data)
 } // This function is getting the users array from sever (ProfileContainer)
 

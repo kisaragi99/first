@@ -2,42 +2,23 @@ import React from "react";
 import {connect} from "react-redux";
 import {
     follow,
-    setCurrentPage,
-    setTotalFriendsCount,
-    setFriends,
-    toggleIsLoading,
     unfollow,
-    toggleFollowingProcess
+    toggleFollowingProcess, getUsers
 } from "../../redux/friends-reducer";
 import FriendsPresentational from "./FriendsPresentational";
 import Loader from "../Loaders/Loader";
-import {getUsers} from "../../api/api";
+
 
 class FriendsContainer extends React.Component {
 
     componentDidMount() {
-        this.props.toggleIsLoading(true);
-
-        getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-
-            this.props.setFriends(data.items);
-            this.props.setTotalFriendsCount(data.totalCount);
-            this.props.toggleIsLoading(false);
-        });
-
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.toggleIsLoading(true);
-        this.props.setCurrentPage(pageNumber);
-
-        getUsers(pageNumber, this.props.pageSize).then(data => {
-
-            this.props.setFriends(data.items);
-            this.props.toggleIsLoading(false);
-
-        })
+        this.props.getUsers(pageNumber, this.props.pageSize)
     }
+
 
     render() {
         return (<>{this.props.isLoading ? <Loader/> : null}
@@ -69,13 +50,8 @@ let mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
     follow,
     unfollow,
-    setFriends,
-    setCurrentPage,
-    setTotalFriendsCount,
-    toggleIsLoading,
-    toggleFollowingProcess
+    //setCurrentPage,
+    toggleFollowingProcess,
+    getUsers
 })(FriendsContainer)
-
-
-
 

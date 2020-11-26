@@ -1,3 +1,5 @@
+import {getUsersAPI} from "../api/api";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_FRIENDS = 'SET_FRIENDS';
@@ -83,7 +85,18 @@ export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoadi
 export const toggleFollowingProcess = (isLoading,friendId) => ({type: TOGGLE_IS_FOLLOWING_PROCESS, isLoading, friendId})
 
 
+export const getUsers = (currentPage, pageSize) =>{
+    return (dispatch) => {
+        dispatch(toggleIsLoading(true));
+        getUsersAPI(currentPage,pageSize).then(data=>{
+            dispatch(toggleIsLoading(false));
+            dispatch(setFriends(data.items));
+            dispatch(setTotalFriendsCount(data.totalCount));
+            dispatch(setCurrentPage(currentPage));
+        })
 
+    }
+}
 
 
 export default friendsReducer;
