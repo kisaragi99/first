@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Friends.module.css";
 import avatar from "../../assets/images/avatar.png";
 import {NavLink} from "react-router-dom";
-import {followUser, unfollowUser} from "../../api/api";
+
 
 let FriendsPresentational = (props) => {
 
@@ -25,28 +25,8 @@ let FriendsPresentational = (props) => {
                                 </NavLink>
                             </div>
                             <div> {friend.followed ?
-                                <button disabled={props.followingInProcess.some(id => id === friend.id )} onClick={() => {
-                                    props.toggleFollowingProcess(true, friend.id);
-                                    unfollowUser(friend.id).then(data => {
-                                        if (data.resultCode === 0) {
-                                            props.unfollow(friend.id)
-                                        }
-                                        props.toggleFollowingProcess(false,friend.id);
-                                    })
-                                }}> Unfollow </button> :
-
-
-                                <button disabled={props.followingInProcess.some(id => id === friend.id )} onClick={() => {
-                                    props.toggleFollowingProcess(true, friend.id);
-                                    followUser(friend.id).then(data => {
-                                        if (data.resultCode === 0) {
-                                            props.follow(friend.id)
-                                        }
-                                        props.toggleFollowingProcess(false, friend.id);
-                                    })
-                                }}>Follow</button>
-
-
+                                <button disabled={props.followingInProcess.some(id => id === friend.id )} onClick={() => {props.unfollow(friend.id)}}> Unfollow </button> :
+                                <button disabled={props.followingInProcess.some(id => id === friend.id )} onClick={() => {props.follow(friend.id)}}>Follow</button>
                             }
                             </div>
                         </div>

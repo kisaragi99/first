@@ -1,4 +1,4 @@
-import {getUsersAPI} from "../api/api";
+import {followUserAPI, getUsersAPI, unfollowUserAPI} from "../api/api";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -76,25 +76,59 @@ const friendsReducer = (state = initialState, action) => {
             return state;
     }
 }
-export const follow = (friendId) => ({type: FOLLOW, friendId})
-export const unfollow = (friendId) => ({type: UNFOLLOW, friendId})
+export const followSuccess = (friendId) => ({type: FOLLOW, friendId})
+export const unfollowSuccess = (friendId) => ({type: UNFOLLOW, friendId})
 export const setFriends = (friends) => ({type: SET_FRIENDS, friends})
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
 export const setTotalFriendsCount = (totalCount) => ({type: SET_TOTAL_FRIENDS_COUNT, totalCount})
 export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading})
-export const toggleFollowingProcess = (isLoading,friendId) => ({type: TOGGLE_IS_FOLLOWING_PROCESS, isLoading, friendId})
+export const toggleFollowingProcess = (isLoading, friendId) => ({
+    type: TOGGLE_IS_FOLLOWING_PROCESS,
+    isLoading,
+    friendId
+})
 
 
-export const getUsers = (currentPage, pageSize) =>{
+export const getUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsLoading(true));
-        getUsersAPI(currentPage,pageSize).then(data=>{
+        getUsersAPI(currentPage, pageSize).then(data => {
             dispatch(toggleIsLoading(false));
             dispatch(setFriends(data.items));
             dispatch(setTotalFriendsCount(data.totalCount));
             dispatch(setCurrentPage(currentPage));
         })
 
+    }
+}
+
+export const follow = (userId) => {
+    return (dispatch) => {
+
+        dispatch(toggleFollowingProcess(true, userId));
+
+        followUserAPI(userId).then(data => {
+            if (data.resultCode === 0) {
+                dispatch(followSuccess(userId));
+            }
+
+            dispatch(toggleFollowingProcess(false, userId));
+        })
+    }
+}
+
+export const unfollow = (userId) => {
+    return (dispatch) => {
+
+        dispatch(toggleFollowingProcess(true, userId));
+
+        unfollowUserAPI(userId).then(data => {
+            if (data.resultCode === 0) {
+                dispatch(unfollowSuccess(userId));
+            }
+
+            dispatch(toggleFollowingProcess(false, userId));
+        })
     }
 }
 
