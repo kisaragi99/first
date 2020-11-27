@@ -10,7 +10,6 @@ const instance = axios.create({
 });
 
 
-
 export const authMeAPI = () => {
     return instance.get('auth/me').then(response => response.data)
 } // This function is getting the information if the user is authorised or not (HeaderContainer)
@@ -19,7 +18,6 @@ export const getUsersAPI = (currentPage, pageSize) => {
     return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data)
 } // This function is getting the users array from sever (ProfileContainer)
 
-
 export const unfollowUserAPI = (friendId) => {
     return instance.delete(`follow/${friendId}`).then(response => response.data)
 }// This function is used to unfollow a user on the server (FriendsContainer)
@@ -27,3 +25,7 @@ export const unfollowUserAPI = (friendId) => {
 export const followUserAPI = (friendId) => {
     return instance.post(`follow/${friendId}`).then(response => response.data)
 }  // This function is used to follow a user on the server (FriendsContainer)
+
+export const getProfileAPI = (userId) => {
+    return instance.get(`profile/${userId}`).then(response => response.data)
+}

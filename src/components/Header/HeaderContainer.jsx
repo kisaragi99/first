@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import {authMe} from "../../redux/auth-reducer";
 
 
-
 class HeaderContainer extends React.Component {
 
     componentDidMount() {
