@@ -11,7 +11,7 @@ const instance = axios.create({
 
 
 
-export const authMe = () => {
+export const authMeAPI = () => {
     return instance.get('auth/me').then(response => response.data)
 } // This function is getting the information if the user is authorised or not (HeaderContainer)
 
