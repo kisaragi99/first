@@ -7,6 +7,8 @@ import {
 } from "../../redux/friends-reducer";
 import FriendsPresentational from "./FriendsPresentational";
 import Loader from "../Loaders/Loader";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../HOC/withAuthRedirect";
 
 
 class FriendsContainer extends React.Component {
@@ -24,7 +26,7 @@ class FriendsContainer extends React.Component {
         return (<>{this.props.isLoading ? <Loader/> : null}
             <FriendsPresentational friends={this.props.friends}
                                    follow={this.props.follow}
-                                   unfollow ={this.props.unfollow}
+                                   unfollow={this.props.unfollow}
                                    currentPage={this.props.currentPage}
                                    onPageChanged={this.onPageChanged}
                                    totalFriendsCount={this.props.totalFriendsCount}
@@ -46,11 +48,9 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {
-    follow,
-    unfollow,
-    //setCurrentPage,
-    toggleFollowingProcess,
-    getUsers
-})(FriendsContainer)
+export default compose(
+    withAuthRedirect,
+    connect(mapStateToProps, {follow, unfollow, toggleFollowingProcess, getUsers})
+)(FriendsContainer);
+
 
