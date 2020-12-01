@@ -2,17 +2,38 @@ import React from "react";
 import s from "./ProfileStatus.module.css";
 
 
-const ProfileStatus = (props) => {
-    return (<div>
-        <div>
-            <span>{props.status}</span>
-        </div>
-        <div>
-            <input value={props.status}></input>
-        </div>
+class ProfileStatus extends React.Component {
 
-        </div>
-        )
+    state = {
+        editMode: false
+    }
 
-        };
-        export default ProfileStatus;
+    activateEditMode(){
+        this.setState({ // setState - is an async function.
+            editMode: true
+        })
+    }
+
+    deactivateEditMode(){
+        this.setState({ // setState - is an async function.
+            editMode: false
+        })
+    }
+
+    render() {
+        return (<div>
+
+                    {!this.state.editMode &&
+                        <div>
+                            <span onDoubleClick={this.activateEditMode.bind(this)}>{this.props.status}</span>
+                        </div>}
+                    {this.state.editMode &&
+                        <div>
+                            <input autoFocus={true} onBlur={this.deactivateEditMode.bind(this)} value={this.props.status}></input>
+                        </div>}
+
+                </div>)
+    }
+
+};
+export default ProfileStatus;
