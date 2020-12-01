@@ -1,5 +1,6 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
+import ProfileStatus from "./ProfileStatus.jsx"
 
 const ProfileInfo = (props) => {
     return (
@@ -7,6 +8,7 @@ const ProfileInfo = (props) => {
             <div className={s.avatarWrapper}>
                 <img src={props.profile.photos.large} className={s.avatar} alt='avatar'/>
                 <div className={s.description}>
+                    <ProfileStatus status={"Hi"}/>
                     <div className={s.profileInfo}><div className={s.profileInfoTitle}>Name:</div> {props.profile.fullName}</div>
                     <div className={s.profileInfo}><div className={s.profileInfoTitle}>About me:</div> {props.profile.aboutMe} </div>
                     <div className={s.profileInfo}><div className={s.profileInfoTitle}>FB:</div> <a href={props.profile.contacts.facebook}>{props.profile.contacts.facebook}</a> </div>

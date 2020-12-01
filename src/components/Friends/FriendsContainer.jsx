@@ -49,7 +49,6 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    withAuthRedirect,
     connect(mapStateToProps, {follow, unfollow, toggleFollowingProcess, getUsers})
 )(FriendsContainer);
 
