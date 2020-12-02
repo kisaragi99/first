@@ -1,4 +1,4 @@
-import {followUserAPI, getUsersAPI, unfollowUserAPI} from "../api/api";
+import {usersAPI} from "../api/api";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -92,7 +92,7 @@ export const toggleFollowingProcess = (isLoading, friendId) => ({
 export const getUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsLoading(true));
-        getUsersAPI(currentPage, pageSize).then(data => {
+        usersAPI.getUsersAPI(currentPage, pageSize).then(data => {
             dispatch(toggleIsLoading(false));
             dispatch(setFriends(data.items));
             dispatch(setTotalFriendsCount(data.totalCount));
@@ -107,7 +107,7 @@ export const follow = (userId) => {
 
         dispatch(toggleFollowingProcess(true, userId));
 
-        followUserAPI(userId).then(data => {
+        usersAPI.followUserAPI(userId).then(data => {
             if (data.resultCode === 0) {
                 dispatch(followSuccess(userId));
             }
@@ -122,7 +122,7 @@ export const unfollow = (userId) => {
 
         dispatch(toggleFollowingProcess(true, userId));
 
-        unfollowUserAPI(userId).then(data => {
+        usersAPI.unfollowUserAPI(userId).then(data => {
             if (data.resultCode === 0) {
                 dispatch(unfollowSuccess(userId));
             }
