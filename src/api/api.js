@@ -11,10 +11,6 @@ const instance = axios.create({
 
 export const usersAPI = {
 
-    authMeAPI() {
-        return instance.get('auth/me').then(response => response.data)
-    }, // This function is getting the information if the user is authorised or not (HeaderContainer)
-
     getUsersAPI(currentPage, pageSize) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data)
     }, // This function is getting the users array from sever (ProfileContainer)
@@ -25,11 +21,27 @@ export const usersAPI = {
 
     followUserAPI(friendId) {
         return instance.post(`follow/${friendId}`).then(response => response.data)
-    }, // This function is used to follow a user on the server (FriendsContainer)
+    } // This function is used to follow a user on the server (FriendsContainer)
+}
+
+export const profileAPI = {
 
     getProfileAPI(userId) {
         return instance.get(`profile/${userId}`).then(response => response.data)
+    },
+    getStatus(userId) {
+        return instance.get(`status/${userId}`).then(response => response.data)
+    },
+    updateStatus(status) {
+        return instance.get(`status/${userId}`).then(response => response.data)
     }
 
+}
+
+export const authAPI = {
+
+    authMeAPI() {
+        return instance.get('auth/me').then(response => response.data)
+    } // This function is getting the information if the user is authorised or not (HeaderContainer)
 
 }
