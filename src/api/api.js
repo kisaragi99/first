@@ -29,12 +29,12 @@ export const profileAPI = {
     getProfileAPI(userId) {
         return instance.get(`profile/${userId}`).then(response => response.data)
     },
-    getStatus(userId) {
-        return instance.get(`status/${userId}`).then(response => response.data)
-    },
-    updateStatus(status) {
-        return instance.get(`status/${userId}`).then(response => response.data)
-    }
+    // getStatus(userId) {
+    //     return instance.get(`status/${userId}`).then(response => response.data)
+    // },
+    // updateStatus(status) {
+    //     return instance.get(`status/${userId}`).then(response => response.data)
+    // }
 
 }
 
