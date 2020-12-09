@@ -3,7 +3,6 @@ import Header from "./Header";
 import {connect} from "react-redux";
 import {authMe} from "../../redux/auth-reducer";
 
-
 class HeaderContainer extends React.Component {
 
     componentDidMount() {
@@ -24,5 +23,8 @@ let mapStateToProps = (state) => {
     })
 }
 
-
 export default connect(mapStateToProps, {authMe})(HeaderContainer);
+
+
+
+

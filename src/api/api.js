@@ -1,6 +1,5 @@
 import * as axios from "axios";
 
-
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
@@ -43,5 +42,4 @@ export const authAPI = {
     authMeAPI() {
         return instance.get('auth/me').then(response => response.data)
     } // This function is getting the information if the user is authorised or not (HeaderContainer)
-
 }
