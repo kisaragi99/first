@@ -6,6 +6,7 @@ const instance = axios.create({
     headers: {
         "API-KEY": "c3b6b8c4-0dfb-4a27-8050-5e4ce867a46f"
     }
+
 });
 
 export const usersAPI = {
@@ -41,5 +42,10 @@ export const authAPI = {
 
     authMeAPI() {
         return instance.get('auth/me').then(response => response.data)
-    } // This function is getting the information if the user is authorised or not (HeaderContainer)
+    }, // This function is getting the information if the user is authorised or not (HeaderContainer)
+
+    loginAPI(loginData) {
+        return instance.post('auth/login', {email:loginData.login, password: loginData.password, rememberMe: loginData.rememberMe ,captcha: true }).then(response => response.data)
+    } // This function does login to the server
+
 }
