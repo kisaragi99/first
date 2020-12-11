@@ -11,7 +11,7 @@ let initialState = {
     isAuth: false,
     loginStatus: false,
     messages: null,
-    badResult: false
+    badResult: null
 }
 
 const authReducer = (state = initialState, action) => {
@@ -26,7 +26,7 @@ const authReducer = (state = initialState, action) => {
             case SET_LOGIN_DATA :
             return {
                 ...state,
-                loginStatus: true,
+                badResult: false,
                 messages: action.messages
             }
 
