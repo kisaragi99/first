@@ -28,6 +28,7 @@ const Login = (props) => {
         <div className={s.wrapper}>
             <h1>Login</h1>
             <LoginReduxForm onSubmit={onSubmit}/>
+            {props.badResult ? <div>You probably made a mistake in Login or Password</div> : null}
         </div>
     )
 }

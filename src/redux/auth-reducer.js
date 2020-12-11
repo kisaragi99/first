@@ -2,6 +2,7 @@ import {authAPI} from "../api/api";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 const SET_LOGIN_DATA = 'SET_LOGIN_DATA';
+const BAD_RESULT = 'BAD_RESULT';
 
 let initialState = {
     userId: null,
@@ -9,7 +10,8 @@ let initialState = {
     login: null,
     isAuth: false,
     loginStatus: false,
-    // messages: null // BTW what messages does mean?
+    messages: null,
+    badResult: false
 }
 
 const authReducer = (state = initialState, action) => {
@@ -25,7 +27,13 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loginStatus: true,
-                // messages: action.messages
+                messages: action.messages
+            }
+
+        case BAD_RESULT :
+            return {
+                ...state,
+                badResult: true
             }
 
         default:
@@ -35,14 +43,16 @@ const authReducer = (state = initialState, action) => {
 
 export const setAuthUserData = (userId, email, login) => ({type: 'SET_USER_DATA', data: {userId, email, login}});
 
-// export const setLoginData = (messages) => ({type: 'SET_LOGIN_DATA', messages});
+export const setLoginData = (messages) => ({type: SET_LOGIN_DATA, messages});
+
+export const badResult = () => ({type: BAD_RESULT});
 
 
 export const authMe = () => {
     return (dispatch) => {
 
         authAPI.authMeAPI().then(data => {
-            debugger;
+
             if (data.resultCode === 0) {
                 let {id, email, login} = data.data;
                 dispatch(setAuthUserData(id, email, login));
@@ -53,8 +63,16 @@ export const authMe = () => {
 }
 
 export const loginMe = (formData) => {
-    return () => {
-        authAPI.loginAPI(formData)
+    return (dispatch) => {
+        authAPI.loginAPI(formData).then(data => {
+            if(data.resultCode === 0){
+            dispatch(setLoginData(data.messages))
+
+            } else{
+                dispatch(badResult())
+            }
+
+        })
     };
 }
 

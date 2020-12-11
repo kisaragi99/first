@@ -13,14 +13,14 @@ class LoginContainer extends React.Component{
 
     render() {
         return (
-            <Login loginMe={this.props.loginMe}/>
+            <Login loginMe={this.props.loginMe} badResult={this.props.badResult}/>
         );
     };
 
 }
 let mapStateToProps = (state) => {
     return {
-
+        badResult: state.auth.badResult
     }
 }
 
