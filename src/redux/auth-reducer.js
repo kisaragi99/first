@@ -1,12 +1,15 @@
 import {authAPI} from "../api/api";
 
-const SET_USER_DATA = 'SET_USER_DATA'
+const SET_USER_DATA = 'SET_USER_DATA';
+const SET_LOGIN_DATA = 'SET_LOGIN_DATA';
 
 let initialState = {
     userId: null,
     email: null,
     login: null,
-    isAuth: false
+    isAuth: false,
+    loginStatus: false,
+    messages: []
 }
 
 const authReducer = (state = initialState, action) => {
@@ -17,6 +20,12 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 ...action.data,
                 isAuth: true
+            }
+            case SET_LOGIN_DATA :
+            return {
+                ...state,
+                loginStatus: true,
+                messages: action.messages
             }
 
         default:

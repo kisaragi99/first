@@ -8,7 +8,7 @@ import {
 import FriendsPresentational from "./FriendsPresentational";
 import Loader from "../Loaders/Loader";
 import {compose} from "redux";
-import {withAuthRedirect} from "../../HOC/withAuthRedirect";
+
 
 
 class FriendsContainer extends React.Component {
