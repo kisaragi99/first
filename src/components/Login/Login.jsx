@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./Login.module.css"
 import {Field, reduxForm} from "redux-form";
-import {authAPI} from "../../api/api";
+
 
 
 const LoginForm = (props) => {
@@ -21,7 +21,7 @@ const LoginReduxForm = reduxForm({ form: 'login'})(LoginForm)
 
 const Login = (props) => {
     const onSubmit = (formData) =>{
-        authAPI.loginAPI(formData);
+       props.loginMe(formData);
     }
 
     return (

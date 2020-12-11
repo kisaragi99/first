@@ -1,5 +1,7 @@
 import React from "react";
 import Login from "./Login";
+import {loginMe} from "../../redux/auth-reducer";
+import {connect} from "react-redux";
 
 
 
@@ -11,10 +13,15 @@ class LoginContainer extends React.Component{
 
     render() {
         return (
-            <Login/>
+            <Login loginMe={this.props.loginMe}/>
         );
     };
 
 }
+let mapStateToProps = (state) => {
+    return {
 
-export default LoginContainer;
+    }
+}
+
+export default connect(mapStateToProps,{loginMe})(LoginContainer);

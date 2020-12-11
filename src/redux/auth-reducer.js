@@ -9,7 +9,7 @@ let initialState = {
     login: null,
     isAuth: false,
     loginStatus: false,
-    messages: []
+    messages: null
 }
 
 const authReducer = (state = initialState, action) => {
@@ -35,6 +35,9 @@ const authReducer = (state = initialState, action) => {
 
 export const setAuthUserData = (userId, email, login) => ({type: 'SET_USER_DATA', data: {userId, email, login}});
 
+export const setLoginData = (messages) => ({type: 'SET_LOGIN_DATA', messages});
+
+
 export const authMe = () => {
     return (dispatch) => {
 
@@ -47,6 +50,21 @@ export const authMe = () => {
 
     };
 }
+
+export const loginMe = (formData) => {
+    return (dispatch) => {
+
+        authAPI.loginAPI(formData).then(data => {
+            if (data.resultCode === 0) {
+                let messages = data.messages;
+                dispatch(setLoginData(messages));
+            }
+        })
+
+    };
+}
+
+
 
 export default authReducer;
 
