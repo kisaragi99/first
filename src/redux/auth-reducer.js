@@ -9,7 +9,7 @@ let initialState = {
     login: null,
     isAuth: false,
     loginStatus: false,
-    messages: null
+    // messages: null // BTW what messages does mean?
 }
 
 const authReducer = (state = initialState, action) => {
@@ -25,7 +25,7 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loginStatus: true,
-                messages: action.messages
+                // messages: action.messages
             }
 
         default:
@@ -35,13 +35,14 @@ const authReducer = (state = initialState, action) => {
 
 export const setAuthUserData = (userId, email, login) => ({type: 'SET_USER_DATA', data: {userId, email, login}});
 
-export const setLoginData = (messages) => ({type: 'SET_LOGIN_DATA', messages});
+// export const setLoginData = (messages) => ({type: 'SET_LOGIN_DATA', messages});
 
 
 export const authMe = () => {
     return (dispatch) => {
 
         authAPI.authMeAPI().then(data => {
+            debugger;
             if (data.resultCode === 0) {
                 let {id, email, login} = data.data;
                 dispatch(setAuthUserData(id, email, login));
@@ -52,15 +53,8 @@ export const authMe = () => {
 }
 
 export const loginMe = (formData) => {
-    return (dispatch) => {
-
-        authAPI.loginAPI(formData).then(data => {
-            if (data.resultCode === 0) {
-                let messages = data.messages;
-                dispatch(setLoginData(messages));
-            }
-        })
-
+    return () => {
+        authAPI.loginAPI(formData)
     };
 }
 
