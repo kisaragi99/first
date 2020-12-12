@@ -6,7 +6,7 @@ import {Field, reduxForm} from "redux-form";
 const LoginForm = (props) => {
     // const { handleSubmit } = props;
 
-    return (
+    return ( <>
         <form onSubmit={props.handleSubmit}>
             <div><Field placeholder={"Login"} component={"input"} name={"login"}/></div>
             <div><Field placeholder={"Password"} component={"input"} name={"password"}/></div>
@@ -14,10 +14,11 @@ const LoginForm = (props) => {
             <div>
                 <button>Login</button>
             </div>
-            <div>
-                <button>Logout</button>
-            </div>
         </form>
+            <div>
+                <button onClick={props.logout}>Logout</button>
+            </div>
+        </>
     )
 }
 
@@ -27,11 +28,14 @@ const Login = (props) => {
     const onSubmit = (formData) => {
         props.loginMe(formData);
     }
+    const onLogout = () => {
+        props.logout();
+    }
 
     return (
         <div className={s.wrapper}>
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm onSubmit={onSubmit} logout={onLogout}/>
             {props.badResult ?
                 <div>You probably made a mistake in Login or Password</div>
                 : props.badResult === false ?

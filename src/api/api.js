@@ -46,6 +46,9 @@ export const authAPI = {
 
     loginAPI(loginData) {
         return instance.post('auth/login', {email:loginData.login, password: loginData.password, rememberMe: loginData.rememberMe ,captcha: true }).then(response => response.data)
-    } // This function does login to the server
+    }, // Login to the server
 
+    logoutAPI() {
+        return instance.post('auth/logout').then(response => response.data)
+    } // Logout from server
 }

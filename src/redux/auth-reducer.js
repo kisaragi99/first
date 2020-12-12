@@ -3,6 +3,8 @@ import {authAPI} from "../api/api";
 const SET_USER_DATA = 'SET_USER_DATA';
 const SET_LOGIN_DATA = 'SET_LOGIN_DATA';
 const BAD_RESULT = 'BAD_RESULT';
+const LOGOUT = 'LOGOUT';
+
 
 let initialState = {
     userId: null,
@@ -36,6 +38,13 @@ const authReducer = (state = initialState, action) => {
                 badResult: true
             }
 
+        case LOGOUT :
+            return {
+                ...state,
+                isAuth: false,
+
+            }
+
         default:
             return state;
     }
@@ -46,6 +55,10 @@ export const setAuthUserData = (userId, email, login) => ({type: 'SET_USER_DATA'
 export const setLoginData = (messages) => ({type: SET_LOGIN_DATA, messages});
 
 export const badResult = () => ({type: BAD_RESULT});
+
+export const setLogoutData = () => ({type: LOGOUT});
+
+
 
 
 export const authMe = () => {
@@ -72,6 +85,16 @@ export const loginMe = (formData) => {
                 dispatch(badResult())
             }
 
+        })
+    };
+}
+
+export const logout = () => {
+    return (dispatch) => {
+        authAPI.logoutAPI().then(data => {
+            if(data.resultCode === 0){
+                dispatch(setLogoutData())
+            }
         })
     };
 }
