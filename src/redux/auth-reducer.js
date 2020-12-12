@@ -11,7 +11,6 @@ let initialState = {
     email: null,
     login: null,
     isAuth: false,
-    loginStatus: false,
     messages: null,
     badResult: null
 }

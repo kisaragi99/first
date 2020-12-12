@@ -20,7 +20,8 @@ class LoginContainer extends React.Component{
 }
 let mapStateToProps = (state) => {
     return {
-        badResult: state.auth.badResult
+        badResult: state.auth.badResult,
+        isAuth: state.auth.isAuth
     }
 }
 

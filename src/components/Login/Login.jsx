@@ -32,7 +32,7 @@ const Login = (props) => {
         props.logout();
     }
 
-    return (
+    return ( // Здесь надо сделать так, чтобы если у нас положительный результат и мы залогинились, то надо спрятать форму. И наоборот.
         <div className={s.wrapper}>
             <h1>Login</h1>
             <LoginReduxForm onSubmit={onSubmit} logout={onLogout}/>

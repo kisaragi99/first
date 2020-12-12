@@ -11,6 +11,9 @@ class HeaderContainer extends React.Component {
 
     render() {
         return (<>  {(this.props.badResult === false) ? this.props.authMe() : null}
+        {/*это сделано для того, чтобы севрху справа отобразилось изменение,*/}
+        {/*то есть мы посылаем запрос на авторизацию*/}
+        {/*только после того как получили положительный ответ спредыдущего запроса о логинизации*/}
                 <Header {...this.props}/>
             </>
         );
