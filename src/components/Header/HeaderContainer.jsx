@@ -10,8 +10,9 @@ class HeaderContainer extends React.Component {
     }
 
     render() {
-        return (
-            <Header {...this.props}/>
+        return (<>  {(this.props.badResult === false) ? this.props.authMe() : null}
+                <Header {...this.props}/>
+            </>
         );
     };
 };
@@ -19,7 +20,8 @@ class HeaderContainer extends React.Component {
 let mapStateToProps = (state) => {
     return ({
         isAuth: state.auth.isAuth,
-        login: state.auth.login
+        login: state.auth.login,
+        badResult: state.auth.badResult
     })
 }
 
