@@ -5,7 +5,6 @@ const SET_LOGIN_DATA = 'SET_LOGIN_DATA';
 const BAD_RESULT = 'BAD_RESULT';
 const LOGOUT = 'LOGOUT';
 
-
 let initialState = {
     userId: null,
     email: null,
@@ -24,7 +23,7 @@ const authReducer = (state = initialState, action) => {
                 ...action.data,
                 isAuth: true
             }
-            case SET_LOGIN_DATA :
+        case SET_LOGIN_DATA :
             return {
                 ...state,
                 badResult: false,
@@ -58,8 +57,6 @@ export const badResult = () => ({type: BAD_RESULT});
 export const setLogoutData = () => ({type: LOGOUT});
 
 
-
-
 export const authMe = () => {
     return (dispatch) => {
 
@@ -77,10 +74,10 @@ export const authMe = () => {
 export const loginMe = (formData) => {
     return (dispatch) => {
         authAPI.loginAPI(formData).then(data => {
-            if(data.resultCode === 0){
-            dispatch(setLoginData(data.messages))
+            if (data.resultCode === 0) {
+                dispatch(setLoginData(data.messages))
 
-            } else{
+            } else {
                 dispatch(badResult())
             }
 
@@ -91,15 +88,12 @@ export const loginMe = (formData) => {
 export const logout = () => {
     return (dispatch) => {
         authAPI.logoutAPI().then(data => {
-            if(data.resultCode === 0){
+            if (data.resultCode === 0) {
                 dispatch(setLogoutData())
             }
         })
     };
 }
-
-
+// Наверное следует разделить свойста на отдельные для login/logout и для auth
 
 export default authReducer;
-
-
