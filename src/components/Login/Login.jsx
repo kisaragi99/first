@@ -6,15 +6,15 @@ import {Field, reduxForm} from "redux-form";
 const LoginForm = (props) => {
     // const { handleSubmit } = props;
 
-    return ( <>
-        <form onSubmit={props.handleSubmit}>
-            <div><Field placeholder={"Login"} component={"input"} name={"login"}/></div>
-            <div><Field placeholder={"Password"} component={"input"} name={"password"}/></div>
-            <div><Field type={"checkbox"} component={"input"} name={"rememberMe"}/>Remember Me</div>
-            <div>
-                <button>Login</button>
-            </div>
-        </form>
+    return (<>
+            <form onSubmit={props.handleSubmit}>
+                <div><Field placeholder={"Login"} component={"input"} name={"login"}/></div>
+                <div><Field placeholder={"Password"} component={"input"} name={"password"}/></div>
+                <div><Field type={"checkbox"} component={"input"} name={"rememberMe"}/>Remember Me</div>
+                <div>
+                    <button>Login</button>
+                </div>
+            </form>
             <div>
                 <button onClick={props.logout}>Logout</button>
             </div>
@@ -32,7 +32,7 @@ const Login = (props) => {
         props.logout();
     }
 
-    return ( // Здесь надо сделать так, чтобы если у нас положительный результат и мы залогинились, то надо спрятать форму. И наоборот.
+    return (
         <div className={s.wrapper}>
             <h1>Login</h1>
             <LoginReduxForm onSubmit={onSubmit} logout={onLogout}/>
@@ -44,4 +44,4 @@ const Login = (props) => {
     )
 }
 
-export default Login;
+export default Login; // надо продумать более правдоподобную систему. Нельзя использовать только ответ сервака. Надо еще что-то.
