@@ -11,11 +11,8 @@ let mapStateToProps = (state) => {
 }
 let mapDispatchToProps = (dispatch) => {
     return {
-        addPost: () => {
-            dispatch(addPostCreator())
-        },
-        updateNewPostText: (text) => {
-            dispatch(updateNewPostTextCreator(text))
+        addPost: (newPostBody) => {
+            dispatch(addPostCreator(newPostBody))
         },
         name: "Ochir"
     }

@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import {Field, reduxForm} from "redux-form";
 
 
 const MyPosts = (props) => {
@@ -9,30 +10,38 @@ const MyPosts = (props) => {
                                                                        likesCount={post.likesCount}
                                                                        key ={post.id}/>))
 
-    let addPost = () => {
-        props.addPost();
-    }
-    let onPostChange = (e) => {
-        let text = e.target.value;
-        props.updateNewPostText(text);
-    }
-    return (
-        <div>
-            <h3 className={s.greet}>Hi, my name is {props.name}, and these are my posts.</h3>
-            <div className={s.makePost}>
-                <div className={s.text1}>
-                    <textarea onChange={onPostChange} value={props.profilePage.newPostText}/>
+
+    const MyPostsForm = (props) =>{
+        return(
+            <form onSubmit={props.handleSubmit}>
+                <h3 className={s.greet}>Hi, my name is {props.name}, and these are my posts.</h3>
+                <div className={s.makePost}>
+                    <div className={s.text1}>
+                        <Field placeholder={"Enter Your Post Here"} name={"newPostBody"} component={"textarea"}/>
+                    </div>
+                    <div>
+                        <button className={s.button1}>
+                            Post
+                        </button>
+                    </div>
                 </div>
                 <div>
-                    <button className={s.button1} onClick={addPost}>
-                        Post
-                    </button>
+                    {postsElements}
                 </div>
-            </div>
-            <div>
-                {postsElements}
-            </div>
-        </div>
+            </form>
+        )
+    }
+
+    const MyPostsReduxForm = reduxForm({form: "myPostsForm"})(MyPostsForm)
+
+
+    let addPost = (value) => {
+        props.addPost(value.newPostBody);
+    }
+
+
+    return (
+        <MyPostsReduxForm onSubmit={addPost}/>
     );
 };
 
