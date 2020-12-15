@@ -14,12 +14,12 @@ const Dialogs = (props) => {
         .map((message => <MessageItem message={message.message} key={message.id}/>)
         );
 
-    const AddMessageForm = (props) =>{
-        return(<>
-            <form onSubmit={props.handleSubmit}>
-                <Field component={"textarea"} name={"newMessageBody"} placeholder={"Enter Your Message"}/>
-                <button>Send</button>
-            </form>
+    const AddMessageForm = (props) => {
+        return (<>
+                <form onSubmit={props.handleSubmit}>
+                    <Field component={"textarea"} name={"newMessageBody"} placeholder={"Enter Your Message"}/>
+                    <button>Send</button>
+                </form>
             </>
         )
     }
@@ -28,7 +28,7 @@ const Dialogs = (props) => {
         props.addMessage(value.newMessageBody)
     }
 
-    const AddMessageReduxForm = reduxForm({form:"dialogAddMessageForm"})(AddMessageForm)
+    const AddMessageReduxForm = reduxForm({form: "dialogAddMessageForm"})(AddMessageForm)
 
     return (
         <div className={s.main}>
@@ -41,4 +41,5 @@ const Dialogs = (props) => {
             </div>
         </div>)
 }
+
 export default Dialogs;
