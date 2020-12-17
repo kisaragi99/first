@@ -3,8 +3,9 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators";
+import {Textarea} from "../../common/FormsControls/FormControls";
 
-const maxLength10 =  maxLengthCreator(10);
+const maxLength100 =  maxLengthCreator(100);
 
 
 const MyPosts = (props) => {
@@ -19,7 +20,7 @@ const MyPosts = (props) => {
                 <h3 className={s.greet}>Hi, my name is {props.name}, and these are my posts.</h3>
                 <div className={s.makePost}>
                     <div className={s.text1}>
-                        <Field placeholder={"Enter Your Post Here"} name={"newPostBody"} component={"textarea"} validate={[required,maxLength10]}/>
+                        <Field placeholder={"Enter Your Post Here"} name={"newPostBody"} component={Textarea} validate={[required,maxLength100]}/>
                     </div>
                     <div>
                         <button className={s.button1}>
