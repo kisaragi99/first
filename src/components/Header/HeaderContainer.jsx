@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import {connect} from "react-redux";
-import {authMe} from "../../redux/auth-reducer";
+import {authMe, logout} from "../../redux/auth-reducer";
 
 class HeaderContainer extends React.Component {
 
@@ -10,12 +10,7 @@ class HeaderContainer extends React.Component {
     }
 
     render() {
-        return (<>  {(this.props.badResult === false) || this.props.isAuth === false ? this.props.authMe() : null}
-        {/* При повторном логине сразу поле логаута - не вызывается authMe... Надо это сделать.
-        Надо разобраться со свойствами в стэйте редьюсера - надо сделать отдельно для auth и отдельно для логинизации. (Наверное)*/}
-        {/*это сделано для того, чтобы севрху справа отобразилось изменение,*/}
-        {/*то есть мы посылаем запрос на авторизацию*/}
-        {/*только после того как получили положительный ответ спредыдущего запроса о логинизации*/}
+        return (<>
                 <Header {...this.props}/>
             </>
         );
@@ -25,12 +20,11 @@ class HeaderContainer extends React.Component {
 let mapStateToProps = (state) => {
     return ({
         isAuth: state.auth.isAuth,
-        login: state.auth.login,
-        badResult: state.auth.badResult
+        login: state.auth.login
     })
 }
 
-export default connect(mapStateToProps, {authMe})(HeaderContainer);
+export default connect(mapStateToProps, {authMe,logout})(HeaderContainer);
 
 
 
