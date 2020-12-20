@@ -7,7 +7,6 @@ import {Textarea} from "../../common/FormsControls/FormControls";
 
 const maxLength100 =  maxLengthCreator(100);
 
-
 const MyPosts = (props) => {
 
     let postsElements = props.profilePage.postsData.map((post => <Post message={post.message}
