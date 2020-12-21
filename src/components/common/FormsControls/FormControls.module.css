@@ -11,3 +11,9 @@
 {
     color: red;
 }
+
+.formSummaryError{
+    border: 1px solid lime;
+    display: inline;
+    color: red;
+}

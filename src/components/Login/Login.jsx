@@ -1,9 +1,11 @@
 import React from "react";
-import s from "./Login.module.css"
+import s from "./../common/FormsControls/FormControls.module.css"
 import {Field, reduxForm} from "redux-form";
 import {Input} from "../common/FormsControls/FormControls";
 import {required} from "../../utils/validators";
 import {Redirect} from "react-router-dom";
+
+
 
 const LoginForm = (props) => {
     // const { handleSubmit } = props;
@@ -13,6 +15,9 @@ const LoginForm = (props) => {
                 <div><Field placeholder={"Login"} component={Input} name={"login"} validate={[required]}/></div>
                 <div><Field placeholder={"Password"} component={Input} name={"password"} type={"password"} validate={[required]}/></div>
                 <div><Field type={"checkbox"} component={Input} name={"rememberMe"}/>Remember Me</div>
+                <div className={s.formSummaryError}>
+                    Error
+                </div>
                 <div>
                     <button>Login</button>
                 </div>

@@ -46,7 +46,7 @@ export const loginMe = (formData) => {
     return (dispatch) => {
 
 
-        let action = stopSubmit('login',{login: "Email is wrong"});
+        let action = stopSubmit('login',{_error: "Email is wrong"});
         dispatch(action);
 
         return;
