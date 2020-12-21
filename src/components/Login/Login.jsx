@@ -5,7 +5,6 @@ import {Input} from "../common/FormsControls/FormControls";
 import {required} from "../../utils/validators";
 import {Redirect} from "react-router-dom";
 
-
 const LoginForm = (props) => {
     // const { handleSubmit } = props;
 
@@ -23,7 +22,6 @@ const LoginForm = (props) => {
 }
 
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
-
 
 const Login = (props) => {
     const onSubmit = (formData) => {
