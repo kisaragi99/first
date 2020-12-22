@@ -45,17 +45,12 @@ export const authMe = () => {
 export const loginMe = (formData) => {
     return (dispatch) => {
 
-
-        let action = stopSubmit('login',{_error: "Email is wrong"});
-        dispatch(action);
-
-        return;
-
         authAPI.loginAPI(formData).then(data => {
             if (data.resultCode === 0) {
                 dispatch(authMe());
             } else {
-
+                let message = data.messages.length > 0 ? data.messages[0] : "Some error"
+                dispatch(stopSubmit('login', {_error: message}));
             }
         })
     };
