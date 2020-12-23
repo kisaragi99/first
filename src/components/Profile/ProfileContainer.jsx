@@ -22,7 +22,8 @@ class ProfileContainer extends React.Component {
     render() {
         // if (!this.props.isAuth) return <Redirect to={"/login"}/> // redirect if user is not authorized
         return (
-            <Profile {...this.props} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus}/>
+            <Profile {...this.props} profile={this.props.profile} status={this.props.status}
+                     updateStatus={this.props.updateStatus}/>
         )
     }
 
