@@ -42,7 +42,6 @@ export const addPostCreator = (newPostBody) => ({type: ADD_POST, newPostBody});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setStatus = (status) => ({type: SET_STATUS, status})
 
-
 export const getProfile = (userId) => {
     return (dispatch) => {
         profileAPI.getProfileAPI(userId).then(response => {
