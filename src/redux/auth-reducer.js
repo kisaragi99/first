@@ -29,7 +29,6 @@ export const setAuthUserData = (userId, email, login, isAuth) => ({
         {userId, email, login, isAuth}
 });
 
-
 export const authMe = () => {
     return (dispatch) => {
         authAPI.authMeAPI().then(data => {
