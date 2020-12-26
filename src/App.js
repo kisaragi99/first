@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
-import {Route} from "react-router-dom";
+import {Route, withRouter} from "react-router-dom";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
@@ -11,6 +11,7 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import {connect} from "react-redux";
 import {authMe} from "./redux/auth-reducer";
+import {compose} from "redux";
 
 class App extends React.Component {
 
@@ -43,4 +44,7 @@ const mapStateToProps = (state)=> {
 }
 
 
-export default connect(mapStateToProps,{authMe})(App);
+export default compose(
+    withRouter,
+    connect(mapStateToProps,{authMe}))(App);
+// Возможен баг с роутами, поэтому мы оборачиваем в withRouter
