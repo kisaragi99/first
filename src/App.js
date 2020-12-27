@@ -10,16 +10,21 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import {connect} from "react-redux";
-import {authMe} from "./redux/auth-reducer";
 import {compose} from "redux";
+import {initializeApp} from "./redux/app-reducer";
+import Loader from "./components/Loaders/Loader";
 
 class App extends React.Component {
 
     componentDidMount() {
-        this.props.authMe();
+        this.props.initializeApp();
     }
 
     render() {
+        if(!this.props.initialized){
+            return <Loader/>
+        }
+
         return (
             <div className="app-wrapper">
                 <HeaderContainer/>
@@ -37,14 +42,14 @@ class App extends React.Component {
     }
 }
 
-const mapStateToProps = (state)=> {
+const mapStateToProps = (state) => {
     return ({
-
+        initialized: state.app.initialized,
     })
 }
 
 
 export default compose(
     withRouter,
-    connect(mapStateToProps,{authMe}))(App);
+    connect(mapStateToProps, {initializeApp}))(App);
 // Возможен баг с роутами, поэтому мы оборачиваем в withRouter

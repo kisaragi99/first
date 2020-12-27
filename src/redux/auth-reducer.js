@@ -31,12 +31,13 @@ export const setAuthUserData = (userId, email, login, isAuth) => ({
 
 export const authMe = () => {
     return (dispatch) => {
-        authAPI.authMeAPI().then(data => {
+        return authAPI.authMeAPI().then(data => {
             if (data.resultCode === 0) {
                 let {id, email, login} = data.data;
                 dispatch(setAuthUserData(id, email, login, true));
             }
         })
+
 
     };
 }
