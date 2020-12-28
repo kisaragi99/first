@@ -89,14 +89,14 @@ export const toggleFollowingProcess = (isLoading, friendId) => ({
 })
 
 
-export const getUsers = (currentPage, pageSize) => {
+export const getUsers = (page, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsLoading(true));
-        usersAPI.getUsersAPI(currentPage, pageSize).then(data => {
+        usersAPI.getUsersAPI(page, pageSize).then(data => {
             dispatch(toggleIsLoading(false));
             dispatch(setFriends(data.items));
             dispatch(setTotalFriendsCount(data.totalCount));
-            dispatch(setCurrentPage(currentPage));
+            dispatch(setCurrentPage(page));
         })
 
     }

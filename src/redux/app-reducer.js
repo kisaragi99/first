@@ -1,6 +1,5 @@
 import {authMe} from "./auth-reducer";
 
-
 const INITIALIZED = 'INITIALIZED';
 
 let initialState = {
