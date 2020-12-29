@@ -6,9 +6,6 @@ import {connect} from "react-redux";
 
 class LoginContainer extends React.Component {
 
-    componentDidMount() {
-
-    }
 
     render() {
         return (

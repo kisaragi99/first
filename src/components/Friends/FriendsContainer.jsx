@@ -8,6 +8,13 @@ import {
 import FriendsPresentational from "./FriendsPresentational";
 import Loader from "../Loaders/Loader";
 import {compose} from "redux";
+import {
+    getCurrentPage, getFollowingInProcess,
+    getFriends,
+    getIsLoading,
+    getPageSize,
+    getTotalFriendsCount
+} from "../../redux/friends-selectors";
 
 
 
@@ -39,12 +46,12 @@ class FriendsContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        friends: state.friendsPage.friends,
-        pageSize: state.friendsPage.pageSize,
-        totalFriendsCount: state.friendsPage.totalFriendsCount,
-        currentPage: state.friendsPage.currentPage,
-        isLoading: state.friendsPage.isLoading,
-        followingInProcess: state.friendsPage.followingInProcess
+        friends: getFriends(state),
+        pageSize: getPageSize(state),
+        totalFriendsCount: getTotalFriendsCount(state),
+        currentPage: getCurrentPage(state),
+        isLoading: getIsLoading(state),
+        followingInProcess: getFollowingInProcess(state)
     }
 }
 
