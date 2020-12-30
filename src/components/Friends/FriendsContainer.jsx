@@ -17,7 +17,6 @@ import {
 } from "../../redux/friends-selectors";
 
 
-
 class FriendsContainer extends React.Component {
 
     componentDidMount() {
@@ -27,7 +26,6 @@ class FriendsContainer extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.getUsers(pageNumber, this.props.pageSize)
     }
-
 
     render() {
         return (<>{this.props.isLoading ? <Loader/> : null}
@@ -42,7 +40,6 @@ class FriendsContainer extends React.Component {
         </>)
     }
 }
-
 
 let mapStateToProps = (state) => {
     return {
