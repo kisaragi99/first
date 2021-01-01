@@ -28,6 +28,7 @@ class FriendsContainer extends React.Component {
     }
 
     render() {
+        console.log("произошел рендер")
         return (<>{this.props.isLoading ? <Loader/> : null}
             <FriendsPresentational friends={this.props.friends}
                                    follow={this.props.follow}
@@ -42,6 +43,7 @@ class FriendsContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => {
+    console.log("mapStateToProps сработал")
     return {
         friends: getFriends(state),
         pageSize: getPageSize(state),
