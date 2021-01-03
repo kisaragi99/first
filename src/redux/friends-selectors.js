@@ -1,10 +1,12 @@
 import {createSelector} from "reselect";
 
-const getFriendsSelector = (state) => {
+export const getFriendsSelector = (state) => {
+    console.log("selector did something")
     return state.friendsPage.friends;
 }
 
 export const getFriends = createSelector(getFriendsSelector, (friends) => {
+    console.log("SuperSelector did something")
     return friends.filter(f => true);
 })
 

@@ -32,12 +32,13 @@ class ProfileContainer extends React.Component {
 
 };
 
-let mapStateToProps = (state) => ({
-    profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth,
-    status: state.profilePage.status,
-    authorizedUserId: state.auth.userId
-})
+let mapStateToProps = (state) => {
+    return {
+        profile: state.profilePage.profile,
+        isAuth: state.auth.isAuth,
+        status: state.profilePage.status,
+        authorizedUserId: state.auth.userId
+    }}
 
 
 export default compose(
