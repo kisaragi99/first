@@ -10,11 +10,13 @@ let initialState = {
         {id: 2, message: "Hi, im fine", likesCount: 1},
     ],
     profile: null,
-    status: ""
+    status: "",
+    fake: 1
 }
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
+        case "FAKE": return {...state, fake: state.fake += 1};
         case ADD_POST:
             return {
                 ...state,
