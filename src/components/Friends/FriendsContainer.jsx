@@ -28,6 +28,7 @@ class FriendsContainer extends React.Component {
     }
 
     render() {
+        console.log("Friends rendered")
         return (<>{this.props.isLoading ? <Loader/> : null}
             <FriendsPresentational friends={this.props.friends}
                                    follow={this.props.follow}
