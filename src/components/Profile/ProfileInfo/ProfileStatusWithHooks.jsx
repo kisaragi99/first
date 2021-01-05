@@ -13,11 +13,13 @@ const ProfileStatusWithHooks = (props) => {
         setEditMode(false);
         props.updateStatus(status);
     }
-
     const onStatusChange = (e) => {
         setStatus(e.currentTarget.value)
     }
 
+    useEffect(()=>{
+        setStatus(props.status);
+    }, [props.status])
 
 
 
