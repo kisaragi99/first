@@ -9,6 +9,7 @@ import {maxLengthCreator, required} from "../../utils/validators";
 const maxLength100 =  maxLengthCreator(100);
 
 const Dialogs = (props) => {
+    console.log("dialogs rendered")
 
     let dialogsElement = props.dialogsPage.dialogs
         .map((dialog => <DialogItem name={dialog.name} id={dialog.id} avatar={dialog.avatar} key={dialog.id}/>)

@@ -1,9 +1,9 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
-import ProfileStatus from "./ProfileStatus.jsx"
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
+    console.log("profile info rendered")
     return (
         <div>
             <div className={s.avatarWrapper}>
@@ -22,4 +22,4 @@ const ProfileInfo = (props) => {
     )
 
 };
-export default ProfileInfo;
+export default React.memo(ProfileInfo);
