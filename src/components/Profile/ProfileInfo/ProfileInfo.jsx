@@ -3,7 +3,6 @@ import s from "./ProfileInfo.module.css";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
-    console.log("profile info rendered")
     return (
         <div>
             <div className={s.avatarWrapper}>

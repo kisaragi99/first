@@ -54,3 +54,9 @@ let FriendsPresentational = (props) => {
     </div>
 }
 export default FriendsPresentational
+
+
+// Эта ошибка относится к коду на 47 строке """ className={props.currentPage === p && s.selectedPage} """
+//index.js:1 Warning: Received `false` for a non-boolean attribute `className`.
+//
+// If you want to write it to the DOM, pass a string instead: className="false" or className={value.toString()}.

@@ -1,3 +1,13 @@
-.wrapper{
+.wrapper {
 
+}
+
+.plusButton {
+    color: limegreen;
+    width: 27px;
+}
+
+.minusButton {
+    color: red;
+    width: 27px;
 }
