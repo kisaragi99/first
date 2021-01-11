@@ -22,12 +22,11 @@ const appReducer = (state = initialState, action) => {
 
 export const initialized = () => ({type: 'INITIALIZED'});
 
-export const initializeApp = () => (dispatch) => {
+export const initializeApp = () => async (dispatch) => {
     let promise = dispatch(authMe());
-    Promise.all([promise])
-        .then(() => {
-            dispatch(initialized());
-        });
+    await Promise.all([promise])
+    dispatch(initialized());
+
 }
 
 export default appReducer;
