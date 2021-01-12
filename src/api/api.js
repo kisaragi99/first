@@ -45,7 +45,13 @@ export const authAPI = {
     }, // This function is getting the information if the user is authorised or not (HeaderContainer)
 
     loginAPI(loginData) {
-        return instance.post('auth/login', {email:loginData.login, password: loginData.password, rememberMe: loginData.rememberMe ,captcha: true }).then(response => response.data)
+        return instance.post('auth/login', {
+            email: loginData.login,
+            password: loginData.password,
+            rememberMe: loginData.rememberMe,
+            captcha: true
+        })
+            .then(response => response.data)
     }, // Login to the server
 
     logoutAPI() {
