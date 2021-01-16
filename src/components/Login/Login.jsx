@@ -1,23 +1,23 @@
 import React from "react";
 import s from "./../common/FormsControls/FormControls.module.css"
-import {Field, reduxForm} from "redux-form";
-import {Input} from "../common/FormsControls/FormControls";
+import {reduxForm} from "redux-form";
+import {createField, Input} from "../common/FormsControls/FormControls";
 import {required} from "../../utils/validators";
 import {Redirect} from "react-router-dom";
 
-
-
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error}) => {
     // const { handleSubmit } = props;
 
     return (<>
-            <form onSubmit={props.handleSubmit}>
-                <div><Field placeholder={"Login"} component={Input} name={"login"} validate={[required]}/></div>
-                <div><Field placeholder={"Password"} component={Input} name={"password"} type={"password"} validate={[required]}/></div>
-                <div><Field type={"checkbox"} component={Input} name={"rememberMe"}/>Remember Me</div>
-                { props.error && <div className={s.formSummaryError}>
-                    {props.error}
-                </div> }
+            <form onSubmit={handleSubmit}>
+
+                {createField("Login", "login", Input, [required])}
+                {createField("Password", "password", Input, [required], {type: "password"})}
+                {createField(null, "rememberMe", Input, null, {type: "checkbox"}, "remember me")}
+
+                {error && <div className={s.formSummaryError}>
+                    {error}
+                </div>}
                 <div>
                     <button>Login</button>
                 </div>
@@ -33,13 +33,13 @@ const Login = (props) => {
         props.loginMe(formData);
     }
 
-    if(props.isAuth){
-        return <Redirect to={"profile"} />
+    if (props.isAuth) {
+        return <Redirect to={"profile"}/>
     }
     return (
         <div className={s.wrapper}>
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit} />
+            <LoginReduxForm onSubmit={onSubmit}/>
         </div>
     )
 }

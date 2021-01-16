@@ -1,4 +1,5 @@
 import {usersAPI} from "../api/api";
+import {updateObjectInArray} from "../utils/object-helpers";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -23,22 +24,12 @@ const friendsReducer = (state = initialState, action) => {
         case FOLLOW :
             return {
                 ...state,
-                friends: state.friends.map(f => {
-                    if (f.id === action.friendId) {
-                        return {...f, followed: true}
-                    }
-                    return f
-                })
+                friends: updateObjectInArray(state.friends, action.friendId, "id", {followed: true})
             }
         case UNFOLLOW :
             return {
                 ...state,
-                friends: state.friends.map(f => {
-                    if (f.id === action.friendId) {
-                        return {...f, followed: false}
-                    }
-                    return f
-                })
+                friends: updateObjectInArray(state.friends, action.friendId, "id", {followed: false})
             }
         case SET_FRIENDS: {
             return {
@@ -88,49 +79,31 @@ export const toggleFollowingProcess = (isLoading, friendId) => ({
     friendId
 })
 
+export const getUsers = (page, pageSize) => async (dispatch) => {
+    dispatch(toggleIsLoading(true));
 
-export const getUsers = (page, pageSize) => {
-    return (dispatch) => {
-        dispatch(toggleIsLoading(true));
-        usersAPI.getUsersAPI(page, pageSize).then(data => {
-            dispatch(toggleIsLoading(false));
-            dispatch(setFriends(data.items));
-            dispatch(setTotalFriendsCount(data.totalCount));
-            dispatch(setCurrentPage(page));
-        })
-
-    }
+    let data = await usersAPI.getUsersAPI(page, pageSize)
+    dispatch(toggleIsLoading(false));
+    dispatch(setFriends(data.items));
+    dispatch(setTotalFriendsCount(data.totalCount));
+    dispatch(setCurrentPage(page));
 }
 
-export const follow = (userId) => {
-    return (dispatch) => {
-
-        dispatch(toggleFollowingProcess(true, userId));
-
-        usersAPI.followUserAPI(userId).then(data => {
-            if (data.resultCode === 0) {
-                dispatch(followSuccess(userId));
-            }
-
-            dispatch(toggleFollowingProcess(false, userId));
-        })
+const followUnfollowFlow = async(dispatch, userId,apiMethod, actionCreator) => {
+    dispatch(toggleFollowingProcess(true, userId));
+    let data = await apiMethod(userId);
+    if (data.resultCode === 0) {
+        dispatch(actionCreator(userId));
     }
+    dispatch(toggleFollowingProcess(false, userId));
 }
 
-export const unfollow = (userId) => {
-    return (dispatch) => {
-
-        dispatch(toggleFollowingProcess(true, userId));
-
-        usersAPI.unfollowUserAPI(userId).then(data => {
-            if (data.resultCode === 0) {
-                dispatch(unfollowSuccess(userId));
-            }
-
-            dispatch(toggleFollowingProcess(false, userId));
-        })
-    }
+export const follow = (userId) => async (dispatch) => {
+    await followUnfollowFlow(dispatch,userId, usersAPI.followUserAPI.bind(usersAPI), followSuccess)
 }
 
+export const unfollow = (userId) => async (dispatch) => {
+    await followUnfollowFlow(dispatch,userId, usersAPI.unfollowUserAPI.bind(usersAPI), unfollowSuccess)
+}
 
 export default friendsReducer;
