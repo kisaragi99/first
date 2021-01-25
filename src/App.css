@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .app-wrapper {
     display: grid;
     width: 100%;
@@ -14,4 +15,34 @@ app-wrapper-content {
     height: 1400px;
     margin-top: 10px;
 
+=======
+.app-wrapper{
+  display: grid;
+  width: 100%;
+
+  grid-template-areas: 
+  "h h"
+  "n c"
+  ;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  /* grid-gap: 10px; */
+}
+.nav{
+  grid-area: n;
+  border: 1px solid lime;
+
+}
+.header{
+  grid-area: h;
+  border: 1px solid red;
+}
+.header img{
+  width: 140px;
+  height: 100%;
+}
+.content{
+  grid-area: c;
+  border: 1px solid blue;
+>>>>>>> 6cc6386... changed Header.jsx
 }
