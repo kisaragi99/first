@@ -1,0 +1,36 @@
+{
+  "files": {
+    "static/js/0.7d65ba39.chunk.js": "/first/static/js/0.7d65ba39.chunk.js",
+    "static/js/0.7d65ba39.chunk.js.map": "/first/static/js/0.7d65ba39.chunk.js.map",
+    "main.css": "/first/static/css/main.ac0e8360.chunk.css",
+    "main.js": "/first/static/js/main.00fe4f36.chunk.js",
+    "main.js.map": "/first/static/js/main.00fe4f36.chunk.js.map",
+    "runtime-main.js": "/first/static/js/runtime-main.e9cdcfef.js",
+    "runtime-main.js.map": "/first/static/js/runtime-main.e9cdcfef.js.map",
+    "static/js/3.141f1c0f.chunk.js": "/first/static/js/3.141f1c0f.chunk.js",
+    "static/js/3.141f1c0f.chunk.js.map": "/first/static/js/3.141f1c0f.chunk.js.map",
+    "static/css/4.414895fc.chunk.css": "/first/static/css/4.414895fc.chunk.css",
+    "static/js/4.d4ad6366.chunk.js": "/first/static/js/4.d4ad6366.chunk.js",
+    "static/js/4.d4ad6366.chunk.js.map": "/first/static/js/4.d4ad6366.chunk.js.map",
+    "static/css/5.e6c6cc45.chunk.css": "/first/static/css/5.e6c6cc45.chunk.css",
+    "static/js/5.18b76967.chunk.js": "/first/static/js/5.18b76967.chunk.js",
+    "static/js/5.18b76967.chunk.js.map": "/first/static/js/5.18b76967.chunk.js.map",
+    "static/css/6.59a750bf.chunk.css": "/first/static/css/6.59a750bf.chunk.css",
+    "static/js/6.926e4998.chunk.js": "/first/static/js/6.926e4998.chunk.js",
+    "static/js/6.926e4998.chunk.js.map": "/first/static/js/6.926e4998.chunk.js.map",
+    "index.html": "/first/index.html",
+    "static/css/4.414895fc.chunk.css.map": "/first/static/css/4.414895fc.chunk.css.map",
+    "static/css/5.e6c6cc45.chunk.css.map": "/first/static/css/5.e6c6cc45.chunk.css.map",
+    "static/css/6.59a750bf.chunk.css.map": "/first/static/css/6.59a750bf.chunk.css.map",
+    "static/css/main.ac0e8360.chunk.css.map": "/first/static/css/main.ac0e8360.chunk.css.map",
+    "static/js/3.141f1c0f.chunk.js.LICENSE.txt": "/first/static/js/3.141f1c0f.chunk.js.LICENSE.txt",
+    "static/media/avatar.a502917b.png": "/first/static/media/avatar.a502917b.png",
+    "static/media/imgForPostTemplate.087d5dd3.jpg": "/first/static/media/imgForPostTemplate.087d5dd3.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e9cdcfef.js",
+    "static/js/3.141f1c0f.chunk.js",
+    "static/css/main.ac0e8360.chunk.css",
+    "static/js/main.00fe4f36.chunk.js"
+  ]
+}
