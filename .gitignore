@@ -11,9 +11,12 @@
 # production
 /build
 
+<<<<<<< HEAD
 # Optional eslint cache
 .eslintcache
 
+
+>>>>>>> b579e17864be75c3f28d251b5add148f74f1e96a
 # misc
 .DS_Store
 .env.local
