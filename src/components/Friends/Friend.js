@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Friends.module.css";
 import avatar from "../../assets/images/avatar.png";
 import {NavLink} from "react-router-dom";
-import Pagination from "../common/Paginators/Pagination";
+
 
 
 let Friend = ({friend, followingInProcess, follow, unfollow}) => {

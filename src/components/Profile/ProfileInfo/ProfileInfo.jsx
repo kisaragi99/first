@@ -1,12 +1,20 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+import avatar from "./../../../assets/images/avatar.png"
 
-const ProfileInfo = ({profile, status, updateStatus, }) => {
+const ProfileInfo = ({isOwner ,profile, status, updateStatus, savePhoto}) => {
+
+    const onMainPhotoSelected = (e)=> {
+       if(e.target.files.length){
+           savePhoto(e.target.files[0])
+       }
+    }
+
     return (
         <div>
             <div className={s.avatarWrapper}>
-                <img src={profile.photos.large} className={s.avatar} alt='avatar'/>
+                <img src={profile.photos.large || avatar} className={s.avatar} alt='avatar'/>
                 <div className={s.description}>
                     <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
                     <div className={s.profileInfo}><div className={s.profileInfoTitle}>Name:</div> {profile.fullName}</div>
@@ -16,6 +24,7 @@ const ProfileInfo = ({profile, status, updateStatus, }) => {
                     <div className={s.profileInfo}><div className={s.profileInfoTitle}>Twitter: </div> <a href={profile.contacts.twitter}>{profile.contacts.twitter}</a> </div>
                     <div className={s.profileInfo}><div className={s.profileInfoTitle}>GitHub:</div> <a href={profile.contacts.github}>{profile.contacts.github}</a> </div>
                 </div>
+                {isOwner && <input type="file" onChange={onMainPhotoSelected}/>}
             </div>
         </div>
     )
