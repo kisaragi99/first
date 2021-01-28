@@ -5,7 +5,7 @@ import {createField, Input} from "../common/FormsControls/FormControls";
 import {required} from "../../utils/validators";
 import {Redirect} from "react-router-dom";
 
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     // const { handleSubmit } = props;
 
     return (<>
@@ -14,6 +14,9 @@ const LoginForm = ({handleSubmit, error}) => {
                 {createField("Login", "login", Input, [required])}
                 {createField("Password", "password", Input, [required], {type: "password"})}
                 {createField(null, "rememberMe", Input, null, {type: "checkbox"}, "remember me")}
+
+                { captchaUrl && <img src={captchaUrl}/> }
+                { captchaUrl && createField("Symbols from image", "captcha", [required],Input, {}) }
 
                 {error && <div className={s.formSummaryError}>
                     {error}
@@ -28,12 +31,12 @@ const LoginForm = ({handleSubmit, error}) => {
 
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
-const Login = (props) => {
+const Login = ({loginMe, isAuth, captchaUrl}) => {
     const onSubmit = (formData) => {
-        props.loginMe(formData);
+        loginMe(formData);
     }
 
-    if (props.isAuth) {
+    if (isAuth) {
         return <Redirect to={"profile"}/>
     }
     return (

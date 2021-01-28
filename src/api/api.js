@@ -35,11 +35,11 @@ export const profileAPI = {
     updateStatus(status) {
         return instance.put(`profile/status`, {status: status});
     },
-    updatePhoto(file){
+    updatePhoto(file) {
         const formData = new FormData();
         formData.append("image", file)
 
-        return instance.put('profile/photo', formData,{
+        return instance.put('profile/photo', formData, {
             headers: {
                 'Content-type': 'multipart/form-data'
             }
@@ -59,7 +59,7 @@ export const authAPI = {
             email: loginData.login,
             password: loginData.password,
             rememberMe: loginData.rememberMe,
-            captcha: true
+            captcha: loginData.captcha
         })
             .then(response => response.data)
     }, // Login to the server
@@ -67,4 +67,10 @@ export const authAPI = {
     logoutAPI() {
         return instance.post('auth/logout').then(response => response.data)
     } // Logout from server
+}
+
+export const sequrityAPI = {
+    getCapthaUrl() {
+        return instance.get('security/get-captcha-url');
+    }
 }
