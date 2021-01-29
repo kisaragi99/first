@@ -1,7 +1,7 @@
 import React, {Suspense} from "react";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
-import {BrowserRouter, Route, withRouter} from "react-router-dom";
+import {BrowserRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -18,8 +18,18 @@ const LoginContainer = React.lazy(() => import('./components/Login/LoginContaine
 
 
 class App extends React.Component {
+
+    catchAllUnhandledErrors = (promiseRejectionEvent)=>{
+       console.log("some error occured")
+    }
+
     componentDidMount() {
         this.props.initializeApp();
+        window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
     }
 
     render() {
@@ -33,12 +43,17 @@ class App extends React.Component {
                 <Navbar/>
                 <React.Suspense fallback={<Loader/>}>
                     <div className="app-wrapper-content">
-                        <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
-                        <Route path="/dialogs" render={() => <DialogsContainer/>}/>
-                        <Route path="/friends" render={() => <FriendsContainer/>}/>
-                        <Route path="/news" render={() => <News/>}/>
-                        <Route path="/settings" render={() => <Settings/>}/>
-                        <Route path="/login" render={() => <LoginContainer/>}/>
+                        <Switch>
+                            <Route exact path="/" render={() => <Redirect to={"/profile"}/>}/>
+                            <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
+                            <Route path="/dialogs" render={() => <DialogsContainer/>}/>
+                            <Route path="/friends" render={() => <FriendsContainer/>}/>
+                            <Route path="/news" render={() => <News/>}/>
+                            <Route path="/settings" render={() => <Settings/>}/>
+                            <Route path="/login" render={() => <LoginContainer/>}/>
+
+                            <Route path="*" render={() => <div>404 - Page not found</div>}/>
+                        </Switch>
                     </div>
                 </React.Suspense>
             </div>
