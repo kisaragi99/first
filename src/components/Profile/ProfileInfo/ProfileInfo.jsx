@@ -11,56 +11,45 @@ const ProfileFormHooks = ()=> {
         console.log(JSON.stringify(data));
     };
 
+
+    const FieldItemForLink = ({itemName})=> {
+        return(
+            <input
+                type="text"
+                name={itemName}
+                ref={register({ required: true, maxLength: 90, pattern: /^(http|https)/ })}
+                className={s.profileInfo}
+                placeholder={itemName}
+            />
+        )
+    }
+    const FieldItem = ({itemName})=> {
+        return(
+            <input
+                type="text"
+                name={itemName}
+                ref={register({ required: true, maxLength: 90 })}
+                className={s.profileInfo}
+                placeholder={itemName}
+            />
+        )
+    }
+
+
     return(
         <form onSubmit={handleSubmit(onSubmit)} className={s.description}>
-            <input
-            type="text"
-            name="About me"
-            ref={register({ required: true, maxLength: 90 })}
-            className={s.profileInfo}
-            placeholder="About me"
-            />
 
-            <input
-                type="text"
-                name="Facebook"
-                ref={register({ required: true, maxLength: 90 })}
-                className={s.profileInfo}
-                placeholder="Facebook"
-            />
-
-            <input
-                type="text"
-                name="VK"
-                ref={register({ required: true, maxLength: 90 })}
-                className={s.profileInfo}
-                placeholder="VK"
-            />
-
-            <input
-                type="text"
-                name="Twitter"
-                ref={register({ required: true, maxLength: 90 })}
-                className={s.profileInfo}
-                placeholder="Twitter"
-            />
-
-            <input
-                type="text"
-                name="Github"
-                ref={register({ required: true, maxLength: 90 })}
-                className={s.profileInfo}
-                placeholder="Github"
-            />
-
+            <FieldItem itemName="About me"  />
+            <FieldItemForLink itemName="Facebook" />
+            <FieldItemForLink itemName="VK" />
+            <FieldItemForLink itemName="Twitter" />
+            <FieldItemForLink itemName="Github" />
 
             <input type="submit" className={s.profileInfo}/>
         </form>
     )
 
-
 }
-
 
 const ProfileInfo = ({isOwner ,profile, status, updateStatus, savePhoto}) => {
 
@@ -75,7 +64,7 @@ const ProfileInfo = ({isOwner ,profile, status, updateStatus, savePhoto}) => {
             <div className={s.avatarWrapper}>
                 <img src={profile.photos.large || avatar} className={s.avatar} alt='avatar'/>
                  <div className={s.description}>
-                     {true &&<>
+                     {false &&<>
                      <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
 
                      <div className={s.profileInfo}><div className={s.profileInfoTitle}>Name:</div> {profile.fullName}</div>
@@ -86,7 +75,7 @@ const ProfileInfo = ({isOwner ,profile, status, updateStatus, savePhoto}) => {
                      <div className={s.profileInfo}><div className={s.profileInfoTitle}>GitHub:</div> <a href={profile.contacts.github}>{profile.contacts.github}</a> </div>
                      </>}
 
-                     { false && <ProfileFormHooks/>}
+                     { true && <ProfileFormHooks/>}
                  </div>
 
                 {isOwner && <input type="file" onChange={onMainPhotoSelected}/>}
