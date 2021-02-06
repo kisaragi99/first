@@ -59,6 +59,8 @@ export const setStatus = (status) => ({type: SET_STATUS, status})
 export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
 
 
+
+
 export const getProfile = (userId) => async (dispatch) => {
     let response = await profileAPI.getProfileAPI(userId);
     dispatch(setUserProfile(response.data));
@@ -79,6 +81,13 @@ export const updateStatus = (status) => async (dispatch) => {
 export const savePhoto = (file) => async (dispatch) => {
      let response = await profileAPI.updatePhoto(file);
      dispatch(savePhotoSuccess(response.data.data.photos))
+}
+
+export const updateProfile = (profileUserInfo, userId) => async (dispatch) => {
+    let response = await profileAPI.updateProfile(profileUserInfo);
+    if (response.data.resultCode === 0) {
+       dispatch(getProfile(userId));
+    }
 }
 
 export default profileReducer;

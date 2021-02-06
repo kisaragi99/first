@@ -44,6 +44,27 @@ export const profileAPI = {
                 'Content-type': 'multipart/form-data'
             }
         })
+    },
+    updateProfile(profileUserInfo){
+        return instance.put('profile/', {
+                "aboutMe": profileUserInfo.aboutMe,
+                "contacts": {
+                    facebook: profileUserInfo.facebook,
+                    github: profileUserInfo.github,
+                    instagram: profileUserInfo.instagram,
+                    mainLink: null,
+                    twitter: profileUserInfo.twitter,
+                    vk: profileUserInfo.vk,
+                    website: null,
+                    youtube: null
+                },
+                "lookingForAJob": true,
+                "lookingForAJobDescription": "dunno",
+                "fullName": "Ochir B"
+            }
+
+
+        )
     }
 
 }

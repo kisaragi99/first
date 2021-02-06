@@ -89,7 +89,7 @@ export const getUsers = (page, pageSize) => async (dispatch) => {
     dispatch(setCurrentPage(page));
 }
 
-const followUnfollowFlow = async(dispatch, userId,apiMethod, actionCreator) => {
+const followUnfollowFlow = async(dispatch, userId, apiMethod, actionCreator) => {
     dispatch(toggleFollowingProcess(true, userId));
     let data = await apiMethod(userId);
     if (data.resultCode === 0) {
