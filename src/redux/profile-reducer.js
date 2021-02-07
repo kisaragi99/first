@@ -87,6 +87,8 @@ export const updateProfile = (profileUserInfo, userId) => async (dispatch) => {
     let response = await profileAPI.updateProfile(profileUserInfo);
     if (response.data.resultCode === 0) {
        dispatch(getProfile(userId));
+    } else{
+        console.log(response.data)
     }
 }
 

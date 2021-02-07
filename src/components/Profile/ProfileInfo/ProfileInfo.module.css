@@ -24,7 +24,25 @@
     display: flex;
 }
 
+.profileInfoError {
+    margin: 0 0 5px 15px;
+    background-color: #EEEEEE;
+    width: auto;
+    border-radius: 2px;
+    display: flex;
+    border: 2px solid red;
+}
+
 .profileInfoTitle {
     margin-right: 5px;
     font-weight: bold;
+}
+.profileInfoMessageError{
+    color: red;
+    font-size: 12px;
+    margin: 0 0 5px 15px;
+}
+.profileInfoButton{
+    width: 180px;
+    margin: 0 0 5px 15px;
 }
