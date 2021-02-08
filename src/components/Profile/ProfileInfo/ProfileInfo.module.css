@@ -19,7 +19,7 @@
 .profileInfo {
     margin: 0 0 5px 15px;
     background-color: #EEEEEE;
-    width: auto;
+    width: 360px;
     border-radius: 2px;
     display: flex;
 }
@@ -27,7 +27,7 @@
 .profileInfoError {
     margin: 0 0 5px 15px;
     background-color: #EEEEEE;
-    width: auto;
+    width: 360px;
     border-radius: 2px;
     display: flex;
     border: 2px solid red;
@@ -45,4 +45,25 @@
 .profileInfoButton{
     width: 180px;
     margin: 0 0 5px 15px;
+}
+
+input[type="submit"] {
+    background: #FBEDBF;
+    color: #0A3669;
+    text-transform: uppercase;
+    margin: 40px 0 0 15px;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 100;
+    letter-spacing: 5px;
+}
+
+input[type="submit"]:hover {
+    background: #427DC1;
+}
+
+input[type="submit"]:active {
+    transition: 0.3s all;
+    transform: translateY(3px);
+    opacity: 0.8;
 }

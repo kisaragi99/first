@@ -4,7 +4,6 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import Loader from "../Loaders/Loader";
 
-
 const Profile = (props) => {
     if (!props.profile) {
         return <Loader/>

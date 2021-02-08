@@ -6,51 +6,52 @@ import {useForm} from "react-hook-form";
 
 
 const ProfileFormHooks = ({profile, updateProfile, userId}) => {
-    const {register, errors, handleSubmit} = useForm();
 
-    const onSubmit = (data) => {
-        updateProfile(data, userId);
-    };
+    const {register, errors, handleSubmit} = useForm({
+        defaultValues: {
+            aboutMe: profile.aboutMe,
+            vk: profile.contacts.vk,
+            facebook: profile.contacts.facebook,
+            twitter: profile.contacts.twitter,
+            github: profile.contacts.github
+        }
+    });
 
+    const onSubmit = (data) => updateProfile(data, userId);
 
-    const FieldItemForLink = ({itemName, link}) => {
+    const FieldItemForLink = ({itemName}) => {
         return (
             <input
                 type="url"
                 name={itemName}
                 ref={register({maxLength: 150})}
                 className={s.profileInfo}
-                placeholder={link}
-
             />
         )
     }
-    const FieldItem = ({itemName, userDescription}) => {
+    const FieldItem = ({itemName}) => {
         return (<>
                 <input
                     type="text"
                     name={itemName}
                     ref={register({required: true, maxLength: 90})}
                     className={errors.aboutMe ? s.profileInfoError : s.profileInfo}
-                    placeholder={userDescription}
-
                 />
                 {errors.aboutMe && <div className={s.profileInfoMessageError}>Обязательно заполните это поле</div>}
             </>
-
         )
     }
-
+    console.log("forms Rendered")
     return (<>
             <form onSubmit={handleSubmit(onSubmit)} className={s.description}>
 
-                <FieldItem itemName="aboutMe" userDescription={profile.aboutMe}/>
-                <FieldItemForLink itemName="facebook" link={profile.contacts.facebook}/>
-                <FieldItemForLink itemName="vk" link={profile.contacts.vk}/>
-                <FieldItemForLink itemName="twitter" link={profile.contacts.twitter}/>
-                <FieldItemForLink itemName="github" link={profile.contacts.github}/>
+                <FieldItem itemName="aboutMe" />
+                <FieldItemForLink itemName="facebook" />
+                <FieldItemForLink itemName="vk" />
+                <FieldItemForLink itemName="twitter" />
+                <FieldItemForLink itemName="github" />
 
-                <input type="submit" className={s.profileInfo}/>
+                <input type="submit" />
             </form>
         </>
     )
@@ -113,3 +114,17 @@ const ProfileInfo = ({isOwner, profile, status, updateStatus, savePhoto, updateP
 
 };
 export default React.memo(ProfileInfo);
+
+
+
+//
+// <form onSubmit={handleSubmit(onSubmit)} className={s.description}>
+//
+//     <FieldItem itemName="aboutMe" userDescription={profile.aboutMe}/>
+//     <FieldItemForLink itemName="facebook" link={profile.contacts.facebook}/>
+//     <FieldItemForLink itemName="vk" link={profile.contacts.vk}/>
+//     <FieldItemForLink itemName="twitter" link={profile.contacts.twitter}/>
+//     <FieldItemForLink itemName="github" link={profile.contacts.github}/>
+//
+//     <input type="submit" className={s.profileInfo}/>
+// </form>
