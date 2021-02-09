@@ -4,7 +4,6 @@ import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import avatar from "./../../../assets/images/avatar.png"
 import {useForm} from "react-hook-form";
 
-
 const ProfileFormHooks = ({profile, updateProfile, userId}) => {
 
     const {register, errors, handleSubmit} = useForm({
@@ -29,23 +28,19 @@ const ProfileFormHooks = ({profile, updateProfile, userId}) => {
             />
         )
     }
-    const FieldItem = ({itemName}) => {
-        return (<>
-                <input
-                    type="text"
-                    name={itemName}
-                    ref={register({required: true, maxLength: 90})}
-                    className={errors.aboutMe ? s.profileInfoError : s.profileInfo}
-                />
-                {errors.aboutMe && <div className={s.profileInfoMessageError}>Обязательно заполните это поле</div>}
-            </>
-        )
-    }
+
     console.log("forms Rendered")
     return (<>
             <form onSubmit={handleSubmit(onSubmit)} className={s.description}>
 
-                <FieldItem itemName="aboutMe" />
+                    <input
+                        type="text"
+                        name={"aboutMe"}
+                        ref={register({required: true, maxLength: 90})}
+                        className={errors.aboutMe ? s.profileInfoError : s.profileInfo}
+                    />
+                    {errors.aboutMe && <div className={s.profileInfoMessageError}>Обязательно заполните это поле</div>}
+
                 <FieldItemForLink itemName="facebook" />
                 <FieldItemForLink itemName="vk" />
                 <FieldItemForLink itemName="twitter" />
