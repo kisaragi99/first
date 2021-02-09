@@ -88,7 +88,7 @@ export const updateProfile = (profileUserInfo, userId) => async (dispatch) => {
     if (response.data.resultCode === 0) {
        dispatch(getProfile(userId));
     } else{
-        console.log(response.data)
+        console.error(response.data)
     }
 }
 

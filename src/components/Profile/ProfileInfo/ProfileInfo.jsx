@@ -1,10 +1,25 @@
-import React, {useState} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import s from "./ProfileInfo.module.css";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import avatar from "./../../../assets/images/avatar.png"
 import {useForm} from "react-hook-form";
 
 const ProfileFormHooks = ({profile, updateProfile, userId}) => {
+
+    const [propsProfile, setPropsProfile] = useState(profile);
+    const prevPropsProfile = usePrevious(propsProfile);
+
+    function usePrevious(value) {
+
+        const ref = useRef();
+
+        useEffect(() => {
+            ref.current = value;
+        }, [value]);
+
+        return ref.current;
+    }
+
 
     const {register, errors, handleSubmit} = useForm({
         defaultValues: {
@@ -16,35 +31,51 @@ const ProfileFormHooks = ({profile, updateProfile, userId}) => {
         }
     });
 
+
     const onSubmit = (data) => updateProfile(data, userId);
 
-    const FieldItemForLink = ({itemName}) => {
-        return (
-            <input
-                type="url"
-                name={itemName}
-                ref={register({maxLength: 150})}
-                className={s.profileInfo}
-            />
-        )
-    }
 
-    console.log("forms Rendered")
     return (<>
             <form onSubmit={handleSubmit(onSubmit)} className={s.description}>
 
-                    <input
-                        type="text"
-                        name={"aboutMe"}
-                        ref={register({required: true, maxLength: 90})}
-                        className={errors.aboutMe ? s.profileInfoError : s.profileInfo}
-                    />
-                    {errors.aboutMe && <div className={s.profileInfoMessageError}>Обязательно заполните это поле</div>}
+                <input
+                    type="text"
+                    name={"aboutMe"}
+                    ref={register({required: true, maxLength: 90})}
+                    className={errors.aboutMe ? s.profileInfoError : s.profileInfo}
+                />
 
-                <FieldItemForLink itemName="facebook" />
-                <FieldItemForLink itemName="vk" />
-                <FieldItemForLink itemName="twitter" />
-                <FieldItemForLink itemName="github" />
+                {errors.aboutMe && <div className={s.profileInfoMessageError}>Обязательно заполните это поле</div>}
+
+                <input
+                    type="text"
+                    name="facebook"
+                    ref={register({maxLength: 150})}
+                    className={s.profileInfo}
+                />
+
+                <input
+                    type="text"
+                    name="vk"
+                    ref={register({maxLength: 150})}
+                    className={s.profileInfo}
+                />
+
+                <input
+                    type="text"
+                    name="twitter"
+                    ref={register({maxLength: 150})}
+                    className={s.profileInfo}
+                />
+
+                <input
+                    type="text"
+                    name="github"
+                    ref={register({maxLength: 150})}
+                    className={s.profileInfo}
+                />
+
+                {prevPropsProfile ? (!prevPropsProfile.aboutMe === profile.aboutMe ? console.log("Не равны") : console.log("Равны")) : null}
 
                 <input type="submit" />
             </form>
@@ -65,7 +96,7 @@ const ProfileInfo = ({isOwner, profile, status, updateStatus, savePhoto, updateP
     const handleEdit = () => {
         setShowEdit(!showEdit)
     };
-    console.log("profile info rendered")
+
     return (
         <div>
             <div className={s.avatarWrapper}>
@@ -109,17 +140,3 @@ const ProfileInfo = ({isOwner, profile, status, updateStatus, savePhoto, updateP
 
 };
 export default React.memo(ProfileInfo);
-
-
-
-//
-// <form onSubmit={handleSubmit(onSubmit)} className={s.description}>
-//
-//     <FieldItem itemName="aboutMe" userDescription={profile.aboutMe}/>
-//     <FieldItemForLink itemName="facebook" link={profile.contacts.facebook}/>
-//     <FieldItemForLink itemName="vk" link={profile.contacts.vk}/>
-//     <FieldItemForLink itemName="twitter" link={profile.contacts.twitter}/>
-//     <FieldItemForLink itemName="github" link={profile.contacts.github}/>
-//
-//     <input type="submit" className={s.profileInfo}/>
-// </form>
