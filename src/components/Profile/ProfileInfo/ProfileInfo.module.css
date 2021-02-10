@@ -37,13 +37,20 @@
     margin-right: 5px;
     font-weight: bold;
 }
+
 .profileInfoMessageError{
     color: red;
     font-size: 12px;
     margin: 0 0 5px 15px;
 }
+
 .profileInfoButton{
     width: 180px;
+    margin: 0 0 5px 15px;
+}
+
+.profileInfoSuccess{
+    color: #4ED769;
     margin: 0 0 5px 15px;
 }
 
