@@ -1,14 +1,12 @@
 import React from "react";
 import s from "./Friends.module.css";
-import avatar from "../../assets/images/avatar.png";
-import {NavLink} from "react-router-dom";
 import Pagination from "../common/Paginators/Pagination";
 import Friend from "./Friend";
 
 
 let FriendsPresentational = ({totalFriendsCount, pageSize, friends, followingInProcess, follow, unfollow, currentPage, onPageChanged, ...props}) => {
 
-    return <div>
+    return <>
         {
         friends.map((friend => <Friend key={friend.id}
                                        className={s.friendsBox}
@@ -22,7 +20,7 @@ let FriendsPresentational = ({totalFriendsCount, pageSize, friends, followingInP
                     totalFriendsCount={totalFriendsCount}
                     pageSize={pageSize}
                     onPageChanged={onPageChanged}/>
-    </div>
+        </>
 }
 export default FriendsPresentational
 

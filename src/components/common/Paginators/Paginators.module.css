@@ -1,3 +1,9 @@
 .selectedPage{
     font-weight: bold;
 }
+
+.paginationWrapper{
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+}

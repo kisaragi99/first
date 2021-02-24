@@ -31,7 +31,7 @@ class FriendsContainer extends React.Component {
 
     render() {
         console.log(this.props)
-        return (<>{this.props.isLoading ? <Loader/> : null}
+        return (<>
             <FriendsPresentational friends={this.props.friends}
                                    follow={this.props.follow}
                                    unfollow={this.props.unfollow}
@@ -40,6 +40,7 @@ class FriendsContainer extends React.Component {
                                    totalFriendsCount={this.props.totalFriendsCount}
                                    pageSize={this.props.pageSize}
                                    followingInProcess={this.props.followingInProcess}/>
+            {this.props.isLoading ? <Loader/> : null}
         </>)
     }
 }

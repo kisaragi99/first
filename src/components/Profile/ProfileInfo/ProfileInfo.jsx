@@ -152,9 +152,9 @@ const ProfileInfo = ({
 
         {isOwner && <input type="file" onChange={onMainPhotoSelected} />}
 
-        <button onClick={handleEdit} className={s.profileInfoButton}>
+        {isOwner && <button onClick={handleEdit} className={s.profileInfoButton}>
           {showEdit ? "Закрыть" : "Редактировать профиль"}
-        </button>
+        </button>}
       </div>
     </div>
   );

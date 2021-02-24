@@ -15,21 +15,23 @@ let Pagination = ({totalFriendsCount, pageSize, currentPage, onPageChanged, port
     let leftPortionPageNumber = (portionNumber - 1) * portionSize;
     let rightPortionPageNumber = portionNumber * portionSize;
 
+    const prevButton = <button onClick={()=>{setPortionNumber(portionNumber-1)}}>prev</button>
+    const nextButton = <button onClick={()=>{setPortionNumber(portionNumber+1)}}>Next</button> 
 
     return <>
-        {portionNumber > 1 && <button onClick={()=>{setPortionNumber(portionNumber-1)}}>prev</button>}
-
-        <div> {pages.filter(p => (p > leftPortionPageNumber) && (p <= rightPortionPageNumber))
+        <div className={s.paginationWrapper}>
+            {leftPortionPageNumber > 1 ? prevButton : "==="}
+            <div> {pages.filter(p => (p > leftPortionPageNumber) && (p <= rightPortionPageNumber))
                     .map((p, index) => {
             return <span className={currentPage === p && s.selectedPage}
                          onClick={(e) => {
                              onPageChanged(p)
                          }} key={index}>{`${p} `}</span>
 
-        })}
+            })}
+            </div>
+            {portionCount > portionNumber && nextButton}
         </div>
-
-        {portionCount > portionNumber && <button onClick={()=>{setPortionNumber(portionNumber+1)}}>next</button>}
     </>
 }
 export default Pagination

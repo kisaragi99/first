@@ -26,11 +26,7 @@ let Friend = ({friend, followingInProcess, follow, unfollow}) => {
                         <div>
                             <div>
                                 <div>{friend.name}</div>
-                                <div>{friend.status}</div>
-                            </div>
-                            <div>
-                                <div>{"Some Country"}</div>
-                                <div>{"Some City"}</div>
+                                <div>{!friend.status ? "No-status" : friend.status}</div>
                             </div>
                         </div>
                     </div>
