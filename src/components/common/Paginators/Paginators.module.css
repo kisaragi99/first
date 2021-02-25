@@ -1,9 +1,30 @@
 .selectedPage{
     font-weight: bold;
+    border: 1px solid blue;
+    border-radius: 2px;
+    padding: 0 6px;
+    margin: 0 1px;
 }
 
 .paginationWrapper{
     display: flex;
     flex-direction: row;
     padding-left: 10px;
+    align-items: center;
+    
+}
+.pages{
+    border: 1px solid blue;
+    border-radius: 2px;
+    padding: 0 6px;
+    margin: 0 1px;
+}
+.pages:hover{
+    background-color: #eeeeee;
+    cursor: pointer;
+}
+
+.selectedPage:hover{
+    background-color: #eeeeee;
+    cursor: pointer;
 }

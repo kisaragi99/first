@@ -18,8 +18,7 @@ let Friend = ({friend, followingInProcess, follow, unfollow}) => {
                             </div>
                             <div> {friend.followed ?
                                 <button disabled={followingInProcess.some(id => id === friend.id )} onClick={() => {unfollow(friend.id)}}> Unfollow </button> :
-                                <button disabled={followingInProcess.some(id => id === friend.id )} onClick={() => {follow(friend.id)}}>Follow</button>
-                            }
+                                <button disabled={followingInProcess.some(id => id === friend.id )} onClick={() => {follow(friend.id)}}>Follow</button>}
                             </div>
                         </div>
 

@@ -20,10 +20,10 @@ let Pagination = ({totalFriendsCount, pageSize, currentPage, onPageChanged, port
 
     return <>
         <div className={s.paginationWrapper}>
-            {leftPortionPageNumber > 1 ? prevButton : "==="}
+            {leftPortionPageNumber > 1 ? prevButton : <button>prev</button>}
             <div> {pages.filter(p => (p > leftPortionPageNumber) && (p <= rightPortionPageNumber))
                     .map((p, index) => {
-            return <span className={currentPage === p && s.selectedPage}
+            return <span className={currentPage === p ? s.selectedPage : s.pages}
                          onClick={(e) => {
                              onPageChanged(p)
                          }} key={index}>{`${p} `}</span>
