@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import s from "./Paginators.module.css";
 
-let Pagination = ({totalFriendsCount, pageSize, currentPage, onPageChanged, portionSize = 9 }) => {
+let Pagination = ({totalFriendsCount, pageSize, currentPage, onPageChanged, portionSize = 9, ...props}) => {
 
     let pagesCount = Math.ceil(totalFriendsCount / pageSize);
 
@@ -18,7 +18,8 @@ let Pagination = ({totalFriendsCount, pageSize, currentPage, onPageChanged, port
     const prevButton = <button onClick={()=>{setPortionNumber(portionNumber-1)}}>prev</button>
     const nextButton = <button onClick={()=>{setPortionNumber(portionNumber+1)}}>Next</button> 
 
-    return <>
+    return <> 
+    { 
         <div className={s.paginationWrapper}>
             {leftPortionPageNumber > 1 ? prevButton : <button>prev</button>}
             <div> {pages.filter(p => (p > leftPortionPageNumber) && (p <= rightPortionPageNumber))
@@ -31,7 +32,7 @@ let Pagination = ({totalFriendsCount, pageSize, currentPage, onPageChanged, port
             })}
             </div>
             {portionCount > portionNumber && nextButton}
-        </div>
+        </div>}
     </>
 }
 export default Pagination

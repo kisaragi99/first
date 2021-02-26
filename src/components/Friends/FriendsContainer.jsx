@@ -30,7 +30,6 @@ class FriendsContainer extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return (<>
             <FriendsPresentational friends={this.props.friends}
                                    follow={this.props.follow}

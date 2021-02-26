@@ -41,7 +41,7 @@ class App extends React.Component {
             <div className="app-wrapper">
                 <HeaderContainer/>
                 <Navbar/>
-                <React.Suspense fallback={<Loader/>}>
+                <Suspense fallback={<Loader/>}>
                     <div className="app-wrapper-content">
                         <Switch>
                             <Route exact path="/" render={() => <Redirect to={"/profile"}/>}/>
@@ -55,7 +55,7 @@ class App extends React.Component {
                             <Route path="*" render={() => <div>404 - Page not found</div>}/>
                         </Switch>
                     </div>
-                </React.Suspense>
+                </Suspense>
             </div>
         );
     }
