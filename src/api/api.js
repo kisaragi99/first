@@ -98,6 +98,9 @@ export const sequrityAPI = {
 
 export const dialogsAPI = {
     getDialogs() {
-        return instance.get('dialogs').then(response => console.log(response));
+        return instance.get('dialogs').then(response => response.data);
+    },
+    sendMessage(userId, message){
+        return instance.post(`dialogs/${userId}/messages`, {body: message}).then(response => response.data);
     }
 }

@@ -5,6 +5,7 @@ import MessageItem from "./MessageItem/MessageItem";
 import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../common/FormsControls/FormControls";
 import {maxLengthCreator, required} from "../../utils/validators";
+import avatar from '../../assets/images/avatar.png'
 
 const maxLength100 =  maxLengthCreator(100);
 
@@ -12,7 +13,7 @@ const Dialogs = (props) => {
     console.log("dialogs rendered")
 
     let dialogsElement = props.dialogsPage.dialogs
-        .map((dialog => <DialogItem name={dialog.name} id={dialog.id} avatar={dialog.avatar} key={dialog.id}/>)
+        .map((dialog => <DialogItem name={dialog.userName} id={dialog.id} avatar={!dialog.photos.small ? avatar : dialog.photos.small } key={dialog.id}/>)
         );
     let messagesElement = props.dialogsPage.messages
         .map((message => <MessageItem message={message.message} key={message.id}/>)
