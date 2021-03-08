@@ -1,15 +1,19 @@
 .message {
-    margin: 5px 0 0 5px;
+    margin: 5px 0 5px 5px;
     max-width: 1286px;
     word-wrap: break-word;
-    color: #0B4F6C;
+    color: #020a0e;
 }
 .messagesBox{
     display: flex;
-
+    margin: 5px 0 10px 5px;
+    background-color: rgb(223, 223, 223);
+    border-radius: 9px;
 }
-.messagesBox img{
-    width: 45px;
-    border-radius: 50px;
-    margin: 5px 0 0 5px;
+
+.senderName{
+    margin: 5px 0 5px 5px;
+    max-width: 1286px;
+    word-wrap: break-word;
+    color: #0B4F6C;
 }

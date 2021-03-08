@@ -3,8 +3,7 @@ import Dialogs from "./Dialogs";
 import { addMessageCreator } from "../../redux/dialogs-reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { withAuthRedirect } from "../../HOC/withAuthRedirect";
-import {getAllDialogs} from '../../redux/dialogs-reducer'
-
+import {getAllDialogs, getMessages} from '../../redux/dialogs-reducer'
 
 const DialogsContainer = () => {
   const dialogsPage = useSelector((state) => state.dialogsPage);
@@ -13,6 +12,7 @@ const DialogsContainer = () => {
 
   useEffect(()=>{
     getAllDialogs()(dispatch);
+    getMessages(15439)(dispatch);
   },[dispatch])
 
   return (

@@ -2,12 +2,12 @@ import {dialogsAPI} from '../api/api'
 
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const GET_DIALOGS = 'GET_DIALOGS';
+const GET_MESSAGES = 'GET_MESSAGES';
 
 let initialState = {
-    messages: [
-        {id: 1, message: "Hi!"},
-        {id: 2, message: "Lets play some Dota!"}],
-    dialogs: []
+    messages: [],
+    dialogs: [],
+    initialized: false
 }
 
 const dialogsReducer = (state = initialState, action) => {
@@ -26,18 +26,28 @@ const dialogsReducer = (state = initialState, action) => {
                 dialogs: action.payload,
             };
 
+        case GET_MESSAGES:
+            return {
+                ...state,
+                messages: action.payload,
+            };
+
         default:
             return state;
     }
 }
 export const addMessageCreator = (newMessageBody) => ({type: ADD_MESSAGE, newMessageBody});
 export const getDialogsAC = (payload) => ({type: GET_DIALOGS, payload});
-
+export const getMessagesAC = (payload) => ({type: GET_MESSAGES, payload});
 
 export const getAllDialogs = () => async (dispatch) => {
         let data = await dialogsAPI.getDialogs();
-        console.log(data);
         dispatch(getDialogsAC(data));
+        };
+
+export const getMessages = (userId) => async (dispatch) => {
+        let data = await dialogsAPI.getMessages(userId);
+        dispatch(getMessagesAC(data));
         };
 
         

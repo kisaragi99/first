@@ -16,7 +16,7 @@ const Dialogs = (props) => {
         .map((dialog => <DialogItem name={dialog.userName} id={dialog.id} avatar={!dialog.photos.small ? avatar : dialog.photos.small } key={dialog.id}/>)
         );
     let messagesElement = props.dialogsPage.messages
-        .map((message => <MessageItem message={message.message} key={message.id}/>)
+        .map((message => <MessageItem message={message.body} key={message.id} senderName={message.senderName}/>)
         );
 
     const AddMessageForm = (props) => {
