@@ -3,19 +3,19 @@ import Dialogs from "./Dialogs";
 import { addMessageCreator } from "../../redux/dialogs-reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { withAuthRedirect } from "../../HOC/withAuthRedirect";
-import {getAllDialogs, getMessages} from '../../redux/dialogs-reducer'
+import { intializeDialogs } from '../../redux/dialogs-reducer';
+import Loader from '../Loaders/Loader';
 
 const DialogsContainer = () => {
   const dialogsPage = useSelector((state) => state.dialogsPage);
-
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    getAllDialogs()(dispatch);
-    getMessages(15439)(dispatch);
+    intializeDialogs(15439)(dispatch);
   },[dispatch])
-
+    
   return (
+    !dialogsPage.initialized ? <Loader/> : 
     <Dialogs
       dialogsPage={dialogsPage}
       addMessage={(newMessageBody) => {
@@ -23,6 +23,7 @@ const DialogsContainer = () => {
       }}
     />
   );
+
 };
 
 export default withAuthRedirect(DialogsContainer);

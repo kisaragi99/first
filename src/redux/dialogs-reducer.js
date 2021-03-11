@@ -3,6 +3,7 @@ import {dialogsAPI} from '../api/api'
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const GET_DIALOGS = 'GET_DIALOGS';
 const GET_MESSAGES = 'GET_MESSAGES';
+const INITIALIZE_DIALOGS = 'INITIALIZE_DIALOGS';
 
 let initialState = {
     messages: [],
@@ -31,6 +32,11 @@ const dialogsReducer = (state = initialState, action) => {
                 ...state,
                 messages: action.payload,
             };
+            case INITIALIZE_DIALOGS:
+            return {
+                ...state,
+                initialized: true,
+            };
 
         default:
             return state;
@@ -39,6 +45,8 @@ const dialogsReducer = (state = initialState, action) => {
 export const addMessageCreator = (newMessageBody) => ({type: ADD_MESSAGE, newMessageBody});
 export const getDialogsAC = (payload) => ({type: GET_DIALOGS, payload});
 export const getMessagesAC = (payload) => ({type: GET_MESSAGES, payload});
+export const initializeDialogsAC = () => ({type: INITIALIZE_DIALOGS})
+
 
 export const getAllDialogs = () => async (dispatch) => {
         let data = await dialogsAPI.getDialogs();
@@ -50,6 +58,12 @@ export const getMessages = (userId) => async (dispatch) => {
         dispatch(getMessagesAC(data));
         };
 
+export const intializeDialogs = (userId) => async (dispatch) =>{
+        let diaglosPromise = getAllDialogs()(dispatch);
+        let messagesPromise = getMessages(userId)(dispatch);
+        await Promise.all([diaglosPromise,messagesPromise]);
+        dispatch(initializeDialogsAC());
+}
         
 export default dialogsReducer;
 
