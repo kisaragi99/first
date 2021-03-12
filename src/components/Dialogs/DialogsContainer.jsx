@@ -18,9 +18,6 @@ const DialogsContainer = () => {
     !dialogsPage.initialized ? <Loader/> : 
     <Dialogs
       dialogsPage={dialogsPage}
-      addMessage={(newMessageBody) => {
-        dispatch(addMessageCreator(newMessageBody));
-      }}
     />
   );
 

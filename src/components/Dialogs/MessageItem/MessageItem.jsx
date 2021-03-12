@@ -5,6 +5,7 @@ const MessageItem = (props) => {
     return (
         <div className={s.messagesBox}>
             <div className={s.senderName}>{props.senderName}: </div>
+            <div className={s.senderName}>{props.recipientId}(reciever)</div>
             <div className={s.message}>{props.message}</div>
         </div>
 

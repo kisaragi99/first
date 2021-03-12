@@ -1,36 +1,14 @@
 .main {
     display: grid;
     grid-template-columns: 2fr 8fr;
-
+   
 }
 
 .dialogs {
     border-right: 1px solid #D6D9DC;
     border-bottom: 1px solid #D6D9DC;
     font-family: "Yu Gothic UI", sans-serif;
-    max-width: 324px;
-
-}
-
-.dialog {
-    margin: 15px 0 15px 15px;
-    border: 1px solid cornflowerblue;
-    word-wrap: break-word;
-}
-
-.messages {
-    font-family: "Yu Gothic UI", sans-serif;
-
-}
-
-.message {
-    margin: 15px 0 15px 15px;
-    border: 1px solid cornflowerblue;
-    max-width: 1286px;
-    word-wrap: break-word;
-}
-
-.messageSendArea{
-    display: flex;
-    margin: 5px 0 0 5px;
+    width: 720px;
+    max-width: 100%;
+    border: 1px solid black;
 }

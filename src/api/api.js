@@ -100,10 +100,11 @@ export const dialogsAPI = {
     getDialogs() {
         return instance.get('dialogs').then(response => response.data);
     },
-    sendMessage(userId, message){
-        return instance.post(`dialogs/${userId}/messages`, {body: message}).then(response => response.data);
-    },
+    // sendMessage(userId, message){
+    //     return instance.post(`dialogs/${userId}/messages`, {body: message}).then(response => response.data);
+    // }, Это пока что не используется, просто оставил чтобы снова не писать в будущем.
+
     getMessages(userId = 15439, page = 1, count = 9){
         return instance.get(`dialogs/${userId}/messages?page=${page}&count=${count}`).then(response => response.data.items);
-    }
+    } 
 }

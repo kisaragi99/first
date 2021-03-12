@@ -1,6 +1,5 @@
 import {dialogsAPI} from '../api/api'
 
-const ADD_MESSAGE = 'ADD-MESSAGE';
 const GET_DIALOGS = 'GET_DIALOGS';
 const GET_MESSAGES = 'GET_MESSAGES';
 const INITIALIZE_DIALOGS = 'INITIALIZE_DIALOGS';
@@ -14,12 +13,6 @@ let initialState = {
 const dialogsReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_MESSAGE:
-            let text = action.newMessageBody;
-            return {
-                ...state,
-                messages: [...state.messages, {id: 9, message: text}],
-            };
         
         case GET_DIALOGS:
             return {
@@ -32,7 +25,8 @@ const dialogsReducer = (state = initialState, action) => {
                 ...state,
                 messages: action.payload,
             };
-            case INITIALIZE_DIALOGS:
+
+        case INITIALIZE_DIALOGS:
             return {
                 ...state,
                 initialized: true,
@@ -42,11 +36,10 @@ const dialogsReducer = (state = initialState, action) => {
             return state;
     }
 }
-export const addMessageCreator = (newMessageBody) => ({type: ADD_MESSAGE, newMessageBody});
+
 export const getDialogsAC = (payload) => ({type: GET_DIALOGS, payload});
 export const getMessagesAC = (payload) => ({type: GET_MESSAGES, payload});
 export const initializeDialogsAC = () => ({type: INITIALIZE_DIALOGS})
-
 
 export const getAllDialogs = () => async (dispatch) => {
         let data = await dialogsAPI.getDialogs();
@@ -64,34 +57,12 @@ export const intializeDialogs = (userId) => async (dispatch) =>{
         await Promise.all([diaglosPromise,messagesPromise]);
         dispatch(initializeDialogsAC());
 }
-        
+// Здесь, получив массив всех диалогов, надо вызывать getMessages столько раз, сколько есть диалогов.
+// Вызывав getMessages мы получаем массив всех сообщений с каким-то человеком(диалогом), то есть в итоге у нас будет массив массивов.
+// И надо будет взять последний элемент каждого подмассива и запушить его в новый массив(message2) и отдать его в презентационный компонент
+
+// надо подумать над тем, нужны ли мне две отдельные санки (getAllDialogs и getMessages)
+
+// В итоге - проблема в том, как мне получить массив массивов. Если getMessages срабатывает, то он перезаписывает старый стэйт.
+// может сделать так, чтобы он не перезаписывал, а пушил в копию старого массива? Тогда после каждого вызова getMessages массив сообщений будет пополняться новыми массивами.
 export default dialogsReducer;
-
-
-
-
-
-
-
-
-// let initialState = {
-//     messages: [
-//         {id: 1, message: "Hi!"},
-//         {id: 2, message: "Lets play some Dota!"}],
-//     dialogs: [
-//         {
-//             id: 1,
-//             name: "Lex",
-//             avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRKDM99rvtftg7ZHF5_cfcYMIddC35KSuaJ8Q&usqp=CAU"
-//         },
-//         {
-//             id: 2,
-//             name: "Lost",
-//             avatar: "https://svirtus.cdnvideo.ru/5BwwcdCMwq3EQKgjMP-3rOqooBg=/0x0:209x204/800x0/filters:quality(100)/https://hb.bizmrg.com/cybersportru-media/35/354cfce6f19b2bc856220f4c5f13b3c2.jpg?m=d668102fd143f399db9880ce43f8a1ae"
-//         },
-//         {
-//             id: 3,
-//             name: "Smile",
-//             avatar: "https://svirtus.cdnvideo.ru/T2Rx94j-A62VChGWYun076lAK98=/0x0:250x250/800x0/filters:quality(100)/https://hb.bizmrg.com/cybersportru-media/73/735bd29e228660f8d7084f56351019be.jpg?m=693b8e5540cbd57774380aef7b191044"
-//         }]
-// }

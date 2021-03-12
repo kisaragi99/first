@@ -13,6 +13,9 @@ const DialogItem = (props) => {
                 <div className={s.dialog}>
                     <NavLink className={s.link} to={path}>{props.name}</NavLink>
                 </div>
+                <div className={s.message}>
+                    {props.message}
+                </div>
             </div>
         </div>
     )

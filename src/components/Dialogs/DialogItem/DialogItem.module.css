@@ -1,7 +1,13 @@
 .dialog {
     margin: 5px 0 0 5px;
     word-wrap: break-word;
-
+    grid-area: dialog;
+}
+.message {
+    margin: 5px 0 0 5px;
+    word-wrap: break-word;
+    color: rgb(65, 63, 63);
+    grid-area: message;
 }
 
 .link {
@@ -10,16 +16,23 @@
 }
 
 .dialogWrapper {
-    display: flex;
+    display: grid;
     background: #EEEEEE;
+    height: 72px;
     margin: 5px;
     border-radius: 9px;
+    grid-template-columns: 1fr 9fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    'avatar dialog'
+    'avatar message';
 }
 
 .dialogAvatar {
     margin: 5px 0 0 5px;
-
+    grid-area: avatar;
 }
+
 .dialogAvatar img{
     width: 60px;
     border-radius: 50px;
