@@ -106,5 +106,12 @@ export const dialogsAPI = {
 
     getMessages(userId = 15439, page = 1, count = 9){
         return instance.get(`dialogs/${userId}/messages?page=${page}&count=${count}`).then(response => response.data.items);
-    } 
+    },
+    getAllUserMessages(userId = 15439){
+        return instance.get(`dialogs/${userId}/messages`).then(response => response.data.items);
+    }  // тут я получаю массив объектов, в котором каждый объект это сообщение.
 }
+
+// getAllUserMessages(userId, page = 1, count = 1){
+//     return instance.get(`dialogs/${userId}/messages?page=${page}&count=${count}`).then(response => response.data.items);
+// }  

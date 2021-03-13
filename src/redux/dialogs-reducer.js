@@ -1,11 +1,11 @@
 import {dialogsAPI} from '../api/api'
 
 const GET_DIALOGS = 'GET_DIALOGS';
-const GET_MESSAGES = 'GET_MESSAGES';
+const GET_LAST_MESSAGES = 'GET_LAST_MESSAGES';
 const INITIALIZE_DIALOGS = 'INITIALIZE_DIALOGS';
 
 let initialState = {
-    messages: [],
+    lastMessages: [],
     dialogs: [],
     initialized: false
 }
@@ -20,10 +20,10 @@ const dialogsReducer = (state = initialState, action) => {
                 dialogs: action.payload,
             };
 
-        case GET_MESSAGES:
+        case GET_LAST_MESSAGES:
             return {
                 ...state,
-                messages: action.payload,
+                lastMessages: action.payload, 
             };
 
         case INITIALIZE_DIALOGS:
@@ -38,7 +38,7 @@ const dialogsReducer = (state = initialState, action) => {
 }
 
 export const getDialogsAC = (payload) => ({type: GET_DIALOGS, payload});
-export const getMessagesAC = (payload) => ({type: GET_MESSAGES, payload});
+export const getLastMessageAC = (payload) => ({type: GET_LAST_MESSAGES, payload});
 export const initializeDialogsAC = () => ({type: INITIALIZE_DIALOGS})
 
 export const getAllDialogs = () => async (dispatch) => {
@@ -46,17 +46,22 @@ export const getAllDialogs = () => async (dispatch) => {
         dispatch(getDialogsAC(data));
         };
 
-export const getMessages = (userId) => async (dispatch) => {
-        let data = await dialogsAPI.getMessages(userId);
-        dispatch(getMessagesAC(data));
-        };
-
-export const intializeDialogs = (userId) => async (dispatch) =>{
+export const intializeDialogs = (dialogsArray) => async (dispatch) =>{
         let diaglosPromise = getAllDialogs()(dispatch);
-        let messagesPromise = getMessages(userId)(dispatch);
-        await Promise.all([diaglosPromise,messagesPromise]);
+        let messagesPromise = getMessages(dialogsArray)(dispatch);
+        await Promise.all([messagesPromise, diaglosPromise]);
         dispatch(initializeDialogsAC());
 }
+export const getMessages = (dialogsArray) => async (dispatch) => {
+        let data = [];
+
+        for(let i = 0; i < dialogsArray.length; i ++) {
+            let allMessagesForSomeUser = await dialogsAPI.getAllUserMessages(dialogsArray[i].id)
+            data.push(allMessagesForSomeUser.slice(-1)[0].body);
+        };
+
+        dispatch(getLastMessageAC(data));
+    }
 // Здесь, получив массив всех диалогов, надо вызывать getMessages столько раз, сколько есть диалогов.
 // Вызывав getMessages мы получаем массив всех сообщений с каким-то человеком(диалогом), то есть в итоге у нас будет массив массивов.
 // И надо будет взять последний элемент каждого подмассива и запушить его в новый массив(message2) и отдать его в презентационный компонент
@@ -65,4 +70,6 @@ export const intializeDialogs = (userId) => async (dispatch) =>{
 
 // В итоге - проблема в том, как мне получить массив массивов. Если getMessages срабатывает, то он перезаписывает старый стэйт.
 // может сделать так, чтобы он не перезаписывал, а пушил в копию старого массива? Тогда после каждого вызова getMessages массив сообщений будет пополняться новыми массивами.
+
+// Следующая проблема - как мне вызвать несколько запросов getMessages? - Циклом, который будет вызываться столько раз, сколько есть всего диалогов, уже полученных.
 export default dialogsReducer;

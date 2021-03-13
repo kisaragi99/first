@@ -37,3 +37,21 @@
     width: 60px;
     border-radius: 50px;
 }
+.loadingMessage{
+    font-size: 14px;
+	color: #fff;
+    width: 360px;
+    height: 9px;
+	padding: 10px;
+	display: inline-block;
+	border-radius: 5px;
+	animation: blinkingBackground 2s infinite;
+
+}
+@keyframes blinkingBackground{
+	0%		{ background-color: #EAEAEA;}
+	25%		{ background-color: #DCDCDC;}
+	50%		{ background-color: #E3E3E3;}
+	75%		{ background-color: #DCDCDC;}
+	100%	{ background-color: #EAEAEA;}
+}

@@ -1,7 +1,6 @@
 .main {
     display: grid;
     grid-template-columns: 2fr 8fr;
-   
 }
 
 .dialogs {
@@ -10,5 +9,4 @@
     font-family: "Yu Gothic UI", sans-serif;
     width: 720px;
     max-width: 100%;
-    border: 1px solid black;
 }
