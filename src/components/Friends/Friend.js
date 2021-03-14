@@ -6,7 +6,7 @@ import {NavLink} from "react-router-dom";
 
 
 let Friend = ({friend, followingInProcess, follow, unfollow}) => {
-
+    
     return <>
                     <div className={s.friendsBox} key={friend.id}>
                         <div>

@@ -54,13 +54,13 @@ export const intializeDialogs = (dialogsArray) => async (dispatch) =>{
 }
 export const getMessages = (dialogsArray) => async (dispatch) => {
         let data = [];
-
         for(let i = 0; i < dialogsArray.length; i ++) {
             let allMessagesForSomeUser = await dialogsAPI.getAllUserMessages(dialogsArray[i].id)
             data.push(allMessagesForSomeUser.slice(-1)[0].body);
         };
 
-        dispatch(getLastMessageAC(data));
+    if(data.length > 0) {
+        dispatch(getLastMessageAC(data));}
     }
 // Здесь, получив массив всех диалогов, надо вызывать getMessages столько раз, сколько есть диалогов.
 // Вызывав getMessages мы получаем массив всех сообщений с каким-то человеком(диалогом), то есть в итоге у нас будет массив массивов.

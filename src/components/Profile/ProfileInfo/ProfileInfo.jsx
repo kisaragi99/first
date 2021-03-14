@@ -16,7 +16,7 @@ const ProfileFormHooks = ({ profile, updateProfile, userId, isUpdated }) => {
   });
 
   const onSubmit = (data) => updateProfile(data, userId);
-
+  
   let successMessage = "*Новые данные успешно сохранены"
 
   return (
@@ -86,7 +86,7 @@ const ProfileInfo = ({
       savePhoto(e.target.files[0]);
     }
   };
-
+  
   const [showEdit, setShowEdit] = useState(false);
 
   const handleEdit = () => {

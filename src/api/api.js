@@ -104,10 +104,10 @@ export const dialogsAPI = {
     //     return instance.post(`dialogs/${userId}/messages`, {body: message}).then(response => response.data);
     // }, Это пока что не используется, просто оставил чтобы снова не писать в будущем.
 
-    getMessages(userId = 15439, page = 1, count = 9){
-        return instance.get(`dialogs/${userId}/messages?page=${page}&count=${count}`).then(response => response.data.items);
-    },
-    getAllUserMessages(userId = 15439){
+    // getMessages(userId = 15439, page = 1, count = 9){
+    //     return instance.get(`dialogs/${userId}/messages?page=${page}&count=${count}`).then(response => response.data.items);
+    // }, Это тоже, пока что не используется, понадобится на этапе создания компонента, который будет показывать диалог с кокрентным человеком.
+    getAllUserMessages(userId){
         return instance.get(`dialogs/${userId}/messages`).then(response => response.data.items);
     }  // тут я получаю массив объектов, в котором каждый объект это сообщение.
 }

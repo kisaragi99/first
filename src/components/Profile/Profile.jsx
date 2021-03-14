@@ -8,7 +8,7 @@ const Profile = (props) => {
   if (!props.profile) {
     return <Loader />;
   }
-
+  
   return (
     <div className={s.wrapper}>
       <ProfileInfo

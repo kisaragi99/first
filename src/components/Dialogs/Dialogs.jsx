@@ -6,11 +6,6 @@ import avatar from '../../assets/images/avatar.png';
 const Dialogs = (props) => {
     console.log("dialogs rendered")
 
-    // Массив всех диалогов (ну, например, 10) allDialogs = [props.dialogsPage.dialogs] this is an array
-    // Особенность заключается в том, что я, одним запросом могу вытащить только 1 диалог, то есть мне надо отправить чейн запросов?
-    // И вопрос - откуда их отправить? В том месте уже должен быть массив всех диалогов... (allDialogs = [props.dialogsPage.dialogs])
-    // то есть их можно получить в любом месте, а сюда уже должны прийти просто два массива(1- всех диалогов, 2- последние сообщения каждого диалога)
-
     const message2 = props.dialogsPage.lastMessages;
 
     // вот здесь вместо message2 надо чтобы был массив всех последних сообщений всех диалогов.

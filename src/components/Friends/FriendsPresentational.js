@@ -5,7 +5,7 @@ import Friend from "./Friend";
 
 
 let FriendsPresentational = ({totalFriendsCount, pageSize, friends, followingInProcess, follow, unfollow, currentPage, onPageChanged, ...props}) => {
-
+    
     return <>
         {
         friends.map((friend => <Friend key={friend.id}

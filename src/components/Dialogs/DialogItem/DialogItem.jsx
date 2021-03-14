@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 
 const DialogItem = (props) => {
     let path = `/dialogs/${props.id}`;
-    let loadingMessage = <div className={s.loadingMessage}></div>; // Здесь вместо сообщения надо поставить мигающий полупрозрачный бэкграунд.
+    let loadingMessage = <div className={s.loadingMessage}></div>; 
 
     return (
         <div>
