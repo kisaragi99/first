@@ -5,7 +5,6 @@ import avatar from '../../assets/images/avatar.png';
 
 const Dialogs = (props) => {
     console.log("dialogs rendered")
-
     const message2 = props.dialogsPage.lastMessages;
 
     // вот здесь вместо message2 надо чтобы был массив всех последних сообщений всех диалогов.

@@ -26,7 +26,6 @@ export const initializeApp = () => async (dispatch) => {
     let promise = dispatch(authMe());
     await Promise.all([promise])
     dispatch(initialized());
-
 }
 
 export default appReducer;
