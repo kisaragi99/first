@@ -1,0 +1,89 @@
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  }
+  
+  
+  .header{
+    display: flex;
+    flex-direction: row;
+    height: 3rem;
+    border-bottom: 1px solid #D6D9DC;
+  }
+  .backButton{
+  
+  }
+  .friendInfo{
+  margin-left: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  }
+  .firendNameHeader{
+    
+  }
+  .firendTime{
+  
+  }
+  
+  
+  
+  
+  
+  .mainBody{
+    height: 30rem;
+    border-bottom: 1px solid #D6D9DC;
+  }
+  .friendMessageWrapper{
+   display: flex;
+   margin: 7px;
+  }
+  .friendAvatar{
+  
+  } 
+  .friendInnerWrapper{
+  
+  }
+  .friendMessageName{
+  
+  }
+  .friendMessageBody{
+  
+  }
+  
+  
+  .selfMessageWrapper{
+    display: flex;
+    margin: 7px;
+  }
+  .selfAvatar{
+  
+  }
+  .friendInnerWrapper{
+  
+  }
+  .selfMessageName{
+    
+  }
+  .selfMessageBody{
+  
+  }
+  
+  
+  
+  .footerWrapper{
+    border-bottom: 1px solid #D6D9DC;
+    height: 5rem;
+  }
+  .footer{
+    height: 3rem;
+    margin: 27px;
+  }
+  .sendMessage{
+  
+  }
+  
+  .sendMessageButton{
+  
+  }

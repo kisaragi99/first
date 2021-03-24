@@ -11,7 +11,7 @@ import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import Loader from "./components/Loaders/Loader";
 import store from "./redux/redux-store";
-
+import DialogPrivatePage from "./components/Dialogs/DialogPrivatePage/DialogPrivatePage"
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
@@ -48,6 +48,7 @@ class App extends React.Component {
                             <Route exact path="/" render={() => <Redirect to={"/profile"}/>}/>
                             <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
                             <Route path="/dialogs" render={() => <DialogsContainer/>}/>
+                            <Route path="/dialogsprivate" render={() => <DialogPrivatePage/>}/>
                             <Route path="/friends" render={() => <FriendsContainer/>}/>
                             <Route path="/news" render={() => <News/>}/>
                             <Route path="/settings" render={() => <Settings/>}/>
@@ -74,7 +75,8 @@ let AppContainer = compose(
 // Возможен баг с роутами, поэтому мы оборачиваем в withRouter
 
 let MainApp = () => {
-    return (<BrowserRouter>
+    return (
+    <BrowserRouter>
         <Provider store={store}>
             <AppContainer/>
         </Provider>

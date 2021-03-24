@@ -9,12 +9,12 @@ const DialogsContainer = () => {
   const dispatch = useDispatch();
   
   useEffect(()=>{
-    dispatch(getAllDialogs())
-  },[dispatch])
+    dispatch(getAllDialogs());
+  },[dispatch]);
 
   useEffect(()=>{
     dispatch(getMessages(dialogsPage.dialogs));
-  },[dialogsPage.dialogs, dispatch])
+  },[dialogsPage.dialogs, dispatch]);
 
   return (
     <Dialogs
