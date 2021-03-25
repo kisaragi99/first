@@ -48,7 +48,7 @@ class App extends React.Component {
                             <Route exact path="/" render={() => <Redirect to={"/profile"}/>}/>
                             <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
                             <Route path="/dialogs" render={() => <DialogsContainer/>}/>
-                            <Route path="/dialogsprivate" render={() => <DialogPrivatePage/>}/>
+                            <Route path="/privatepage/:dialogId?" render={() => <DialogPrivatePage/>}/>
                             <Route path="/friends" render={() => <FriendsContainer/>}/>
                             <Route path="/news" render={() => <News/>}/>
                             <Route path="/settings" render={() => <Settings/>}/>

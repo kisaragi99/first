@@ -3,7 +3,7 @@ import s from "./DialogItem.module.css"
 import {NavLink} from "react-router-dom";
 
 const DialogItem = (props) => {
-    let path = `/dialogs/${props.id}`;
+    let path = `/privatepage/${props.id}`;
     let loadingMessage = <div className={s.loadingMessage}></div>; 
 
     return (

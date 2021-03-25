@@ -2,11 +2,13 @@ import {dialogsAPI} from '../api/api'
 
 const SET_DIALOGS = 'SET_DIALOGS';
 const SET_LAST_MESSAGES = 'SET_LAST_MESSAGES';
+const SET_SOME_USER_MESSAGES = 'SET_SOME_USER_MESSAGES';
 
 let initialState = {
     lastMessages: [],
     dialogs: [],
-    initialized: false
+    initialized: false,
+    someUserMessages: [{}]
 }
 
 const dialogsReducer = (state = initialState, action) => {
@@ -24,6 +26,12 @@ const dialogsReducer = (state = initialState, action) => {
                 ...state,
                 lastMessages: action.payload, 
             };
+            
+        case SET_SOME_USER_MESSAGES:
+            return {
+                ...state,
+                someUserMessages: action.payload, 
+            };
 
         default:
             return state;
@@ -37,6 +45,8 @@ export const setDialogsAC = (payload) => {
 export const setLastMessageAC = (payload) => {
     return {type: SET_LAST_MESSAGES, payload}
 };
+
+export const setSomeUserMessagesAC = payload => ({type: SET_SOME_USER_MESSAGES, payload});
 
 export const getAllDialogs = () => async (dispatch) => {
         let data = await dialogsAPI.getDialogs();
@@ -54,5 +64,10 @@ export const getMessages = (dialogsArray) => async (dispatch) => {
         dispatch(setLastMessageAC(data));
     }
 }
+export const getSomeUserMessages = (userId) => async (dispatch) => {
+        let data = await dialogsAPI.getAllUserMessages(userId);
+        dispatch(setSomeUserMessagesAC(data));
+        };
+
 
 export default dialogsReducer;
