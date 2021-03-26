@@ -12,7 +12,6 @@ const Navbar = () => {
                     <NavElement title="News" addres = "/news"/>
                     <NavElement title="Messages" addres = "/dialogs"/>
                     <NavElement title="Settings" addres = "/settings"/>
-                    <NavElement title="testPage" addres = "/dialogsprivate"/>
             </div>
         </nav>
     );
