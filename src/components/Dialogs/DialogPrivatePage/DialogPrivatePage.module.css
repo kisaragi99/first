@@ -32,7 +32,7 @@
   
   
   .mainBody{
-    height: 30rem;
+    height: auto;
     border-bottom: 1px solid #D6D9DC;
   }
   .friendMessageWrapper{

@@ -4,16 +4,16 @@ import {profileAPI} from '../api/api'
 const SET_DIALOGS = 'SET_DIALOGS';
 const SET_LAST_MESSAGES = 'SET_LAST_MESSAGES';
 const SET_SOME_USER_MESSAGES = 'SET_SOME_USER_MESSAGES';
-const SET_SENDER_PROFILE = 'SET_SENDER_PROFILE';
-const SET_RECIPIENT_PROFILE = 'SET_RECIPIENT_PROFILE';
-
+const SET_OPPONENT_PROFILE = 'SET_OPPONENT_PROFILE';
+const SET_SELF_PROFILE = 'SET_SELF_PROFILE';
+const MESSAGE_HAS_BEEN_SENT = 'MESSAGE_HAS_BEEN_SENT';
 
 let initialState = {
     lastMessages: [],
     dialogs: [],
     initialized: false,
     someUserMessages: [{}],
-    senderProfile: {
+    opponentProfile: {
         data: {
             photos: {
                 small: null,
@@ -21,14 +21,15 @@ let initialState = {
             }
         }
     },
-    recipientProfile: {
+    selfProfile: {
     data: {
         photos: {
             small: null,
             large: null,
         }
     }
-}
+}, 
+    messageHasBeenSent: null
 }
 
 const dialogsReducer = (state = initialState, action) => {
@@ -52,17 +53,23 @@ const dialogsReducer = (state = initialState, action) => {
                 ...state,
                 someUserMessages: action.payload, 
             };
-        case SET_SENDER_PROFILE :
+        case SET_OPPONENT_PROFILE :
             return {
                 ...state,
-                senderProfile: action.payload, 
+                opponentProfile: action.payload, 
             };
 
-        case SET_RECIPIENT_PROFILE :
+        case SET_SELF_PROFILE :
             return {
                 ...state,
-                recipientProfile: action.payload,
+                selfProfile: action.payload,
             };
+            
+        case MESSAGE_HAS_BEEN_SENT :
+                return {
+                    ...state,
+                    messageHasBeenSent: action.payload,
+                };
 
         default:
             return state;
@@ -76,20 +83,20 @@ export const setLastMessageAC = (payload) => {
     return {type: SET_LAST_MESSAGES, payload}
 };
 export const setSomeUserMessagesAC = payload => ({type: SET_SOME_USER_MESSAGES, payload});
-export const setSenderProfileAC = payload => ({type: SET_SENDER_PROFILE , payload});
-export const setRecipientProfileAC = payload => ({type: SET_RECIPIENT_PROFILE , payload});
+export const setSenderProfileAC = payload => ({type: SET_OPPONENT_PROFILE , payload});
+export const setRecipientProfileAC = payload => ({type: SET_SELF_PROFILE , payload});
+export const messageHasBeenSentAC = payload => ({type: MESSAGE_HAS_BEEN_SENT, payload})
 
 
 
-
-export const getSenderProfile = (senderId) => async (dispatch) => {
-  let data = await profileAPI.getProfileAPI(senderId);
+export const getOpponentProfile = (opponentId) => async (dispatch) => {
+  let data = await profileAPI.getProfileAPI(opponentId);
   dispatch(setSenderProfileAC(data));
 };
 
 
-export const getRecipientProfile = (recipientId) => async (dispatch) => {
-    let data = await profileAPI.getProfileAPI(recipientId);
+export const getSelfProfile = (selfId) => async (dispatch) => {
+    let data = await profileAPI.getProfileAPI(selfId);
    dispatch(setRecipientProfileAC (data));
 };
 
@@ -120,4 +127,11 @@ export const getSomeUserMessages = (userId) => async (dispatch) => {
         };
 
 
+
+export const sendMessage = (userId, message) => async (dispatch) =>{
+    let data = await dialogsAPI.sendMessage(userId, message)
+        if(data.resultCode === 0){
+            dispatch(messageHasBeenSentAC("success"));
+        }
+};
 export default dialogsReducer;

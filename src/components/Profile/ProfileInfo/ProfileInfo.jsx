@@ -17,7 +17,7 @@ const ProfileFormHooks = ({ profile, updateProfile, userId, isUpdated }) => {
 
   const onSubmit = (data) => updateProfile(data, userId);
   
-  let successMessage = "*Новые данные успешно сохранены"
+  const successMessage = "*Новые данные успешно сохранены"
 
   return (
     <>

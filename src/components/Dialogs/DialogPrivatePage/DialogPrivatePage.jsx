@@ -2,47 +2,60 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import s from "./DialogPrivatePage.module.css"
 import { withRouter } from "react-router-dom";
-import {getSomeUserMessages, getSenderProfile, getRecipientProfile} from "../../../redux/dialogs-reducer"
+import {getSomeUserMessages, getOpponentProfile, getSelfProfile, sendMessage} from "../../../redux/dialogs-reducer";
+import { useForm } from "react-hook-form";
+
 
 const DialogPrivatePage = (props) => {
 
     const dispatch = useDispatch();
     const dialogsPage = useSelector(state => state.dialogsPage);
-    const someUserMessages = dialogsPage.someUserMessages;
+    const someUserMessages = dialogsPage.someUserMessages; // Если по завершении работы в этом компоненте ничто кроме массива сообщений не будет нужно, то надо взять только их, а не целиком диалогс пэйдж.
+ 
+    //Здесь начинаются константы, которые не изменяются в зависимости от конкретного сообщения. Они уже есть при первом рендере.
+    const opponentId = props.match.params.dialogId; // opponentId Получен из withRouter.
+    const selfId = useSelector(state => state.auth.userId); // selfId Получен из стэйта.
 
-    const senderName = someUserMessages[0].senderName;
-    const opponentId = props.match.params.dialogId; // можно получить из props.match.params.dialogId, и назвать - opponentId
-    const recipientId = someUserMessages[0].recipientId;
-    // И вообще, отказаться от sender и recipient. И сделать opponent и self.
-    const senderPhoto = dialogsPage.senderProfile.data.photos.small;
-    const recipientPhoto = dialogsPage.recipientProfile.data.photos.small;
-
+    // Здесь также, константы, которые не изменяются, но они есть не сразу, а мы их получаем через useEffect, основанный на предыдущих константах.
+    const opponentName = dialogsPage.opponentProfile.data.fullName; // Взять из профиля, который мы получим ниже.
+    const opponentPhoto = dialogsPage.opponentProfile.data.photos.small;
+    const selfPhoto = dialogsPage.selfProfile.data.photos.small;
 
     useEffect(()=>{
         if(opponentId !== undefined){
-            dispatch(getSenderProfile(opponentId))
+            dispatch(getOpponentProfile(opponentId))
         }
     },[dispatch, opponentId]);
 
+
     useEffect(()=>{
-        if(recipientId !== undefined){
-            dispatch(getRecipientProfile(recipientId))
+        if(selfId !== undefined){
+            dispatch(getSelfProfile(selfId))
         }
-    },[dispatch, recipientId]);
+    },[dispatch, selfId]);
+
 
     useEffect(()=>{
         dispatch(getSomeUserMessages(props.match.params.dialogId))
     },[dispatch, props.match.params.dialogId]);
 
-    console.log("private rendered");
-    
+
+
+    const { register, errors, handleSubmit } = useForm();
+
+    const onSubmit = (data) => {
+        dispatch(sendMessage(opponentId, data.messageBody));
+    }
+
+    console.log('DPP Rendered');
+
     return (
         // header with button and aite no jouhou
         <div className={s.wrapper}>
             <div className={s.header}>
-                <button className={s.backButton}>Назад</button> 
+                <button className={s.backButton} onClick={props.history.goBack}>Назад</button> 
                 <div className={s.friendInfo}>
-                    <div className={s.firendNameHeader}>{recipientId}</div>
+                    <div className={s.firendNameHeader}>{opponentName}</div>
                     <div className={s.friendTime}>Something goes here</div>
                 </div>
             </div>
@@ -51,7 +64,7 @@ const DialogPrivatePage = (props) => {
                 {someUserMessages.map((message, index)=>{ 
                     return (
                         <div className={s.friendMessageWrapper} key={index}>
-                            <img className={s.friendAvatar} src={senderPhoto} alt=""></img>
+                            <img className={s.friendAvatar} src={message.senderId === selfId ? selfPhoto : opponentPhoto} alt=""></img>
                             <div className={s.friendInnerWrapper}>
                                 <div className={s.friendMessageName}>{message.senderName}</div>
                                 <div className={s.friendMessageBody}>{message.body}</div>
@@ -63,8 +76,17 @@ const DialogPrivatePage = (props) => {
 {/* footer */}
             <div className={s.footerWrapper}>
                 <div className={s.footer}>
-                    <input className={s.sendMessage}></input>
-                    <button className={s.sendMessageButton}>Отправить сообщение</button>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <input type="text" 
+                               name={"messageBody"}
+                               ref={register({ required: true, maxLength: 500 })}
+                               className={errors.messageBody ? null : null}
+                               >
+                        </input>
+
+                        <input type="submit" />
+                    </form>
+                    
                 </div>
             </div>
             
