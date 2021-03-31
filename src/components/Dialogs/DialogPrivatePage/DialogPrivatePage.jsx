@@ -11,7 +11,7 @@ const DialogPrivatePage = (props) => {
     const someUserMessages = dialogsPage.someUserMessages;
 
     const senderName = someUserMessages[0].senderName;
-    const senderId = someUserMessages[0].senderId; // можно получить из props.match.params.dialogId, и назвать - opponentId
+    const opponentId = props.match.params.dialogId; // можно получить из props.match.params.dialogId, и назвать - opponentId
     const recipientId = someUserMessages[0].recipientId;
     // И вообще, отказаться от sender и recipient. И сделать opponent и self.
     const senderPhoto = dialogsPage.senderProfile.data.photos.small;
@@ -19,10 +19,10 @@ const DialogPrivatePage = (props) => {
 
 
     useEffect(()=>{
-        if(senderId !== undefined){
-            dispatch(getSenderProfile(senderId))
+        if(opponentId !== undefined){
+            dispatch(getSenderProfile(opponentId))
         }
-    },[dispatch, senderId]);
+    },[dispatch, opponentId]);
 
     useEffect(()=>{
         if(recipientId !== undefined){
