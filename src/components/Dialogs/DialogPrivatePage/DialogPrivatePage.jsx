@@ -11,9 +11,9 @@ const DialogPrivatePage = (props) => {
     const someUserMessages = dialogsPage.someUserMessages;
 
     const senderName = someUserMessages[0].senderName;
-    const senderId = someUserMessages[0].senderId;
+    const senderId = someUserMessages[0].senderId; // можно получить из props.match.params.dialogId, и назвать - opponentId
     const recipientId = someUserMessages[0].recipientId;
-  
+    // И вообще, отказаться от sender и recipient. И сделать opponent и self.
     const senderPhoto = dialogsPage.senderProfile.data.photos.small;
     const recipientPhoto = dialogsPage.recipientProfile.data.photos.small;
 
@@ -71,18 +71,3 @@ const DialogPrivatePage = (props) => {
         </div>);
 };
 export default withRouter(DialogPrivatePage);
-
-
-
-// const dispatch = useDispatch();
-//     const someUserMessages = useSelector(state => state.dialogsPage.someUserMessages);
-//     // мы получили сообщения какого-то юзера, потом мы:...    
-//     const senderName = someUserMessages[0].senderName;
-//     const senderId = someUserMessages[0].senderId;
-//     const recipientId = someUserMessages[0].recipientId;
-
-//     // Вытащили константы, которые не меняются в зависимости от сообщения.
-
-//     const senderPhoto = useSelector(state => state.dialogsPage.senderProfile.data.photos.small);
-//     const recipientPhoto = useSelector(state => state.dialogsPage.recipientProfile.data.photos.small);
-
