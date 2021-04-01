@@ -68,7 +68,7 @@ const dialogsReducer = (state = initialState, action) => {
         case MESSAGE_HAS_BEEN_SENT :
                 return {
                     ...state,
-                    messageHasBeenSent: action.payload,
+                    someUserMessages: [...state.someUserMessages, action.payload],
                 };
 
         default:
@@ -131,7 +131,8 @@ export const getSomeUserMessages = (userId) => async (dispatch) => {
 export const sendMessage = (userId, message) => async (dispatch) =>{
     let data = await dialogsAPI.sendMessage(userId, message)
         if(data.resultCode === 0){
-            dispatch(messageHasBeenSentAC("success"));
+            console.log(data);
+            dispatch(messageHasBeenSentAC(data.data.message));
         }
 };
 export default dialogsReducer;
