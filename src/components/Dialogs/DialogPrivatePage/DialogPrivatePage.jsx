@@ -63,7 +63,7 @@ const DialogPrivatePage = (props) => {
             <div className={s.mainBody}>
                 {someUserMessages.map((message, index)=>{ 
                     return (
-                        <div className={s.friendMessageWrapper} key={index}>
+                        <div className={s.friendMessageWrapper} key={index} onClick={()=>{console.log(message.id)}}>
                             <img className={s.friendAvatar} src={message.senderId === selfId ? selfPhoto : opponentPhoto} alt=""></img>
                             <div className={s.friendInnerWrapper}>
                                 <div className={s.friendMessageName}>{message.senderName}</div>
@@ -80,11 +80,11 @@ const DialogPrivatePage = (props) => {
                         <input type="text" 
                                name={"messageBody"}
                                ref={register({ required: true, maxLength: 500 })}
-                               className={errors.messageBody ? null : null}
+                               className={errors.messageBody ? s.errorInput : s.normalInput}
                                >
                         </input>
 
-                        <input type="submit" />
+                        <input type="submit" className={s.footerButton} value="send"  />
                     </form>
                     
                 </div>

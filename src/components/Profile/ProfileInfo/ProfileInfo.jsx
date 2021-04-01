@@ -65,7 +65,7 @@ const ProfileFormHooks = ({ profile, updateProfile, userId, isUpdated }) => {
 
         {isUpdated ? <div className={s.profileInfoSuccess}>{successMessage}</div> : null}
 
-        <input type="submit" />
+        <input type="submit" className={s.submitButton} value="send" />
       </form>
     </>
   );

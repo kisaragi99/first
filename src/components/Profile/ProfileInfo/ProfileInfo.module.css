@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400;500;600;700;800&display=swap');
 .avatar {
     width: 270px;
     border-radius: 9px;
@@ -54,23 +55,21 @@
     margin: 0 0 5px 15px;
 }
 
-input[type="submit"] {
-    background: #FBEDBF;
-    color: #0A3669;
-    text-transform: uppercase;
-    margin: 40px 0 0 15px;
-    padding: 20px;
-    font-size: 16px;
-    font-weight: 100;
-    letter-spacing: 5px;
+.submitButton {
+    color: rgb(2, 1, 1);
+    border-radius: 7px;
+    border: 1px solid #24ADF3;
+    height: 48px;
+    width: 108px;
+    background-color: transparent;
+    outline: none;
+    margin-left: 10px;
+    font-family: Lexend;
+    font-weight: 400;
+    margin: 15px 0 0 15px;
 }
 
-input[type="submit"]:hover {
-    background: #427DC1;
+.submitButton:focus {
+    background-color: #24ADF3;    
 }
 
-input[type="submit"]:active {
-    transition: 0.3s all;
-    transform: translateY(3px);
-    opacity: 0.8;
-}

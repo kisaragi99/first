@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;300;400;500;600;700;800&display=swap');
+
+
 .wrapper{
   display: flex;
   flex-direction: column;
@@ -38,12 +41,15 @@
   .friendMessageWrapper{
    display: flex;
    margin: 7px;
+   width: 450px;
+   height: 54px;
   }
   .friendAvatar{
-  
+   width: 54px;
+   border-radius: 50px;
   } 
   .friendInnerWrapper{
-  
+   margin-left: 9px;
   }
   .friendMessageName{
   
@@ -78,12 +84,40 @@
   }
   .footer{
     height: 3rem;
-    margin: 27px;
+    margin: 15px;
   }
-  .sendMessage{
-  
+
+
+  .footerButton{
+    color: rgb(2, 1, 1);
+    border-radius: 7px;
+    border: 1px solid #24ADF3;
+    height: 48px;
+    width: 108px;
+    background-color: transparent;
+    outline: none;
+    margin-left: 10px;
+    font-family: Lexend;
+    font-weight: 400;
   }
-  
-  .sendMessageButton{
-  
+  .footerButton:focus {     
+    background-color: #24ADF3;    
+}
+ 
+  .errorInput{
+    outline: none;
+    border: 1px solid red;
+    border-radius: 7px;
+    height: 45px;
+    min-width: 360px;
+    max-width: 540px;
+  }
+
+  .normalInput{
+    outline: none;
+    border: 1px solid gray;
+    border-radius: 7px;
+    height: 45px;
+    min-width: 360px;
+    max-width: 540px;
   }
