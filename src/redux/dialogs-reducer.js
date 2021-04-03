@@ -7,6 +7,7 @@ const SET_SOME_USER_MESSAGES = 'SET_SOME_USER_MESSAGES';
 const SET_OPPONENT_PROFILE = 'SET_OPPONENT_PROFILE';
 const SET_SELF_PROFILE = 'SET_SELF_PROFILE';
 const MESSAGE_HAS_BEEN_SENT = 'MESSAGE_HAS_BEEN_SENT';
+const DELETE_MESSAGE= 'DELETE_MESSAGE';
 
 let initialState = {
     lastMessages: [],
@@ -71,6 +72,12 @@ const dialogsReducer = (state = initialState, action) => {
                     someUserMessages: [...state.someUserMessages, action.payload],
                 };
 
+        case DELETE_MESSAGE :
+                return {
+                    ...state,
+                    someUserMessages: state.someUserMessages.filter(message => message.id !== action.payload),
+                    };
+
         default:
             return state;
     }
@@ -86,6 +93,8 @@ export const setSomeUserMessagesAC = payload => ({type: SET_SOME_USER_MESSAGES, 
 export const setSenderProfileAC = payload => ({type: SET_OPPONENT_PROFILE , payload});
 export const setRecipientProfileAC = payload => ({type: SET_SELF_PROFILE , payload});
 export const messageHasBeenSentAC = payload => ({type: MESSAGE_HAS_BEEN_SENT, payload})
+export const messageHasBeenDeletedAC = payload => ({type:DELETE_MESSAGE, payload})
+
 
 
 
@@ -135,4 +144,12 @@ export const sendMessage = (userId, message) => async (dispatch) =>{
             dispatch(messageHasBeenSentAC(data.data.message));
         }
 };
+export const deleteMessage = (selectedMessageId) => async (dispatch) =>{
+    let data = await dialogsAPI.deleteMessage(selectedMessageId)
+        if(data.resultCode === 0){
+            dispatch(messageHasBeenDeletedAC(selectedMessageId));
+        }
+};
+
+
 export default dialogsReducer;
