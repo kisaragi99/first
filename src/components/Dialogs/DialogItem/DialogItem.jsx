@@ -16,7 +16,7 @@ const DialogItem = (props) => {
                     <NavLink className={s.link} to={path}>{props.name}</NavLink>
                 </div>
                 <div className={s.message}>
-                    {!props.message ? loadingMessage : props.message }
+                    {!props.message ? loadingMessage : props.message.length > 81 ? props.message.slice(0,78) + '...' : props.message }
                 </div>
             </div>
         </div>

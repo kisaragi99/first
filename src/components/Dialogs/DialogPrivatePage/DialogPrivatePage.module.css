@@ -39,33 +39,55 @@
   
   .mainBody{
     height: auto;
-    border-bottom: 1px solid #D6D9DC;
+    display: flex;
+    flex-direction: column;
+    width: 720px
   }
   .friendMessageWrapper{
    display: flex;
    margin: 7px;
-   width: 450px;
-   height: 54px;
+   width: auto;
+   height: auto;
+   background-color: rgb(230, 230, 230);
+   border-radius: 3px;
+   border-top-left-radius: 3px;
+   cursor: pointer;
   }
+  .selfMessageWrapper{
+   display: flex;
+   margin: 7px;
+   width: auto;
+   height: auto;
+   cursor: pointer;
+  }
+
+
   .friendAvatar{
    width: 54px;
+   height: 54px;
    border-radius: 50px;
   } 
   .friendInnerWrapper{
    margin-left: 9px;
   }
+  .selfMessageName{
+    color:rgb(19, 18, 18);
+    font-size: 13px;
+    font-weight: 500;
+  }
   .friendMessageName{
-  
+    color:rgb(23, 94, 226);
+    font-size: 13px;
+    font-weight: 500;
   }
+  
   .friendMessageBody{
-  
+    font-size: 13px;
   }
   
   
-  .selfMessageWrapper{
-    display: flex;
-    margin: 7px;
-  }
+ 
+
   .selfAvatar{
   
   }
@@ -83,6 +105,7 @@
   
   .footerWrapper{
     border-bottom: 1px solid #D6D9DC;
+    border-top: 1px solid #D6D9DC;
     height: 5rem;
   }
   .footer{

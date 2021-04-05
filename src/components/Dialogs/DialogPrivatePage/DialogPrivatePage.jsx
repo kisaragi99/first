@@ -29,8 +29,11 @@ const DialogPrivatePage = (props) => {
   /*================================= Delete Message =================================*/
   const [selectedMessageId, setSelectedMessageId] = useState("");
   /*================================= Delete Message =================================*/
-
   /*================================= Variables =================================*/
+
+
+
+
 
   /*================================= UseEffects =================================*/
   useEffect(() => {
@@ -50,6 +53,8 @@ const DialogPrivatePage = (props) => {
   }, [dispatch, props.match.params.dialogId]);
   /*================================= UseEffects =================================*/
 
+
+
   /*================================= Form logic =================================*/
   const { register, errors, handleSubmit } = useForm();
 
@@ -57,6 +62,9 @@ const DialogPrivatePage = (props) => {
     dispatch(sendMessage(opponentId, data.messageBody));
   };
   /*================================= Form logic =================================*/
+
+
+
 
   console.log("DPP Rendered");
   //
@@ -91,7 +99,7 @@ const DialogPrivatePage = (props) => {
         {someUserMessages.map((message, index) => {
           return (
             <div
-              className={s.friendMessageWrapper}
+              className={message.id === selectedMessageId ? s.friendMessageWrapper : s.selfMessageWrapper}
               key={index}
               onClick={() => {
                 setSelectedMessageId(message.id);
@@ -103,7 +111,7 @@ const DialogPrivatePage = (props) => {
                 alt=""
               ></img>
               <div className={s.friendInnerWrapper}>
-                <div className={s.friendMessageName}>{message.senderName}</div>
+                <div className={ message.senderId === selfId ? s.selfMessageName : s.friendMessageName}>{message.senderName}</div>
                 <div className={s.friendMessageBody}>{message.body}</div>
               </div>
             </div>

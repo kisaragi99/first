@@ -3,11 +3,16 @@
     word-wrap: break-word;
     grid-area: dialog;
 }
+
 .message {
     margin: 5px 0 0 5px;
     word-wrap: break-word;
     color: rgb(65, 63, 63);
     grid-area: message;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    height: 35px;
+    width: 90%;
 }
 
 .link {
@@ -37,17 +42,18 @@
     width: 60px;
     border-radius: 50px;
 }
+
 .loadingMessage{
     font-size: 14px;
 	color: #fff;
-    width: 360px;
+    width: 100%;
     height: 9px;
 	padding: 10px;
 	display: inline-block;
 	border-radius: 5px;
 	animation: blinkingBackground 2s infinite;
-
 }
+
 @keyframes blinkingBackground{
 	0%		{ background-color: #EAEAEA;}
 	25%		{ background-color: #DCDCDC;}
