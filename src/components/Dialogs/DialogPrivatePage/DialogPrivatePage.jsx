@@ -55,10 +55,11 @@ const DialogPrivatePage = (props) => {
 
 
   /*================================= Form logic =================================*/
-  const { register, errors, handleSubmit } = useForm();
+  const { register, errors, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
     dispatch(sendMessage(opponentId, data.messageBody));
+    reset();
   };
   /*================================= Form logic =================================*/
 
