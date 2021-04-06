@@ -8,11 +8,12 @@ const SET_OPPONENT_PROFILE = 'SET_OPPONENT_PROFILE';
 const SET_SELF_PROFILE = 'SET_SELF_PROFILE';
 const MESSAGE_HAS_BEEN_SENT = 'MESSAGE_HAS_BEEN_SENT';
 const DELETE_MESSAGE= 'DELETE_MESSAGE';
+const REFRESH_DPP_STATE = 'REFRESH_DPP_STATE';
+
 
 let initialState = {
     lastMessages: [],
     dialogs: [],
-    initialized: false,
     someUserMessages: [{}],
     opponentProfile: {
         data: {
@@ -29,8 +30,7 @@ let initialState = {
             large: null,
         }
     }
-}, 
-    messageHasBeenSent: null
+}
 }
 
 const dialogsReducer = (state = initialState, action) => {
@@ -78,6 +78,27 @@ const dialogsReducer = (state = initialState, action) => {
                     someUserMessages: state.someUserMessages.filter(message => message.id !== action.payload),
                     };
 
+        case REFRESH_DPP_STATE :
+                return {
+                    ...state,
+                    someUserMessages: [{}],
+                    opponentProfile: {
+                        data: {
+                            photos: {
+                                small: null,
+                                large: null,
+                                }
+                            }
+                    },
+                    selfProfile: {
+                        data: {
+                            photos: {
+                                small: null,
+                                large: null,
+                            }
+                        }
+                    }
+                };
         default:
             return state;
     }
@@ -94,7 +115,7 @@ export const setSenderProfileAC = payload => ({type: SET_OPPONENT_PROFILE , payl
 export const setRecipientProfileAC = payload => ({type: SET_SELF_PROFILE , payload});
 export const messageHasBeenSentAC = payload => ({type: MESSAGE_HAS_BEEN_SENT, payload})
 export const messageHasBeenDeletedAC = payload => ({type:DELETE_MESSAGE, payload})
-
+export const refreshStateAC= payload => ({type:REFRESH_DPP_STATE})
 
 
 
@@ -151,5 +172,8 @@ export const deleteMessage = (selectedMessageId) => async (dispatch) =>{
         }
 };
 
+export const refreshDppState = () => async (dispatch) => {
+            dispatch(refreshStateAC());
+};
 
 export default dialogsReducer;

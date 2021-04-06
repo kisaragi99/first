@@ -6,7 +6,6 @@
   flex-direction: column;
   }
   
-  
   .header{
     display: flex;
     flex-direction: row;
@@ -14,10 +13,29 @@
     border-bottom: 1px solid #D6D9DC;
   }
   .backButton{
-  
+    color: rgb(2, 1, 1);
+    border-radius: 7px;
+    border: 1px solid #24ADF3;
+    height: 48px;
+    width: 108px;
+    background-color: transparent;
+    outline: none;
+    margin-left: 10px;
+    font-family: Lexend;
+    font-weight: 400;
+    cursor: pointer;
   }
   .deleteButton{
-    
+    color: rgb(2, 1, 1);
+    border-radius: 7px;
+    border: 1px solid #ff0000;
+    height: 48px;
+    width: 108px;
+    background-color: transparent;
+    outline: none;
+    margin-left: 10px;
+    font-family: Lexend;
+    font-weight: 400;
   }
   .friendInfo{
   margin-left: 35%;
@@ -60,13 +78,26 @@
    height: auto;
    cursor: pointer;
   }
-
-
+  .blankMessageWrapper{
+    color: #fff;
+    animation: blinkingBackground 1s infinite;
+    border-radius: 10px;
+    height: 54px;
+  }
+  
   .friendAvatar{
    width: 54px;
    height: 54px;
    border-radius: 50px;
   } 
+  
+  .blankFriendAvatar{
+    width: 54px;
+    height: 54px;
+    border: 0;
+    display: none;
+   } 
+  
   .friendInnerWrapper{
    margin-left: 9px;
   }
@@ -146,4 +177,12 @@
     height: 45px;
     min-width: 360px;
     max-width: 540px;
+  }
+
+  @keyframes blinkingBackground{
+    0%		{ background-color: #EAEAEA;}
+    25%		{ background-color: #DCDCDC;}
+    50%		{ background-color: #E3E3E3;}
+    75%		{ background-color: #DCDCDC;}
+    100%	{ background-color: #EAEAEA;}
   }

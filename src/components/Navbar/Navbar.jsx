@@ -2,8 +2,8 @@ import React from "react";
 import s from "./Navbar.module.css";
 import NavElement from "./NavElement/NavElement";
 
-
 const Navbar = () => {
+
     return (
         <nav className={s.nav}>
             <div className={s.itemWrapper}>

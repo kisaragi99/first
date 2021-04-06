@@ -7,7 +7,7 @@ import {
   getOpponentProfile,
   getSelfProfile,
   sendMessage,
-  deleteMessage,
+  deleteMessage
 } from "../../../redux/dialogs-reducer";
 import { useForm } from "react-hook-form";
 
@@ -29,9 +29,8 @@ const DialogPrivatePage = (props) => {
   /*================================= Delete Message =================================*/
   const [selectedMessageId, setSelectedMessageId] = useState("");
   /*================================= Delete Message =================================*/
+
   /*================================= Variables =================================*/
-
-
 
 
 
@@ -65,7 +64,6 @@ const DialogPrivatePage = (props) => {
 
 
 
-
   console.log("DPP Rendered");
   //
   const deleteButton = (
@@ -79,14 +77,15 @@ const DialogPrivatePage = (props) => {
       delete
     </button>
   );
-  //
+  // dispatch(refreshDppState())
+
 
   return (
     // header with button and aite no jouhou
     <div className={s.wrapper}>
       <div className={s.header}>
-        <button className={s.backButton} onClick={props.history.goBack}>
-          Назад
+        <button className={s.backButton} onClick={props.history.goBack} >
+          back
         </button>
         <div className={s.friendInfo}>
           <div className={s.firendNameHeader}>{opponentName}</div>
@@ -99,14 +98,14 @@ const DialogPrivatePage = (props) => {
         {someUserMessages.map((message, index) => {
           return (
             <div
-              className={message.id === selectedMessageId ? s.friendMessageWrapper : s.selfMessageWrapper}
+              className={someUserMessages[0].id ? (message.id === selectedMessageId ? s.friendMessageWrapper : s.selfMessageWrapper) : s.blankMessageWrapper}
               key={index}
               onClick={() => {
                 setSelectedMessageId(message.id);
               }}
             >
               <img
-                className={s.friendAvatar}
+                className={someUserMessages[0].id ? s.friendAvatar : s.blankFriendAvatar}
                 src={message.senderId === selfId ? selfPhoto : opponentPhoto}
                 alt=""
               ></img>
