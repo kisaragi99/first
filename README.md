@@ -1,3 +1,6 @@
+# Social network по курсу "React путь самурая" от it-kamasutra.
+## первый учебный проект, на данный момент на паузе.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
